@@ -1414,20 +1414,13 @@ body {
 }
 
 .basic-top-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 12px;
 }
 
-.basic-top-cards > .basic-top-card:nth-child(4) {
-  order: 5;
-}
-
-.basic-top-cards > .basic-top-card:nth-child(5) {
-  order: 4;
-}
-
 .basic-top-card {
+  flex: 1;
+  min-width: 0;
   border: 1px solid #e0e7f4;
   border-radius: 12px;
   padding: 14px;
@@ -4817,4 +4810,78 @@ button.nav-btn {
   color: #1e293b;
   font-weight: 700;
 }
+
+/* Compact Hero Card for Performance Tab */
+.perf-hero-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 20px;
+  border: 1px solid #edf1f7;
+  margin-bottom: 20px;
+}
+
+.perf-hero-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.perf-hero-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.perf-hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.perf-hero-info h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.perf-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.perf-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.perf-meta-item label {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.perf-meta-item b {
+  color: #475569;
+  font-weight: 600;
+}
+
+.perf-status-badge {
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
 

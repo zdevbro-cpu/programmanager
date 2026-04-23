@@ -22,6 +22,7 @@ import {
   Plus,
   ShieldCheck,
   Search,
+  ShoppingCart,
   Tag,
   Target,
   Trash2,
@@ -29,6 +30,7 @@ import {
   Trophy,
   Upload,
   User,
+  UserPlus,
   Users,
   Zap
 } from "lucide-react";
@@ -45,6 +47,7 @@ import kpiSales from "../assets/performance/kpi-sales.png";
 import kpiTarget from "../assets/performance/kpi-target.png";
 import kpiUsers from "../assets/performance/kpi-users.png";
 import trendChart from "../assets/performance/trend-card.png";
+import bookIcon from "../assets/performance/book.png";
 
 type SubMenu =
   | "basic"
@@ -1350,51 +1353,63 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
 
   return (
     <div className="perf-tab-container">
-      {/* 5 KPI Cards Row */}
-      <div className="perf-stats-row">
-        <div className="perf-stat-card">
-          <div className="perf-stat-icon"><img src={kpiUsers} alt="" /></div>
-          <div className="perf-stat-info">
-            <span>총 참여자</span>
-            <strong>128명</strong>
-            <small>활성 116명</small>
+      {/* Performance Header Mockup Matching */}
+      <section className="section-card basic-hero-card" style={{ marginBottom: '20px' }}>
+        <div className="basic-title-row">
+          <h2>{project.name}</h2>
+          <div className="basic-owner">
+            <span className="status running">운영중</span>
+            <strong>PM 김지훈</strong>
           </div>
         </div>
-        <div className="perf-stat-card">
-          <div className="perf-stat-icon"><img src={kpiRecruit} alt="" /></div>
-          <div className="perf-stat-info">
-            <span>모집 실적</span>
-            <strong>1,245명</strong>
-            <small>목표 1,500명</small>
+
+        <div className="perf-stats-row" style={{ marginTop: '20px', marginBottom: '0' }}>
+          <div className="perf-stat-card">
+            <div className="basic-icon blue"><Users className="mini-icon" /></div>
+            <div className="perf-stat-info">
+              <span>총 참여자</span>
+              <strong>128명</strong>
+              <small>활성 116명</small>
+            </div>
           </div>
-        </div>
-        <div className="perf-stat-card">
-          <div className="perf-stat-icon"><img src={kpiSales} alt="" /></div>
-          <div className="perf-stat-info">
-            <span>판매 실적</span>
-            <strong>2,860세트</strong>
-            <small>목표 3,600세트</small>
+          <div className="perf-stat-card">
+            <div className="basic-icon purple"><UserPlus className="mini-icon" /></div>
+            <div className="perf-stat-info">
+              <span>모집 실적</span>
+              <strong>1,245명</strong>
+              <small>목표 1,500명</small>
+            </div>
           </div>
-        </div>
-        <div className="perf-stat-card">
-          <div className="perf-stat-icon"><img src={kpiTarget} alt="" /></div>
-          <div className="perf-stat-info">
-            <span>목표 달성률</span>
-            <strong>79.4%</strong>
-            <div className="achieve-bar-bg" style={{ width: '60px', marginTop: '4px' }}>
-              <div className="achieve-bar-fill" style={{ width: '79.4%' }} />
+          <div className="perf-stat-card">
+            <div className="basic-icon blue"><ShoppingCart className="mini-icon" /></div>
+            <div className="perf-stat-info">
+              <span>판매 실적</span>
+              <strong>2,860세트</strong>
+              <small>목표 3,600세트</small>
+            </div>
+          </div>
+          <div className="perf-stat-card">
+            <div className="basic-icon green"><Target className="mini-icon" /></div>
+            <div className="perf-stat-info">
+              <span>목표 달성률</span>
+              <strong>79.4%</strong>
+              <div className="achieve-bar-bg" style={{ width: '60px', marginTop: '4px' }}>
+                <div className="achieve-bar-fill" style={{ width: '79.4%' }} />
+              </div>
+            </div>
+          </div>
+          <div className="perf-stat-card">
+            <div className="basic-icon orange"><Trophy className="mini-icon" /></div>
+            <div className="perf-stat-info">
+              <span>이번 주 TOP 팀</span>
+              <strong>영업1팀</strong>
+              <small>판매 628세트</small>
             </div>
           </div>
         </div>
-        <div className="perf-stat-card">
-          <div className="perf-stat-icon"><img src={kpiCrown} alt="" /></div>
-          <div className="perf-stat-info">
-            <span>이번 주 TOP 팀</span>
-            <strong>영업1팀</strong>
-            <small>판매 628세트</small>
-          </div>
-        </div>
-      </div>
+      </section>
+
+      {/* Notice Box */}
 
       {/* Notice Box */}
       <div className="perf-notice-box">
