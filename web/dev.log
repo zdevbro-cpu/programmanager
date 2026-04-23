@@ -1,0 +1,668 @@
+
+> programmanager-web@0.1.0 dev
+> vite --host 0.0.0.0 --port 5173
+
+
+  [32m[1mVITE[22m v5.4.21[39m  [2mready in [0m[1m307[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.219.135:[1m5173[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m오전 12:02:08[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 12:02:12[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/TargetSection.tsx[22m
+[2m오전 12:02:36[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/TargetSection.tsx[22m
+[2m오전 12:02:44[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/PreviewPanel.tsx[22m
+[2m오전 12:02:58[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/PreviewPanel.tsx[22m
+[2m오전 12:03:03[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 12:03:31[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 12:03:47[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/BasicInfoSection.tsx[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/BuilderSection.tsx[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/PreviewPanel.tsx[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/ResultSection.tsx[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/SectionCard.tsx[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/TargetSection.tsx[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/ValidationPanel.tsx[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/main.tsx[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mvite.config.ts changed, restarting server...[39m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m changed tsconfig file detected: C:\ProjectCode\programmanager\web\tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m오전 12:03:55[22m [36m[1m[vite][22m[39m server restarted.
+[2m오전 12:03:56[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 12:03:56[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/BasicInfoSection.tsx[22m
+[2m오전 12:03:56[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 12:03:56[22m [36m[1m[vite][22m[39m [32mvite.config.ts changed, restarting server...[39m
+[2m오전 12:03:56[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/main.tsx[22m
+[2m오전 12:03:56[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:03:56[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/BuilderSection.tsx[22m
+[2m오전 12:03:56[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/PreviewPanel.tsx[22m
+[2m오전 12:03:56[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/ResultSection.tsx[22m
+[2m오전 12:03:56[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/SectionCard.tsx[22m
+[2m오전 12:03:56[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/TargetSection.tsx[22m
+[2m오전 12:03:56[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/ValidationPanel.tsx[22m
+[2m오전 12:03:56[22m [36m[1m[vite][22m[39m server restarted.
+[2m오전 12:07:33[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/SectionCard.tsx[22m
+[2m오전 12:12:57[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 12:12:58[22m [36m[1m[vite][22m[39m [32m✨ new dependencies optimized: [33mlucide-react[32m[39m
+[2m오전 12:12:58[22m [36m[1m[vite][22m[39m [32m✨ optimized dependencies changed. reloading[39m
+[2m오전 12:13:03[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/BasicInfoSection.tsx[22m
+[2m오전 12:13:09[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/BuilderSection.tsx[22m
+[2m오전 12:13:14[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/ResultSection.tsx[22m
+[2m오전 12:13:22[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/TargetSection.tsx[22m
+[2m오전 12:13:34[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/PreviewPanel.tsx[22m
+[2m오전 12:13:39[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/ValidationPanel.tsx[22m
+[2m오전 12:13:42[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Icons.tsx[22m
+[2m오전 12:16:11[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/BasicInfoSection.tsx[22m
+[2m오전 12:16:20[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/TargetSection.tsx[22m
+[2m오전 12:16:29[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:17:09[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/BasicInfoSection.tsx[22m
+[2m오전 12:17:14[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:18:40[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:20:03[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:24:00[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/BuilderSection.tsx[22m
+[2m오전 12:24:14[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/ResultSection.tsx[22m
+[2m오전 12:26:07[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/ResultSection.tsx[22m
+[2m오전 12:27:39[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/BuilderSection.tsx[22m
+[2m오전 12:27:47[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:29:11[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/condition/BuilderSection.tsx[22m
+[2m오전 12:29:18[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:29:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:31:57[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:33:05[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 12:33:17[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:35:13[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 12:35:29[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:38:52[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 12:39:15[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 12:39:42[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:39:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 12:43:25[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 12:43:34[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 9:28:01[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 9:28:01[22m [31m[1m[vite][22m[39m [31mInternal server error: Failed to resolve import "./pages/ProgramBoardPage" from "src/App.tsx". Does the file exist?[39m
+  Plugin: [35mvite:import-analysis[39m
+  File: [36mC:/ProjectCode/programmanager/web/src/App.tsx[39m:14:33
+[33m  28 |  import { ConditionManagementPage } from "./pages/ConditionManagementPage";
+  29 |  import { ParticipantsManagementPage } from "./pages/ParticipantsManagementPage";
+  30 |  import { ProgramBoardPage } from "./pages/ProgramBoardPage";
+     |                                    ^
+  31 |  import { ProjectManagementPage } from "./pages/ProjectManagementPage";
+  32 |  const MENUS = [[39m
+      at TransformPluginContext._formatError (file:///C:/ProjectCode/programmanager/web/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49258:41)
+      at TransformPluginContext.error (file:///C:/ProjectCode/programmanager/web/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49253:16)
+      at normalizeUrl (file:///C:/ProjectCode/programmanager/web/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64307:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async file:///C:/ProjectCode/programmanager/web/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64439:39
+      at async Promise.all (index 7)
+      at async TransformPluginContext.transform (file:///C:/ProjectCode/programmanager/web/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:64366:7)
+      at async PluginContainer.transform (file:///C:/ProjectCode/programmanager/web/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///C:/ProjectCode/programmanager/web/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///C:/ProjectCode/programmanager/web/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+[2m오전 9:28:10[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ParticipantsManagementPage.tsx[22m
+[2m오전 9:28:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ParticipantsManagementPage.tsx[22m
+[2m오전 9:29:09[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 9:30:17[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 9:31:01[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/App.tsx[22m
+[2m오전 9:31:14[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ParticipantsManagementPage.tsx[22m
+[2m오전 9:31:24[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 9:31:33[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProgramBoardPage.tsx[22m
+[2m오전 9:32:21[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 9:39:43[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 9:41:00[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 9:41:08[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 9:41:30[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 9:42:04[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 9:43:23[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 9:44:16[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 9:44:22[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 9:44:57[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 9:48:34[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 9:49:36[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 9:49:43[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 9:50:25[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:06:34[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:06:52[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:10:50[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:11:20[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:13:24[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:13:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:14:01[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:17:04[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:17:31[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:17:47[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:18:47[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:18:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:19:24[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:19:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:20:50[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:21:00[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:22:51[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:23:02[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:23:57[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:24:16[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:24:37[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:24:54[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:26:21[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:28:48[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:28:57[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:29:51[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:31:23[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:31:31[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:33:01[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:35:20[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:35:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:39:28[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:39:43[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:41:37[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:41:44[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:43:38[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:43:44[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 10:46:51[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 10:47:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:02:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:03:22[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:06:51[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:07:15[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:08:27[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:10:16[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:11:20[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:11:50[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:12:16[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:12:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 11:12:37[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 11:18:10[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:18:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:19:14[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 11:19:28[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 11:23:58[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:24:44[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:25:09[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 11:27:52[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 11:30:06[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 11:30:16[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:31:15[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오전 11:32:18[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 11:32:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 11:34:48[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오전 11:34:58[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오전 11:37:48[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/main.tsx[22m
+[2m오전 11:37:59[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 12:09:54[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 12:11:03[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 12:11:40[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 12:11:52[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 12:12:36[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/tone-reference.css[22m
+[2m오후 12:12:52[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 12:13:34[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 12:15:05[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 12:17:09[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 12:18:12[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 12:19:23[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 12:19:35[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 12:20:32[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 12:21:52[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 12:22:04[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 12:22:37[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 12:25:10[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 12:29:43[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 2:41:26[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 2:41:39[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 2:44:01[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 2:44:01[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\ProjectCode\programmanager\web\src\pages\ProjectManagementPage.tsx: Unterminated string constant. (51:36)
+
+[0m [90m 49 |[31m [36mconst[31m [33mPROJECT_TABS[31m[33m:[31m { key[33m:[31m [33mSubMenu[31m[33m;[31m label[33m:[31m string }[] [33m=[31m [
+ [90m 50 |[31m   { key[33m:[31m [32m"basic"[31m[33m,[31m label[33m:[31m [32m"湲곕낯?뺣낫"[31m }[33m,[31m
+[31m[1m>[22m[31m[90m 51 |[31m   { key[33m:[31m [32m"participants_org"[31m[33m,[31m label[33m:[31m [32m"李몄뿬?먃룹“吏? },[31m
+ [90m    |[31m                                     [31m[1m^[22m[31m
+ [90m 52 |[31m   { key[33m:[31m [32m"rules"[31m[33m,[31m label[33m:[31m [32m"議곌굔쨌蹂댁긽洹쒖튃"[31m }[33m,[31m
+ [90m 53 |[31m   { key[33m:[31m [32m"progress"[31m[33m,[31m label[33m:[31m [32m"吏꾪뻾愿由? },[31m
+ [90m 54 |[31m   { key[33m:[31m [32m"performance"[31m[33m,[31m label[33m:[31m [32m"?ㅼ쟻"[31m }[33m,[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/ProjectCode/programmanager/web/src/pages/ProjectManagementPage.tsx[39m:51:36
+[33m  50 |    { key: "basic", label: "湲곕낯?뺣낫" },
+  51 |    { key: "participants_org", label: "李몄뿬?먃룹“吏? },
+  52 |    { key: "rules", label: "議곌굔쨌蹂댁긽洹쒖튃" },
+     |                                      ^
+  53 |    { key: "progress", label: "吏꾪뻾愿由? },
+  54 |    { key: "performance", label: "?ㅼ쟻" },[39m
+      at constructor (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6599:19)
+      at Object.unterminated (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5664:20)
+      at readStringContents (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5406:16)
+      at TypeScriptParserMixin.readString (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6498:9)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6258:14)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4797:11)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9987:11)
+      at TypeScriptParserMixin.nextToken (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5782:10)
+      at TypeScriptParserMixin.next (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5692:10)
+      at TypeScriptParserMixin.eat (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5696:12)
+      at TypeScriptParserMixin.parseObjectProperty (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11949:14)
+      at TypeScriptParserMixin.parseObjPropValue (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11978:100)
+      at TypeScriptParserMixin.parseObjPropValue (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9744:18)
+      at TypeScriptParserMixin.parsePropertyDefinition (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11915:17)
+      at TypeScriptParserMixin.parseObjectLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11832:21)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11339:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9786:20)
+      at C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12493:17)
+      at TypeScriptParserMixin.parseExprListItem (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12175:18)
+      at TypeScriptParserMixin.parseExprList (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12150:22)
+      at TypeScriptParserMixin.parseArrayLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12057:26)
+      at TypeScriptParserMixin.parseArrayLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9193:24)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11335:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9786:20)
+      at C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12421:16)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseVar (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:13384:91)
+[2m오후 2:44:40[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 2:44:40[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\ProjectCode\programmanager\web\src\pages\ProjectManagementPage.tsx: Unterminated string constant. (51:36)
+
+[0m [90m 49 |[31m [36mconst[31m [33mPROJECT_TABS[31m[33m:[31m { key[33m:[31m [33mSubMenu[31m[33m;[31m label[33m:[31m string }[] [33m=[31m [
+ [90m 50 |[31m   { key[33m:[31m [32m"basic"[31m[33m,[31m label[33m:[31m [32m"湲곕낯?뺣낫"[31m }[33m,[31m
+[31m[1m>[22m[31m[90m 51 |[31m   { key[33m:[31m [32m"participants_org"[31m[33m,[31m label[33m:[31m [32m"李몄뿬?먃룹“吏? },[31m
+ [90m    |[31m                                     [31m[1m^[22m[31m
+ [90m 52 |[31m   { key[33m:[31m [32m"rules"[31m[33m,[31m label[33m:[31m [32m"議곌굔쨌蹂댁긽洹쒖튃"[31m }[33m,[31m
+ [90m 53 |[31m   { key[33m:[31m [32m"progress"[31m[33m,[31m label[33m:[31m [32m"吏꾪뻾愿由? },[31m
+ [90m 54 |[31m   { key[33m:[31m [32m"performance"[31m[33m,[31m label[33m:[31m [32m"?ㅼ쟻"[31m }[33m,[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/ProjectCode/programmanager/web/src/pages/ProjectManagementPage.tsx[39m:51:36
+[33m  50 |    { key: "basic", label: "湲곕낯?뺣낫" },
+  51 |    { key: "participants_org", label: "李몄뿬?먃룹“吏? },
+  52 |    { key: "rules", label: "議곌굔쨌蹂댁긽洹쒖튃" },
+     |                                      ^
+  53 |    { key: "progress", label: "吏꾪뻾愿由? },
+  54 |    { key: "performance", label: "?ㅼ쟻" },[39m
+      at constructor (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6599:19)
+      at Object.unterminated (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5664:20)
+      at readStringContents (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5406:16)
+      at TypeScriptParserMixin.readString (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6498:9)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6258:14)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4797:11)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9987:11)
+      at TypeScriptParserMixin.nextToken (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5782:10)
+      at TypeScriptParserMixin.next (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5692:10)
+      at TypeScriptParserMixin.eat (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5696:12)
+      at TypeScriptParserMixin.parseObjectProperty (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11949:14)
+      at TypeScriptParserMixin.parseObjPropValue (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11978:100)
+      at TypeScriptParserMixin.parseObjPropValue (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9744:18)
+      at TypeScriptParserMixin.parsePropertyDefinition (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11915:17)
+      at TypeScriptParserMixin.parseObjectLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11832:21)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11339:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9786:20)
+      at C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12493:17)
+      at TypeScriptParserMixin.parseExprListItem (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12175:18)
+      at TypeScriptParserMixin.parseExprList (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12150:22)
+      at TypeScriptParserMixin.parseArrayLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12057:26)
+      at TypeScriptParserMixin.parseArrayLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9193:24)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11335:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9786:20)
+      at C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12421:16)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseVar (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:13384:91)
+[2m오후 2:44:53[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 2:45:00[22m [31m[1m[vite][22m[39m Pre-transform error: C:\ProjectCode\programmanager\web\src\pages\ProjectManagementPage.tsx: Unterminated string constant. (51:36)
+
+[0m [90m 49 |[39m [36mconst[39m [33mPROJECT_TABS[39m[33m:[39m { key[33m:[39m [33mSubMenu[39m[33m;[39m label[33m:[39m string }[] [33m=[39m [
+ [90m 50 |[39m   { key[33m:[39m [32m"basic"[39m[33m,[39m label[33m:[39m [32m"湲곕낯?뺣낫"[39m }[33m,[39m
+[31m[1m>[22m[39m[90m 51 |[39m   { key[33m:[39m [32m"participants_org"[39m[33m,[39m label[33m:[39m [32m"李몄뿬?먃룹“吏? },[39m
+ [90m    |[39m                                     [31m[1m^[22m[39m
+ [90m 52 |[39m   { key[33m:[39m [32m"rules"[39m[33m,[39m label[33m:[39m [32m"議곌굔쨌蹂댁긽洹쒖튃"[39m }[33m,[39m
+ [90m 53 |[39m   { key[33m:[39m [32m"progress"[39m[33m,[39m label[33m:[39m [32m"吏꾪뻾愿由? },[39m
+ [90m 54 |[39m   { key[33m:[39m [32m"performance"[39m[33m,[39m label[33m:[39m [32m"?ㅼ쟻"[39m }[33m,[39m[0m
+[2m오후 2:45:00[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\ProjectCode\programmanager\web\src\pages\ProjectManagementPage.tsx: Unterminated string constant. (51:36)
+
+[0m [90m 49 |[31m [36mconst[31m [33mPROJECT_TABS[31m[33m:[31m { key[33m:[31m [33mSubMenu[31m[33m;[31m label[33m:[31m string }[] [33m=[31m [
+ [90m 50 |[31m   { key[33m:[31m [32m"basic"[31m[33m,[31m label[33m:[31m [32m"湲곕낯?뺣낫"[31m }[33m,[31m
+[31m[1m>[22m[31m[90m 51 |[31m   { key[33m:[31m [32m"participants_org"[31m[33m,[31m label[33m:[31m [32m"李몄뿬?먃룹“吏? },[31m
+ [90m    |[31m                                     [31m[1m^[22m[31m
+ [90m 52 |[31m   { key[33m:[31m [32m"rules"[31m[33m,[31m label[33m:[31m [32m"議곌굔쨌蹂댁긽洹쒖튃"[31m }[33m,[31m
+ [90m 53 |[31m   { key[33m:[31m [32m"progress"[31m[33m,[31m label[33m:[31m [32m"吏꾪뻾愿由? },[31m
+ [90m 54 |[31m   { key[33m:[31m [32m"performance"[31m[33m,[31m label[33m:[31m [32m"?ㅼ쟻"[31m }[33m,[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/ProjectCode/programmanager/web/src/pages/ProjectManagementPage.tsx[39m:51:36
+[33m  50 |    { key: "basic", label: "湲곕낯?뺣낫" },
+  51 |    { key: "participants_org", label: "李몄뿬?먃룹“吏? },
+  52 |    { key: "rules", label: "議곌굔쨌蹂댁긽洹쒖튃" },
+     |                                      ^
+  53 |    { key: "progress", label: "吏꾪뻾愿由? },
+  54 |    { key: "performance", label: "?ㅼ쟻" },[39m
+      at constructor (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6599:19)
+      at Object.unterminated (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5664:20)
+      at readStringContents (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5406:16)
+      at TypeScriptParserMixin.readString (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6498:9)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6258:14)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4797:11)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9987:11)
+      at TypeScriptParserMixin.nextToken (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5782:10)
+      at TypeScriptParserMixin.next (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5692:10)
+      at TypeScriptParserMixin.eat (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5696:12)
+      at TypeScriptParserMixin.parseObjectProperty (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11949:14)
+      at TypeScriptParserMixin.parseObjPropValue (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11978:100)
+      at TypeScriptParserMixin.parseObjPropValue (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9744:18)
+      at TypeScriptParserMixin.parsePropertyDefinition (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11915:17)
+      at TypeScriptParserMixin.parseObjectLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11832:21)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11339:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9786:20)
+      at C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12493:17)
+      at TypeScriptParserMixin.parseExprListItem (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12175:18)
+      at TypeScriptParserMixin.parseExprList (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12150:22)
+      at TypeScriptParserMixin.parseArrayLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12057:26)
+      at TypeScriptParserMixin.parseArrayLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9193:24)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11335:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9786:20)
+      at C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12421:16)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseVar (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:13384:91)
+[2m오후 2:45:08[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\ProjectCode\programmanager\web\src\pages\ProjectManagementPage.tsx: Unterminated string constant. (51:36)
+
+[0m [90m 49 |[31m [36mconst[31m [33mPROJECT_TABS[31m[33m:[31m { key[33m:[31m [33mSubMenu[31m[33m;[31m label[33m:[31m string }[] [33m=[31m [
+ [90m 50 |[31m   { key[33m:[31m [32m"basic"[31m[33m,[31m label[33m:[31m [32m"湲곕낯?뺣낫"[31m }[33m,[31m
+[31m[1m>[22m[31m[90m 51 |[31m   { key[33m:[31m [32m"participants_org"[31m[33m,[31m label[33m:[31m [32m"李몄뿬?먃룹“吏? },[31m
+ [90m    |[31m                                     [31m[1m^[22m[31m
+ [90m 52 |[31m   { key[33m:[31m [32m"rules"[31m[33m,[31m label[33m:[31m [32m"議곌굔쨌蹂댁긽洹쒖튃"[31m }[33m,[31m
+ [90m 53 |[31m   { key[33m:[31m [32m"progress"[31m[33m,[31m label[33m:[31m [32m"吏꾪뻾愿由? },[31m
+ [90m 54 |[31m   { key[33m:[31m [32m"performance"[31m[33m,[31m label[33m:[31m [32m"?ㅼ쟻"[31m }[33m,[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/ProjectCode/programmanager/web/src/pages/ProjectManagementPage.tsx[39m:51:36
+[33m  50 |    { key: "basic", label: "湲곕낯?뺣낫" },
+  51 |    { key: "participants_org", label: "李몄뿬?먃룹“吏? },
+  52 |    { key: "rules", label: "議곌굔쨌蹂댁긽洹쒖튃" },
+     |                                      ^
+  53 |    { key: "progress", label: "吏꾪뻾愿由? },
+  54 |    { key: "performance", label: "?ㅼ쟻" },[39m
+      at constructor (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6599:19)
+      at Object.unterminated (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5664:20)
+      at readStringContents (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5406:16)
+      at TypeScriptParserMixin.readString (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6498:9)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6258:14)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4797:11)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9987:11)
+      at TypeScriptParserMixin.nextToken (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5782:10)
+      at TypeScriptParserMixin.next (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5692:10)
+      at TypeScriptParserMixin.eat (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5696:12)
+      at TypeScriptParserMixin.parseObjectProperty (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11949:14)
+      at TypeScriptParserMixin.parseObjPropValue (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11978:100)
+      at TypeScriptParserMixin.parseObjPropValue (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9744:18)
+      at TypeScriptParserMixin.parsePropertyDefinition (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11915:17)
+      at TypeScriptParserMixin.parseObjectLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11832:21)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11339:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9786:20)
+      at C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12493:17)
+      at TypeScriptParserMixin.parseExprListItem (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12175:18)
+      at TypeScriptParserMixin.parseExprList (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12150:22)
+      at TypeScriptParserMixin.parseArrayLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12057:26)
+      at TypeScriptParserMixin.parseArrayLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9193:24)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11335:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9786:20)
+      at C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12421:16)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseVar (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:13384:91)
+[2m오후 2:45:23[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 2:45:23[22m [31m[1m[vite][22m[39m Pre-transform error: Failed to load url /src/pages/ProjectManagementPage.tsx (resolved id: C:/ProjectCode/programmanager/web/src/pages/ProjectManagementPage.tsx) in C:/ProjectCode/programmanager/web/src/App.tsx. Does the file exist?
+[2m오후 2:47:29[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 2:52:06[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 2:52:06[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\ProjectCode\programmanager\web\src\pages\ProjectManagementPage.tsx: Unterminated string constant. (51:36)
+
+[0m [90m 49 |[31m [36mconst[31m [33mPROJECT_TABS[31m[33m:[31m { key[33m:[31m [33mSubMenu[31m[33m;[31m label[33m:[31m string }[] [33m=[31m [
+ [90m 50 |[31m   { key[33m:[31m [32m"basic"[31m[33m,[31m label[33m:[31m [32m"湲곕낯?뺣낫"[31m }[33m,[31m
+[31m[1m>[22m[31m[90m 51 |[31m   { key[33m:[31m [32m"participants_org"[31m[33m,[31m label[33m:[31m [32m"李몄뿬?먃룹“吏? },[31m
+ [90m    |[31m                                     [31m[1m^[22m[31m
+ [90m 52 |[31m   { key[33m:[31m [32m"rules"[31m[33m,[31m label[33m:[31m [32m"議곌굔쨌蹂댁긽洹쒖튃"[31m }[33m,[31m
+ [90m 53 |[31m   { key[33m:[31m [32m"progress"[31m[33m,[31m label[33m:[31m [32m"吏꾪뻾愿由? },[31m
+ [90m 54 |[31m   { key[33m:[31m [32m"performance"[31m[33m,[31m label[33m:[31m [32m"?ㅼ쟻"[31m }[33m,[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/ProjectCode/programmanager/web/src/pages/ProjectManagementPage.tsx[39m:51:36
+[33m  49 |  const PROJECT_TABS: { key: SubMenu; label: string }[] = [
+  50 |    { key: "basic", label: "湲곕낯?뺣낫" },
+  51 |    { key: "participants_org", label: "李몄뿬?먃룹“吏? },
+     |                                      ^
+  52 |    { key: "rules", label: "議곌굔쨌蹂댁긽洹쒖튃" },
+  53 |    { key: "progress", label: "吏꾪뻾愿由? },[39m
+      at constructor (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6599:19)
+      at Object.unterminated (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5664:20)
+      at readStringContents (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5406:16)
+      at TypeScriptParserMixin.readString (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6498:9)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6258:14)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4797:11)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9987:11)
+      at TypeScriptParserMixin.nextToken (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5782:10)
+      at TypeScriptParserMixin.next (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5692:10)
+      at TypeScriptParserMixin.eat (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5696:12)
+      at TypeScriptParserMixin.parseObjectProperty (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11949:14)
+      at TypeScriptParserMixin.parseObjPropValue (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11978:100)
+      at TypeScriptParserMixin.parseObjPropValue (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9744:18)
+      at TypeScriptParserMixin.parsePropertyDefinition (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11915:17)
+      at TypeScriptParserMixin.parseObjectLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11832:21)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11339:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9786:20)
+      at C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12493:17)
+      at TypeScriptParserMixin.parseExprListItem (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12175:18)
+      at TypeScriptParserMixin.parseExprList (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12150:22)
+      at TypeScriptParserMixin.parseArrayLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12057:26)
+      at TypeScriptParserMixin.parseArrayLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9193:24)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11335:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9786:20)
+      at C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12421:16)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseVar (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:13384:91)
+[2m오후 2:52:16[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 2:52:45[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 2:52:46[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\ProjectCode\programmanager\web\src\pages\ProjectManagementPage.tsx: Unterminated string constant. (51:36)
+
+[0m [90m 49 |[31m [36mconst[31m [33mPROJECT_TABS[31m[33m:[31m { key[33m:[31m [33mSubMenu[31m[33m;[31m label[33m:[31m string }[] [33m=[31m [
+ [90m 50 |[31m   { key[33m:[31m [32m"basic"[31m[33m,[31m label[33m:[31m [32m"湲곕낯?뺣낫"[31m }[33m,[31m
+[31m[1m>[22m[31m[90m 51 |[31m   { key[33m:[31m [32m"participants_org"[31m[33m,[31m label[33m:[31m [32m"李몄뿬?먃룹“吏? },[31m
+ [90m    |[31m                                     [31m[1m^[22m[31m
+ [90m 52 |[31m   { key[33m:[31m [32m"rules"[31m[33m,[31m label[33m:[31m [32m"議곌굔쨌蹂댁긽洹쒖튃"[31m }[33m,[31m
+ [90m 53 |[31m   { key[33m:[31m [32m"progress"[31m[33m,[31m label[33m:[31m [32m"吏꾪뻾愿由? },[31m
+ [90m 54 |[31m   { key[33m:[31m [32m"performance"[31m[33m,[31m label[33m:[31m [32m"?ㅼ쟻"[31m }[33m,[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/ProjectCode/programmanager/web/src/pages/ProjectManagementPage.tsx[39m:51:36
+[33m  49 |  const PROJECT_TABS: { key: SubMenu; label: string }[] = [
+  50 |    { key: "basic", label: "湲곕낯?뺣낫" },
+  51 |    { key: "participants_org", label: "李몄뿬?먃룹“吏? },
+     |                                      ^
+  52 |    { key: "rules", label: "議곌굔쨌蹂댁긽洹쒖튃" },
+  53 |    { key: "progress", label: "吏꾪뻾愿由? },[39m
+      at constructor (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6599:19)
+      at Object.unterminated (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5664:20)
+      at readStringContents (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5406:16)
+      at TypeScriptParserMixin.readString (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6498:9)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:6258:14)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4797:11)
+      at TypeScriptParserMixin.getTokenFromCode (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9987:11)
+      at TypeScriptParserMixin.nextToken (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5782:10)
+      at TypeScriptParserMixin.next (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5692:10)
+      at TypeScriptParserMixin.eat (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:5696:12)
+      at TypeScriptParserMixin.parseObjectProperty (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11949:14)
+      at TypeScriptParserMixin.parseObjPropValue (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11978:100)
+      at TypeScriptParserMixin.parseObjPropValue (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9744:18)
+      at TypeScriptParserMixin.parsePropertyDefinition (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11915:17)
+      at TypeScriptParserMixin.parseObjectLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11832:21)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11339:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9786:20)
+      at C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12426:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12493:17)
+      at TypeScriptParserMixin.parseExprListItem (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12175:18)
+      at TypeScriptParserMixin.parseExprList (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12150:22)
+      at TypeScriptParserMixin.parseArrayLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12057:26)
+      at TypeScriptParserMixin.parseArrayLike (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9193:24)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11335:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:4764:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11081:23)
+      at TypeScriptParserMixin.parseUpdate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11066:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:11046:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9837:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10899:61)
+      at TypeScriptParserMixin.parseExprOps (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10904:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10881:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10831:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:9786:20)
+      at C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:39
+      at TypeScriptParserMixin.allowInAnd (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:12421:16)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:10800:17)
+      at TypeScriptParserMixin.parseVar (C:\ProjectCode\programmanager\web\node_modules\@babel\parser\lib\index.js:13384:91)
+[2m오후 2:54:10[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 2:55:29[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:01:41[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:01:50[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 3:03:43[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:03:57[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 3:05:48[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:05:59[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:06:23[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오후 3:06:43[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/App.tsx[22m
+[2m오후 3:07:33[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:08:48[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:10:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:11:18[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 3:11:53[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:13:49[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 3:14:55[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:15:04[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 3:15:48[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:17:48[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:17:56[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 3:19:04[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:19:10[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:19:45[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 3:20:19[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 3:21:58[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:25:42[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:25:51[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 3:34:06[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ParticipantsManagementPage.tsx[22m
+[2m오후 3:34:45[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ParticipantsManagementPage.tsx[22m
+[2m오후 3:35:00[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ProjectManagementPage.tsx[22m
+[2m오후 3:35:45[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m오후 3:36:58[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ParticipantsManagementPage.tsx[22m
+[2m오후 3:40:42[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/ParticipantsManagementPage.tsx[22m
+[2m오후 3:40:54[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles.css[22m

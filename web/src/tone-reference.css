@@ -1,0 +1,12 @@
+:root {
+  /* Global tone-and-manner reference */
+  --tm-font-family: "Noto Sans KR", "Segoe UI", sans-serif;
+  --tm-bg-page: #f4f6fb;
+  --tm-bg-surface: #ffffff;
+  --tm-text-primary: #1a2438;
+  --tm-text-secondary: #5f6c87;
+  --tm-border-default: #dfe6f3;
+  --tm-brand: #2f8f88;
+  --tm-brand-strong: #2a7f79;
+  --tm-logo-size: 40px;
+}
