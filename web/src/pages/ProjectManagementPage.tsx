@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
   ArrowLeft,
@@ -7,25 +7,19 @@ import {
   CircleDollarSign,
   CalendarDays,
   Check,
-  CheckCircle,
   CheckCircle2,
   ChevronRight,
   Clock3,
   Clock4,
-  Download,
   Eye,
   FileText,
-  Files,
   Flag,
-  Folder,
   FolderOpen,
   Gift,
   Info,
-  MoreVertical,
   Pencil,
   Percent,
   Plus,
-  RefreshCcw,
   ShieldCheck,
   Search,
   ShoppingCart,
@@ -38,7 +32,13 @@ import {
   User,
   UserPlus,
   Users,
-  Zap
+  Zap,
+  CheckCircle,
+  Download,
+  Files,
+  Folder,
+  MoreVertical,
+  RefreshCcw
 } from "lucide-react";
 import { ParticipantsManagementPage } from "./ParticipantsManagementPage";
 import { ProgramBoardPage } from "./ProgramBoardPage";
@@ -80,8 +80,8 @@ type ProjectItem = {
 
 const PROJECT_TABS: { key: SubMenu; label: string }[] = [
   { key: "basic", label: "기본정보" },
-  { key: "participants_org", label: "참여자/조직관리" },
-  { key: "rules", label: "규칙/조건설정" },
+  { key: "participants_org", label: "참여자/조직" },
+  { key: "rules", label: "조건/보상규칙" },
   { key: "progress", label: "진행관리" },
   { key: "performance", label: "실적" },
   { key: "settlement", label: "보상/정산" },
@@ -99,60 +99,60 @@ const PROJECTS: ProjectItem[] = [
     status: "running",
     pm: "김지훈",
     progress: 79.4,
-    participants: 128,
-    updatedAt: "2026-01-21"
+    participants: 125,
+    updatedAt: "2026.01.21"
   },
   {
     id: "PRJ-2026-0002",
-    name: "鴗炣𢲡 ?�� ?國� ?��?𠺝䂻",
-    type: "儠属�鼽?穈嶅�",
+    name: "중등 독서 연계 프로젝트",
+    type: "콘텐츠 개발",
     period: "2026.02.01 ~ 2026.08.31",
     status: "preparing",
-    pm: "?渥�鴔?,"
+    pm: "이수진",
     progress: 15,
     participants: 12,
     updatedAt: "2026.01.20"
   },
   {
     id: "PRJ-2026-0003",
-    name: "黕�𢲡 ?𡥄�篣??軤𠽌?刮�鴔� 儥𡥄�??,"
-    type: "?韒坐 ?��판매�",
+    name: "초등 신학기 학습패키지 캠페인",
+    type: "판매 프로모션",
     period: "2026.03.01 ~ 2026.06.30",
     status: "running",
-    pm: "諻瑅???,"
+    pm: "박민수",
     progress: 62,
     participants: 84,
     updatedAt: "2026.01.19"
   },
   {
     id: "PRJ-2026-0004",
-    name: "?禺�諻拗� ?��麇𣕑旭鴔� ?渥�",
-    type: "?渥� ?��?𠺝䂻",
+    name: "여름방학 독서챌린지 운영",
+    type: "운영 프로젝트",
     period: "2026.06.15 ~ 2026.08.31",
     status: "preparing",
-    pm: "黖𨰰�謔?,"
+    pm: "최유리",
     progress: 8,
     participants: 31,
     updatedAt: "2026.01.18"
   },
   {
     id: "PRJ-2026-0005",
-    name: "?��?� 鴔�??� ?寨�?��판매�",
-    type: "?韒坐 ?��판매�",
+    name: "영업팀 지역별 특별프로모션",
+    type: "판매 프로모션",
     period: "2026.04.01 ~ 2026.10.31",
     status: "running",
-    pm: "?𤣿�??,"
+    pm: "정현우",
     progress: 47,
     participants: 96,
     updatedAt: "2026.01.17"
   },
   {
     id: "PRJ-2026-0006",
-    name: "2025 ?圉� ?��篣堅� ?㴒�",
-    type: "?㴒�/?瑅收",
+    name: "2025 연말 도서기획 회고",
+    type: "회고/정리",
     period: "2025.10.01 ~ 2025.12.31",
     status: "closed",
-    pm: "篧�?𨰰𧇍",
+    pm: "김서윤",
     progress: 100,
     participants: 22,
     updatedAt: "2026.01.15"
@@ -160,21 +160,21 @@ const PROJECTS: ProjectItem[] = [
 ];
 
 const TAB_SUMMARY: Record<SubMenu, string> = {
-  basic: "?��?𠺝䂻??관리雩?瑅陷諝??㻂𥘵?拘�??",
-  participants_org: "麆賄𤩐?韠? 魽域� 貒䇹�諝?窵�謔秒襔?�𠹻.",
-  rules: "조건探窸?보상� 篞𨰰�??窵�謔秒襔?�𠹻.",
-  progress: "鴔�� ?刷�?� 窸潰�??窵�謔秒襔?�𠹻.",
-  performance: "?木� ?�埯窸?黺䇹𦚯諝??㻂𥘵?拘�??",
-  settlement: "보상�/?㻂� ?�埯??窵�謔秒襔?�𠹻.",
-  board: "?��?𠺝䂻 窶嵸�?韠� 窵�謔秒襔?�𠹻.",
-  evidence: "鴞噃�?韒� ?梵�/窶�???��諝?窵�謔秒襔?�𠹻.",
-  activity: "?��?𠺝䂻 ?嶅� ?渠�???㻂𥘵?拘�??"
+  basic: "프로젝트의 기본정보를 확인합니다.",
+  participants_org: "참여자와 조직 범위를 관리합니다.",
+  rules: "조건과 보상 규칙을 관리합니다.",
+  progress: "진행 단계와 과업을 관리합니다.",
+  performance: "실적 현황과 추이를 확인합니다.",
+  settlement: "보상/정산 현황을 관리합니다.",
+  board: "프로젝트 게시판을 관리합니다.",
+  evidence: "증빙자료 등록/검토 상태를 관리합니다.",
+  activity: "프로젝트 활동 이력을 확인합니다."
 };
 
-function statusLabel(status: ProjectItem["status"]) { if (status === "running") return "운영중"; if (status === "preparing") return "준비중"; return "종료"; }
-  if (status === "running") return "?渥�鴗?;"
-  if (status === "preparing") return "鴗�赬��";
-  return "鮈��";
+function statusLabel(status: ProjectItem["status"]) {
+  if (status === "running") return "운영중";
+  if (status === "preparing") return "준비중";
+  return "종료";
 }
 
 function statusClass(status: ProjectItem["status"]) {
@@ -190,7 +190,7 @@ function ProjectBasicInfoTab({ project }: { project: ProjectItem }) {
         <div className="basic-title-row">
           <h2>{project.name}</h2>
           <div className="basic-owner">
-function statusLabel(status: ProjectItem["status"]) { if (status === "running") return "운영중"; if (status === "preparing") return "준비중"; return "종료"; }
+            <span className={statusClass(project.status)}>{statusLabel(project.status)}</span>
             <strong>PM {project.pm}</strong>
           </div>
         </div>
@@ -199,41 +199,41 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
           <div className="basic-top-card">
             <div className="basic-icon blue"><CalendarDays className="mini-icon" /></div>
             <div>
-              <span>?��?𠺝䂻 篣國�</span>
+              <span>프로젝트 기간</span>
               <strong>{project.period}</strong>
-              <small>(366??</small>
+              <small>(366일)</small>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon purple"><Tag className="mini-icon" /></div>
             <div>
-              <span>?��?𠺝䂻 ?𡥄�</span>
+              <span>프로젝트 유형</span>
               <strong>{project.type}</strong>
-              <small>(?賄�?圉�??</small>
+              <small>(인센티브형)</small>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon green"><BookOpen className="mini-icon" /></div>
             <div>
-              <span>?�???��</span>
-              <strong>?𥔱�?�� ???�版</strong>
-              <small>(1,256穈?</small>
+              <span>대상 상품</span>
+              <strong>유아도서 전 품목</strong>
+              <small>(1,256개)</small>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon orange"><Clock3 className="mini-icon" /></div>
             <div>
-              <span>?渥� ?��</span>
-function statusLabel(status: ProjectItem["status"]) { if (status === "running") return "운영중"; if (status === "preparing") return "준비중"; return "종료"; }
-              <small>(2026.01.01 ?𨰰�)</small>
+              <span>운영 상태</span>
+              <strong>{statusLabel(project.status)}</strong>
+              <small>(2026.01.01 시작)</small>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon blue"><Target className="mini-icon" /></div>
             <div>
-              <span>鴔��??/span>
+              <span>진척율</span>
               <strong>{project.progress}%</strong>
-              <small>(鴔��諝?篣域?)</small>
+              <small>(진행률 기준)</small>
             </div>
           </div>
         </div>
@@ -241,93 +241,93 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
 
       <div className="basic-mid-grid">
         <section className="section-card">
-          <h3 className="panel-title">?��?𠺝䂻 관리雩 ?瑅陷</h3>
+          <h3 className="panel-title">프로젝트 기본 정보</h3>
           <table className="project-table basic-info-table">
             <tbody>
-              <tr><td>?��?𠺝䂻諈?/td><td>{project.name}</td></tr>
-              <tr><td>?��?𠺝䂻諈拖�</td><td>?𥔱�?�� ?韒坐 ?瑅? 諻?窸𥻗� 黺拖�???伊�</td></tr>
-              <tr><td>?𨰰�??/td><td>2026.01.01</td></tr>
-              <tr><td>鮈��??/td><td>2026.12.31</td></tr>
-              <tr><td>?渥�賱�??/td><td>諤�??�雩賱� ?��篣堅�?�</td></tr>
-              <tr><td>?�?��??/td><td>?�筏 ?𨰰� 諻??刺𦉘???韒坐麮?(?潺� ?嵸� ?秒𥚃)</td></tr>
-              <tr><td>?��?𠺝䂻儠竾�</td><td>{project.id}</td></tr>
-              <tr><td>?��?𠺝䂻 ?月�</td><td>2026???????軤� ?𥔱�?�� ?韒坐 ?𨰰�?竾? ?�㟲 鴔��?䁪� ?賄�?圉� 관리� ?��판매�?��??</td></tr>
-              <tr><td>?��?𠺝䂻 儠竾�</td><td>{project.id}</td></tr>
-              <tr><td>?��차트𠸊諈?/td><td>{project.name}</td></tr>
-              <tr><td>?𨰰�??/td><td>2026.01.01</td></tr>
-              <tr><td>鮈��??/td><td>2026.12.31</td></tr>
-              <tr><td>?渥� 魽域�</td><td>諤�??�萼?澁?</td></tr>
+              <tr><td>프로젝트명</td><td>{project.name}</td></tr>
+              <tr><td>프로젝트목적</td><td>유아도서 판매 확대 및 고객 충성도 향상</td></tr>
+              <tr><td>시작일</td><td>2026.01.01</td></tr>
+              <tr><td>종료일</td><td>2026.12.31</td></tr>
+              <tr><td>운영부서</td><td>마케팅본부 영업기획팀</td></tr>
+              <tr><td>대상회원</td><td>전국 서점 및 온라인 판매처 (일반 회원 포함)</td></tr>
+              <tr><td>프로젝트코드</td><td>{project.id}</td></tr>
+              <tr><td>프로젝트 설명</td><td>2026년 한 해 동안 유아도서 판매 활성화를 위해 진행되는 인센티브 기반 프로모션입니다.</td></tr>
+              <tr><td>프로젝트 코드</td><td>{project.id}</td></tr>
+              <tr><td>프로그램명</td><td>{project.name}</td></tr>
+              <tr><td>시작일</td><td>2026.01.01</td></tr>
+              <tr><td>종료일</td><td>2026.12.31</td></tr>
+              <tr><td>운영 조직</td><td>마케팅기획팀</td></tr>
             </tbody>
           </table>
         </section>
         <section className="section-card">
-          <h3 className="panel-title">?渥� ?䇹烄</h3>
+          <h3 className="panel-title">운영 요약</h3>
           <div className="basic-summary-grid">
-            <div className="basic-summary-item"><Users className="mini-icon" /><div><span>麆賄𤩐????/span><strong>356諈?/strong></div></div>
-            <div className="basic-summary-item"><Flag className="mini-icon" /><div><span>鴔�� ?刷�</span><strong>1?刷�</strong></div></div>
-            <div className="basic-summary-item"><Target className="mini-icon" /><div><span>판매� 諈拗�</span><strong>500諈?/strong></div></div>
-            <div className="basic-summary-item"><Target className="mini-icon" /><div><span>?韒坐 諈拗�</span><strong>1,200,000,000??/strong></div></div>
-            <div className="basic-summary-item"><BookOpen className="mini-icon" /><div><span>窶嵸�篣�</span><strong>12穇?/strong></div></div>
-            <div className="basic-summary-item"><FolderOpen className="mini-icon" /><div><span>鴞噃�?韒�</span><strong>87穇?/strong></div></div>
+            <div className="basic-summary-item"><Users className="mini-icon" /><div><span>참여자 수</span><strong>356명</strong></div></div>
+            <div className="basic-summary-item"><Flag className="mini-icon" /><div><span>진행 단계</span><strong>1단계</strong></div></div>
+            <div className="basic-summary-item"><Target className="mini-icon" /><div><span>모집 목표</span><strong>500명</strong></div></div>
+            <div className="basic-summary-item"><Target className="mini-icon" /><div><span>판매 목표</span><strong>1,200,000,000원</strong></div></div>
+            <div className="basic-summary-item"><BookOpen className="mini-icon" /><div><span>게시글</span><strong>12건</strong></div></div>
+            <div className="basic-summary-item"><FolderOpen className="mini-icon" /><div><span>증빙자료</span><strong>87건</strong></div></div>
           </div>
         </section>
       </div>
 
       <div className="basic-bottom-grid">
         <section className="section-card">
-          <h3 className="panel-title">?��?𠺝䂻 ?潰�</h3>
+          <h3 className="panel-title">프로젝트 일정</h3>
           <ul className="basic-timeline">
             <li className="done">
-              <span className="tl-dot">??/span>
-              <b>?��?𠺝䂻 鴗�赬?/b>
+              <span className="tl-dot">✓</span>
+              <b>프로젝트 준비</b>
               <span>2025.11.01 ~ 2025.12.31</span>
-              <em className="status running">?��</em>
-              <small>?��판매� 篣堅� 諻??𨰰擪???貲� ?��</small>
+              <em className="status running">완료</em>
+              <small>프로모션 기획 및 시스템 세팅 완료</small>
             </li>
             <li className="active">
               <span className="tl-dot">1</span>
-              <b>1?刷� ?��판매�</b>
+              <b>1단계 프로모션</b>
               <span>2026.01.01 ~ 2026.03.31</span>
-              <em className="status running">鴔��鴗?/em>
-              <small>黕�萼 ?韒坐 ?𨰰�??諻?麆賄𤩐???瑅?</small>
+              <em className="status running">진행중</em>
+              <small>초기 판매 활성화 및 참여자 확대</small>
             </li>
             <li>
               <span className="tl-dot">2</span>
-              <b>2?刷� ?��판매�</b>
+              <b>2단계 프로모션</b>
               <span>2026.04.01 ~ 2026.06.30</span>
-              <em className="status planning">?��</em>
-              <small>?韒坐 ?瑅? 諻?鴗𡟯� ?퍼포머 ?韀?</small>
+              <em className="status planning">예정</em>
+              <small>판매 확대 및 중간 성과 점검</small>
             </li>
             <li>
               <span className="tl-dot">3</span>
-              <b>3?刷� ?��판매�</b>
+              <b>3단계 프로모션</b>
               <span>2026.07.01 ~ 2026.09.30</span>
-              <em className="status planning">?��</em>
-              <small>?䁪�篣?鴔𡢾� ?��판매�</small>
+              <em className="status planning">예정</em>
+              <small>하반기 집중 프로모션</small>
             </li>
             <li>
               <span className="tl-dot">4</span>
-              <b>黖𨰰� ?㻂� 諻??㕓?</b>
+              <b>최종 정산 및 평가</b>
               <span>2026.10.01 ~ 2026.12.31</span>
-              <em className="status planning">?��</em>
-              <small>黖𨰰� ?퍼포머 ?㻂𥘵 諻?보상� ?㻂�</small>
+              <em className="status planning">예정</em>
+              <small>최종 성과 확인 및 보상 정산</small>
             </li>
           </ul>
         </section>
 
         <section className="section-card">
           <div className="basic-memo-head">
-            <h3 className="panel-title">?��?𠺝䂻 諰竾爸</h3>
+            <h3 className="panel-title">프로젝트 메모</h3>
             <button type="button" className="ghost">
               <Pencil className="mini-icon" />
-              ?賄�
+              편집
             </button>
           </div>
           <ul className="simple-list">
-            <li><span>1?刷� ?��판매� ?𨰰� ??穈�?渠�?潰𥘵 諻堅𡢢 ?��</span><small>2025.12.28</small></li>
-            <li><span>麆賄𤩐???�???刺陷???刺�??2026.01.02 鴔�� ?��</span><small>2025.12.28</small></li>
-            <li><span>?𥻗� ?賄�?圉� ?�� 窶�??鴗?(?�� 10% 黺𥯆? ?科�)</span><small>2026.01.03</small></li>
-            <li><span>2?刷� 諈拗� 魽域� 窶�??(?𨰰𤟠 ?�埯 諻䁯�)</span><small>2026.01.05</small></li>
+            <li><span>1단계 프로모션 시작 전 가이드라인 배포 완료</span><small>2025.12.28</small></li>
+            <li><span>참여자 대상 온보딩 웨비나 2026.01.02 진행 예정</span><small>2025.12.28</small></li>
+            <li><span>신규 인센티브 상품 검토 중 (상위 10% 추가 포상)</span><small>2026.01.03</small></li>
+            <li><span>2단계 목표 조정 검토 (시장 상황 반영)</span><small>2026.01.05</small></li>
           </ul>
         </section>
       </div>
@@ -359,7 +359,7 @@ function ProjectRulesTab({ project }: { project: ProjectItem }) {
     setEditing({
       ...mockRule,
       projectId: project.id,
-      ruleName: `${project.name} ?𨰰?조건探`
+      ruleName: `${project.name} 표준조건`
     });
   };
 
@@ -384,9 +384,9 @@ function ProjectRulesTab({ project }: { project: ProjectItem }) {
       <h2 className="proj-rules-project-name">{project.name}</h2>
       <div className="proj-rules-head">
         <label>
-          ?𨰰?조건探
+          표준조건
           <select value={selectedRuleId} onChange={(e) => setSelectedRuleId(e.target.value)}>
-            {savedRules.length === 0 ? <option value="">?�?伙� 조건探 ?��</option> : null}
+            {savedRules.length === 0 ? <option value="">저장된 조건 없음</option> : null}
             {savedRules.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.name}
@@ -395,45 +395,49 @@ function ProjectRulesTab({ project }: { project: ProjectItem }) {
           </select>
         </label>
         <div className="proj-rules-actions">
-          <button type="button" className="ghost" onClick={openAdd}>조건探黺𥯆?</button>
-          <button type="button" className="primary" onClick={openEdit} disabled={!selectedRule}>조건探?䁯�</button>
+          <button type="button" className="ghost" onClick={openAdd}>조건추가</button>
+          <button type="button" className="primary" onClick={openEdit} disabled={!selectedRule}>조건수정</button>
         </div>
       </div>
 
       {editing ? (
         <div className="proj-rules-editor">
           <label>
-            조건探諈?            <input
+            조건명
+            <input
               value={editing.ruleName}
               onChange={(e) => setEditing((prev) => (prev ? { ...prev, ruleName: e.target.value } : prev))}
             />
           </label>
           <label>
-            ?�鹻?𨰰�??            <input
+            적용시작일
+            <input
               type="date"
               value={editing.effectiveFrom}
               onChange={(e) => setEditing((prev) => (prev ? { ...prev, effectiveFrom: e.target.value } : prev))}
             />
           </label>
           <label>
-            ?�鹻鮈��??            <input
+            적용종료일
+            <input
               type="date"
               value={editing.effectiveTo}
               onChange={(e) => setEditing((prev) => (prev ? { ...prev, effectiveTo: e.target.value } : prev))}
             />
           </label>
           <label>
-            ?科鹻?禺?
+            사용여부
             <select
               value={editing.enabled ? "Y" : "N"}
               onChange={(e) => setEditing((prev) => (prev ? { ...prev, enabled: e.target.value === "Y" } : prev))}
             >
-              <option value="Y">?𨰰�</option>
-              <option value="N">赬��??/option>
+              <option value="Y">활성</option>
+              <option value="N">비활성</option>
             </select>
           </label>
           <label>
-            篣域?穈?            <input
+            기준값
+            <input
               type="number"
               value={editing.condition.value1}
               onChange={(e) =>
@@ -444,7 +448,7 @@ function ProjectRulesTab({ project }: { project: ProjectItem }) {
             />
           </label>
           <label>
-            보상�篣�衮
+            보상금액
             <input
               type="number"
               value={editing.result.fixedAmount}
@@ -456,21 +460,21 @@ function ProjectRulesTab({ project }: { project: ProjectItem }) {
             />
           </label>
           <div className="proj-rules-editor-actions">
-            <button type="button" className="primary" onClick={saveEditing}>?�??/button>
-            <button type="button" className="ghost" onClick={() => { setEditing(null); setEditingId(null); }}>鼒到�</button>
+            <button type="button" className="primary" onClick={saveEditing}>저장</button>
+            <button type="button" className="ghost" onClick={() => { setEditing(null); setEditingId(null); }}>취소</button>
           </div>
         </div>
       ) : (
         <div className="proj-rules-summary">
           {selectedRule ? (
             <>
-              <p><strong>조건探諈?</strong> {selectedRule.data.ruleName}</p>
-              <p><strong>?�鹻篣國�:</strong> {selectedRule.data.effectiveFrom} ~ {selectedRule.data.effectiveTo}</p>
-              <p><strong>篣域?穈?</strong> {selectedRule.data.condition.value1}</p>
-              <p><strong>보상�篣�衮:</strong> {selectedRule.data.result.fixedAmount.toLocaleString()}</p>
+              <p><strong>조건명:</strong> {selectedRule.data.ruleName}</p>
+              <p><strong>적용기간:</strong> {selectedRule.data.effectiveFrom} ~ {selectedRule.data.effectiveTo}</p>
+              <p><strong>기준값:</strong> {selectedRule.data.condition.value1}</p>
+              <p><strong>보상금액:</strong> {selectedRule.data.result.fixedAmount.toLocaleString()}</p>
             </>
           ) : (
-            <p>?嶅＃?木𠂔?韠� ?𨰰?조건探???𡥄�?瞘掠??조건探黺𥯆?諝?鴔��?䁯�??</p>
+            <p>드롭다운에서 표준조건을 선택하거나 조건추가를 진행하세요.</p>
           )}
         </div>
       )}
@@ -490,13 +494,13 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
     () => [
       {
         id: "sample-1",
-        name: "PM 穇域� ?瑅陷 보상�",
+        name: "PM 거점 확보 보상",
         projectId: project.id,
         savedAt: "2026-05-14T00:00:00.000Z",
         data: {
           ...mockRule,
           projectId: project.id,
-          ruleName: "PM 穇域� ?瑅陷 보상�",
+          ruleName: "PM 거점 확보 보상",
           enabled: true,
           target: { ...mockRule.target, targetType: "role", targetRoles: ["PM"], orgScope: "direct_lower" },
           condition: { ...mockRule.condition, metric: "lower_base_count", value1: 3, operator: ">=" },
@@ -505,13 +509,13 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
       },
       {
         id: "sample-2",
-        name: "穇域� ?�爰穈� 판매� 보상�",
+        name: "거점 전문가 모집 보상",
         projectId: project.id,
         savedAt: "2026-05-10T00:00:00.000Z",
         data: {
           ...mockRule,
           projectId: project.id,
-          ruleName: "穇域� ?�爰穈� 판매� 보상�",
+          ruleName: "거점 전문가 모집 보상",
           enabled: true,
           target: { ...mockRule.target, targetType: "role", targetRoles: ["Admin"], orgScope: "all_lower" },
           condition: { ...mockRule.condition, metric: "lower_expert_count", value1: 5, operator: ">=" },
@@ -520,15 +524,15 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
       },
       {
         id: "sample-3",
-        name: "?𥔱�?�� 1?貲䂻 ?韒坐 보상�",
+        name: "유아도서 1세트 판매 보상",
         projectId: project.id,
         savedAt: "2026-05-05T00:00:00.000Z",
         data: {
           ...mockRule,
           projectId: project.id,
-          ruleName: "?𥔱�?�� 1?貲䂻 ?韒坐 보상�",
+          ruleName: "유아도서 1세트 판매 보상",
           enabled: true,
-          target: { ...mockRule.target, targetType: "role", targetRoles: ["?��?𠺝䂻?�??], orgScope: "self" },"
+          target: { ...mockRule.target, targetType: "role", targetRoles: ["프로젝트팀원"], orgScope: "self" },
           condition: { ...mockRule.condition, metric: "sales_set", value1: 1, operator: "=" },
           result: { ...mockRule.result, rewardType: "fixed", fixedAmount: 12000 }
         }
@@ -576,32 +580,32 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
   };
 
   const metricLabel = (metric: RuleDraft["condition"]["metric"]) => {
-    if (metric === "lower_base_count") return "穇域� ?瑅陷 ??;"
-    if (metric === "lower_expert_count") return "?�爰穈� ?梵� ??;"
-    if (metric === "sales_count") return "?韒坐 穇渥�";
-    if (metric === "sales_set") return "?韒坐 ?貲䂻 ??;"
-    return "諤木�??;"
+    if (metric === "lower_base_count") return "거점 확보 수";
+    if (metric === "lower_expert_count") return "전문가 등록 수";
+    if (metric === "sales_count") return "판매 건수";
+    if (metric === "sales_set") return "판매 세트 수";
+    return "매출액";
   };
 
   const targetLabel = (targetType: RuleDraft["target"]["targetType"]) => {
-    if (targetType === "role") return "麆賄𤩐??;"
-    if (targetType === "individual") return "穈𨰰𥘵";
-    return "魽域�";
+    if (targetType === "role") return "참여자";
+    if (targetType === "individual") return "개인";
+    return "조직";
   };
 
   const operatorLabel = (operator: RuleDraft["condition"]["operator"]) => {
-    if (operator === ">=") return "?渥�";
-    if (operator === "<=") return "?渣�";
-    if (operator === "=") return "?軤𦉘";
-    if (operator === ">") return "黕�頃";
-    if (operator === "<") return "諯賈�";
-    return "窱禹�";
+    if (operator === ">=") return "이상";
+    if (operator === "<=") return "이하";
+    if (operator === "=") return "동일";
+    if (operator === ">") return "초과";
+    if (operator === "<") return "미만";
+    return "구간";
   };
 
   const resultSummary = (rule: RuleDraft) => {
-    if (rule.result.rewardType === "fixed") return "조건探 黺拖§ ??보상� 鴔�篣?;"
-    if (rule.result.rewardType === "rate") return "조건探 黺拖§ ??赬�銁 鴔�篣?;"
-    return "조건探 黺拖§ ???潤襔 보상� 鴔�篣?;"
+    if (rule.result.rewardType === "fixed") return "조건 충족 시 보상 지급";
+    if (rule.result.rewardType === "rate") return "조건 충족 시 비율 지급";
+    return "조건 충족 시 혼합 보상 지급";
   };
 
   const [showTemplates, setShowTemplates] = useState(false);
@@ -613,9 +617,9 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
 
   const onLoadTemplate = () => {
     const all = loadSavedRules();
-    // ?�� 조건探窵�謔科�???吖�??諴圉㨩諤??��諤?(?禹萼?嶅� ?��諢??�眼 ?賄�)
+    // 상위 조건관리에서 생성된 룰들만 필터링 (여기서는 예시로 전체 노출)
     if (all.length === 0) {
-      setNotice("?�� '조건探 窵�謔? 諰竾�?韠� 諟潰? 諤�擪??篞𨰰�???梵�??鴥潰�??");
+      setNotice("상위 '조건 관리' 메뉴에서 먼저 마스터 규칙을 등록해 주세요.");
       return;
     }
     setTemplateItems(all);
@@ -623,18 +627,18 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
   };
 
   const onSelectTemplate = (item: SavedRuleItem) => {
-    setEditingId(null); // ?𥻗� ?梵� 諈刺�
+    setEditingId(null); // 신규 등록 모드
     setEditing({
       ...item.data,
       projectId: project.id,
-      ruleName: item.name // 諤�擪??篞𨰰� 諈�僮??차트?諢?穈�?賄狍
+      ruleName: item.name // 마스터 규칙 명칭을 그대로 가져옴
     });
     setShowTemplates(false);
-    setNotice("諤�擪??篞𨰰�??賱�剳?䇹𠽌?�𠹻. ?��?𠺝䂻??諤嵴� 조건探???䁯�?䁯𤩐 ?�鹻??鴥潰�??");
+    setNotice("마스터 규칙을 불러왔습니다. 프로젝트에 맞게 조건을 수정하여 적용해 주세요.");
   };
 
   const onValidate = () => {
-    setNotice("篞𨰰�???𡥄辶??諻?黺拘� 窶�鴞吖𦚯 ?��?䁯�?蛟�??");
+    setNotice("규칙의 유효성 및 충돌 검증이 완료되었습니다.");
   };
 
   const saveEditing = () => {
@@ -642,11 +646,11 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
     if (editingId) {
       const next = updateSavedRule(editingId, editing);
       setAllRules(next);
-      setNotice("篞𨰰�???䁯�?䁯�?蛟�??");
+      setNotice("규칙이 수정되었습니다.");
     } else {
       const next = saveRule(editing);
       setAllRules(next);
-      setNotice("??篞𨰰�???��?𠺝䂻??黺𥯆??䁯�?蛟�??");
+      setNotice("새 규칙이 프로젝트에 추가되었습니다.");
     }
     setEditing(null);
     setEditingId(null);
@@ -655,20 +659,20 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
   const totalCount = rulesForProject.length;
   const activeCount = rulesForProject.filter((r) => r.data.enabled).length;
   const rewardTypeCount = new Set(rulesForProject.map((r) => r.data.result.rewardType)).size;
-  const approvalRequiredCount = 0; // ?伕� ?寢𥘵 ?��?賄擪 ?圉� ???�㫲?渣䂻
+  const approvalRequiredCount = 0; // 향후 승인 프로세스 연동 시 업데이트
 
   const policySummary = [
-    { icon: <BookOpen className="mini-icon" />, title: "?㻂衮 보상�", left: `${rulesForProject.filter(r => r.data.result.rewardType === 'fixed').length}穈?篞𨰰�`, rightLabel: "黕??��", rightValue: "?木� ?圉� 窸��", tone: "blue" },
-    { icon: <Target className="mini-icon" />, title: "赬�銁 보상�", left: `${rulesForProject.filter(r => r.data.result.rewardType === 'rate').length}穈?篞𨰰�`, rightLabel: "鴔�篣?篣域?", rightValue: "諤木�/?木� ?�赬?, tone: "green" },"
-    { icon: <Tag className="mini-icon" />, title: "?潤襔 보상�", left: `${rulesForProject.filter(r => r.data.result.rewardType === 'mixed').length}穈?篞𨰰�`, rightLabel: "窱科�", rightValue: "?㻂衮 + 赬�銁", tone: "purple" },
-    { icon: <CalendarDays className="mini-icon" />, title: "鴔�篣吣ˉ篣?, left: "???到� 鴔�篣?, rightLabel: "鴔�篣吣𦉘", rightValue: "?蛙� 15??, tone: "orange" }"
+    { icon: <BookOpen className="mini-icon" />, title: "정액 보상", left: `${rulesForProject.filter(r => r.data.result.rewardType === 'fixed').length}개 규칙`, rightLabel: "총 예산", rightValue: "실적 연동 계산", tone: "blue" },
+    { icon: <Target className="mini-icon" />, title: "비율 보상", left: `${rulesForProject.filter(r => r.data.result.rewardType === 'rate').length}개 규칙`, rightLabel: "지급 기준", rightValue: "매출/실적 대비", tone: "green" },
+    { icon: <Tag className="mini-icon" />, title: "혼합 보상", left: `${rulesForProject.filter(r => r.data.result.rewardType === 'mixed').length}개 규칙`, rightLabel: "구성", rightValue: "정액 + 비율", tone: "purple" },
+    { icon: <CalendarDays className="mini-icon" />, title: "지급주기", left: "월 단위 지급", rightLabel: "지급일", rightValue: "익월 15일", tone: "orange" }
   ] as const;
 
   const previewText = selectedRule
-    ? `麆賄𤩐?韀? ???軤� ${metricLabel(selectedRule.data.condition.metric)}穈� ${selectedRule.data.condition.value1}${operatorLabel(
+    ? `참여자가 월 동안 ${metricLabel(selectedRule.data.condition.metric)}가 ${selectedRule.data.condition.value1}${operatorLabel(
         selectedRule.data.condition.operator
-      )}?渠庖, ?渠鰟 ?䇹� ${selectedRule.name}(?㻂衮 ??{selectedRule.data.result.fixedAmount.toLocaleString()})??鴔�篣㕭襔?�𠹻.`
-    : "?𡥄�??篞𨰰�???�𠽌?�𠹻.";
+      )}이면, 해당 월에 ${selectedRule.name}(정액 ₩${selectedRule.data.result.fixedAmount.toLocaleString()})을 지급합니다.`
+    : "선택된 규칙이 없습니다.";
 
   const toneClass = (tone: "blue" | "green" | "purple" | "orange") => `proj-rules-tone-${tone}`;
 
@@ -678,7 +682,7 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
         <div className="basic-title-row">
           <h2>{project.name}</h2>
           <div className="basic-owner">
-function statusLabel(status: ProjectItem["status"]) { if (status === "running") return "운영중"; if (status === "preparing") return "준비중"; return "종료"; }
+            <span className={statusClass(project.status)}>{statusLabel(project.status)}</span>
             <strong>PM {project.pm}</strong>
           </div>
         </div>
@@ -687,41 +691,41 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
           <div className="basic-top-card">
             <div className="basic-icon blue"><ClipboardList className="mini-icon" /></div>
             <div>
-              <span>조건探 ??/span>
-              <strong>{totalCount}穇?/strong>
-              <small>(?�眼 ?梵�)</small>
+              <span>조건 수</span>
+              <strong>{totalCount}건</strong>
+              <small>(전체 등록)</small>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon green"><CheckCircle2 className="mini-icon" /></div>
             <div>
-              <span>?𨰰� 篞𨰰� ??/span>
-              <strong>{activeCount}穇?/strong>
-              <small>(KPI 諻䁯�)</small>
+              <span>활성 규칙 수</span>
+              <strong>{activeCount}건</strong>
+              <small>(KPI 반영)</small>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon purple"><Gift className="mini-icon" /></div>
             <div>
-              <span>보상� ?𡥄� ??/span>
-              <strong>{rewardTypeCount}穈?/strong>
-              <small>(?㻂衮/赬�銁/?潤襔)</small>
+              <span>보상 유형 수</span>
+              <strong>{rewardTypeCount}개</strong>
+              <small>(정액/비율/혼합)</small>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon orange"><AlertTriangle className="mini-icon" /></div>
             <div>
-              <span>?寢𥘵 ?�� 篞𨰰�</span>
-              <strong>{approvalRequiredCount}穇?/strong>
-              <small>(窶�???�篣?</small>
+              <span>승인 필요 규칙</span>
+              <strong>{approvalRequiredCount}건</strong>
+              <small>(검토 대기)</small>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon blue"><Clock3 className="mini-icon" /></div>
             <div>
-              <span>?渥� ?��</span>
-              <strong>?渥�鴗?/strong>
-              <small>(?�� ?��?𠺝䂻)</small>
+              <span>운영 상태</span>
+              <strong>운영중</strong>
+              <small>(현재 프로젝트)</small>
             </div>
           </div>
         </div>
@@ -732,30 +736,30 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
           <section className="proj-rules-list-card">
             <header className="proj-rules-card-head">
               <div className="head-left">
-                <h3>?��?𠺝䂻 ?�鹻 조건探</h3>
-                <span className="count-badge">{totalCount}穇?/span>
+                <h3>프로젝트 적용 조건</h3>
+                <span className="count-badge">{totalCount}건</span>
               </div>
               <div className="head-right">
                 <button type="button" className="primary mini-btn" onClick={openAdd}>
-                  <Plus className="mini-icon" /> 篞𨰰� 黺𥯆?
+                  <Plus className="mini-icon" /> 규칙 추가
                 </button>
                 <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value as "all" | "enabled" | "disabled")}>
-                  <option value="all">?�眼</option>
-                  <option value="enabled">?𨰰�</option>
-                  <option value="disabled">赬��??/option>
+                  <option value="all">전체</option>
+                  <option value="enabled">활성</option>
+                  <option value="disabled">비활성</option>
                 </select>
               </div>
             </header>
 
             <div className="proj-rules-info-box">
               <Info className="mini-icon blue" />
-              <span>???��?𠺝䂻??黖𨰰� ?�鹻??조건探 諈拘�?��?? ?域腹 <b>窵�謔??∫�</b>?渠� ?月�??<b>黺𥯆?</b> 貒�𢩦?潺� ??조건探???梵�?????�𠽌?�𠹻.</span>
+              <span>이 프로젝트에 최종 적용된 조건 목록입니다. 우측 <b>관리 액션</b>이나 헤더의 <b>추가</b> 버튼으로 새 조건을 등록할 수 있습니다.</span>
             </div>
 
             <div className="proj-rules-list">
               {filteredRules.length === 0 ? (
                 <div className="proj-rules-empty">
-                  <p>?梵�??조건探???�𠽌?�𠹻. ??篞𨰰�??黺𥯆???鴥潰�??</p>
+                  <p>등록된 조건이 없습니다. 새 규칙을 추가해 주세요.</p>
                 </div>
               ) : (
                 filteredRules.map((item) => {
@@ -774,15 +778,15 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
                         </div>
                         <strong>{item.name}</strong>
                         <div className="proj-rules-item-status-col">
-                          <small>?��</small>
-                          <span className={item.data.enabled ? "status running" : "status closed"}>{item.data.enabled ? "?𨰰�" : "赬��??}</span>"
+                          <small>상태</small>
+                          <span className={item.data.enabled ? "status running" : "status closed"}>{item.data.enabled ? "활성" : "비활성"}</span>
                         </div>
                       </div>
                       <div className="proj-rules-item-meta">
-                        <div><small>?�鹻?�??/small><b>{targetLabel(item.data.target.targetType)}</b></div>
-                        <div><small>鼽∫�??版</small><b>{metricLabel(item.data.condition.metric)}</b></div>
-                        <div><small>?韠�篣域?</small><b>{item.data.condition.operator} {item.data.condition.value1}{operatorLabel(item.data.condition.operator)}</b></div>
-                        <div><small>窶國頃?㻂�</small><b>{resultSummary(item.data)}</b></div>
+                        <div><small>적용대상</small><b>{targetLabel(item.data.target.targetType)}</b></div>
+                        <div><small>측정항목</small><b>{metricLabel(item.data.condition.metric)}</b></div>
+                        <div><small>판정기준</small><b>{item.data.condition.operator} {item.data.condition.value1}{operatorLabel(item.data.condition.operator)}</b></div>
+                        <div><small>결과정의</small><b>{resultSummary(item.data)}</b></div>
                       </div>
                     </div>
                   );
@@ -793,20 +797,20 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
 
           <section className="proj-rules-preview-card">
             <header className="proj-rules-card-head">
-              <h3>조건探 諯賈收貐湊萼</h3>
+              <h3>조건 미리보기</h3>
             </header>
             <div className="proj-rules-preview-box">
               <FileText className="mini-icon" />
               <p>{previewText}</p>
             </div>
-            <p className="proj-rules-preview-help">?????渥鹻?� ?𡥄� 조건探 篣域??潺� 諯賈收貐湊萼???渥鹻?��??</p>
+            <p className="proj-rules-preview-help">※ 위 내용은 선택 조건 기준으로 미리보기한 내용입니다.</p>
           </section>
         </div>
 
         <div className="proj-rules-right-column">
           <section className="proj-rules-policy-card">
             <header className="proj-rules-card-head">
-              <h3>보상� ?㻂� ?䇹烄</h3>
+              <h3>보상 정책 요약</h3>
             </header>
             <div className="proj-rules-policy-list">
               {policySummary.map((row) => (
@@ -829,28 +833,28 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
 
           <section className="proj-rules-action-card">
             <header className="proj-rules-card-head">
-              <h3>窵�謔??∫�</h3>
+              <h3>관리 액션</h3>
             </header>
             <div className="proj-rules-action-grid">
               <div className="proj-rules-action-btn" onClick={openAdd} role="button" tabIndex={0}>
                 <div className="icon-wrapper"><Plus /></div>
                 <div>
-                  <strong>篞𨰰� 黺𥯆?</strong>
-                  <span>??篞𨰰�???梵�?拘�??</span>
+                  <strong>규칙 추가</strong>
+                  <span>새 규칙을 등록합니다.</span>
                 </div>
               </div>
               <div className="proj-rules-action-btn" onClick={onLoadTemplate} role="button" tabIndex={0}>
                 <div className="icon-wrapper"><Upload /></div>
                 <div>
-                  <strong>?𨂃�謔?賱�剳?曰萼</strong>
-                  <span>?�?伙� ?𨂃�謔辦� 賱�剳?蛟�??</span>
+                  <strong>템플릿 불러오기</strong>
+                  <span>저장된 템플릿을 불러옵니다.</span>
                 </div>
               </div>
               <div className="proj-rules-action-btn" onClick={onValidate} role="button" tabIndex={0}>
                 <div className="icon-wrapper"><ShieldCheck /></div>
                 <div>
-                  <strong>窶�鴞??欠�</strong>
-                  <span>篞𨰰�???𡥄辶??諻?黺拘�??窶�鴞𠺝襔?�𠹻.</span>
+                  <strong>검증 실행</strong>
+                  <span>규칙의 유효성 및 충돌을 검증합니다.</span>
                 </div>
               </div>
             </div>
@@ -865,18 +869,18 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
         <div className="proj-rules-modal-overlay">
           <div className="proj-rules-modal templates-modal">
             <header className="proj-rules-modal-head">
-              <h3>조건探 ?𨂃�謔?賱�剳?曰萼</h3>
-              <button type="button" className="ghost" onClick={() => setShowTemplates(false)}>�</button>
+              <h3>조건 템플릿 불러오기</h3>
+              <button type="button" className="ghost" onClick={() => setShowTemplates(false)}>×</button>
             </header>
             <div className="proj-rules-modal-body">
-              <p className="helper-text">賱�剳??조건探???𡥄�?䁯�?? ?��?𠺝䂻???梓痔??諤嵴� ?䁯�?䁯𤩐 ?�鹻?????�𠽌?�𠹻.</p>
+              <p className="helper-text">불러올 조건을 선택하세요. 프로젝트의 성격에 맞게 수정하여 적용할 수 있습니다.</p>
               <div className="proj-rules-template-list">
                 {templateItems.map((item) => (
                   <button key={item.id} type="button" className="proj-rules-template-item" onClick={() => onSelectTemplate(item)}>
                     <div className="template-icon"><FileText /></div>
                     <div className="template-info">
                       <strong>{item.name}</strong>
-                      <span>{item.data.target.targetType === "role" ? "麆賄𤩐???�?? : "魽域� ?�??} | {metricLabel(item.data.condition.metric)}</span>
+                      <span>{item.data.target.targetType === "role" ? "참여자 대상" : "조직 대상"} | {metricLabel(item.data.condition.metric)}</span>
                     </div>
                     <ChevronRight className="mini-icon" />
                   </button>
@@ -891,21 +895,21 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
         <div className="proj-rules-modal-overlay">
           <div className="proj-rules-modal editor-modal">
             <header className="proj-rules-modal-head">
-              <h3>조건探 ?木� 諻??䁯�</h3>
-              <button type="button" className="ghost" onClick={() => { setEditing(null); setEditingId(null); }}>�</button>
+              <h3>조건 설정 및 수정</h3>
+              <button type="button" className="ghost" onClick={() => { setEditing(null); setEditingId(null); }}>×</button>
             </header>
             <div className="proj-rules-modal-body">
               <div className="proj-rules-editor-grid">
                 <label className="span-all">
-                  <small>조건探諈?/small>
+                  <small>조건명</small>
                   <input
                     value={editing.ruleName}
                     onChange={(e) => setEditing((prev) => (prev ? { ...prev, ruleName: e.target.value } : prev))}
-                    placeholder="篞𨰰� ?渠�???��?䁯�??"
+                    placeholder="규칙 이름을 입력하세요"
                   />
                 </label>
                 <label>
-                  <small>?�鹻 ?𨰰�??/small>
+                  <small>적용 시작일</small>
                   <input
                     type="date"
                     value={editing.effectiveFrom}
@@ -913,7 +917,7 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
                   />
                 </label>
                 <label>
-                  <small>?�鹻 鮈��??/small>
+                  <small>적용 종료일</small>
                   <input
                     type="date"
                     value={editing.effectiveTo}
@@ -921,17 +925,17 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
                   />
                 </label>
                 <label>
-                  <small>?��</small>
+                  <small>상태</small>
                   <select
                     value={editing.enabled ? "Y" : "N"}
                     onChange={(e) => setEditing((prev) => (prev ? { ...prev, enabled: e.target.value === "Y" } : prev))}
                   >
-                    <option value="Y">?𨰰� (KPI 諻䁯�)</option>
-                    <option value="N">赬��??(諯賈�??</option>
+                    <option value="Y">활성 (KPI 반영)</option>
+                    <option value="N">비활성 (미반영)</option>
                   </select>
                 </label>
                 <label>
-                  <small>篣域?穈?({metricLabel(editing.condition.metric)})</small>
+                  <small>기준값 ({metricLabel(editing.condition.metric)})</small>
                   <input
                     type="number"
                     value={editing.condition.value1}
@@ -943,9 +947,9 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
                   />
                 </label>
                 <label className="span-all">
-                  <small>보상� ?㻂� (?㻂衮 보상� 篣域?)</small>
+                  <small>보상 정의 (정액 보상 기준)</small>
                   <div className="reward-input-row">
-                    <span>??/span>
+                    <span>₩</span>
                     <input
                       type="number"
                       value={editing.result.fixedAmount}
@@ -955,14 +959,14 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
                         )
                       }
                     />
-                    <span>??鴔�篣?/span>
+                    <span>원 지급</span>
                   </div>
                 </label>
               </div>
             </div>
             <footer className="proj-rules-modal-foot">
-              <button type="button" className="ghost" onClick={() => { setEditing(null); setEditingId(null); }}>鼒到�</button>
-              <button type="button" className="primary" onClick={saveEditing}>?��?𠺝䂻 篞𨰰� ?�??/button>
+              <button type="button" className="ghost" onClick={() => { setEditing(null); setEditingId(null); }}>취소</button>
+              <button type="button" className="primary" onClick={saveEditing}>프로젝트 규칙 저장</button>
             </footer>
           </div>
         </div>
@@ -1003,7 +1007,7 @@ export function ProjectManagementPage() {
     return (
       <div className="proj-mgmt-page proj-mgmt-detail-compact">
         <div className="proj-breadcrumb">
-          <span>?��?𠺝䂻窵�謔?/span>
+          <span>프로젝트관리</span>
           <ChevronRight className="mini-icon" />
           <span>{selectedProject.name}</span>
           <ChevronRight className="mini-icon" />
@@ -1029,7 +1033,7 @@ export function ProjectManagementPage() {
           </div>
           <button type="button" className="ghost proj-mgmt-back-btn" onClick={() => setIsDetailView(false)}>
             <ArrowLeft className="mini-icon" />
-            諈拘�?潺�
+            목록으로
           </button>
         </section>
 
@@ -1041,61 +1045,62 @@ export function ProjectManagementPage() {
   return (
     <div className="proj-mgmt-page">
       <div className="proj-breadcrumb">
-        <span>?��?𠺝䂻窵�謔?/span>
+        <span>프로젝트관리</span>
         <ChevronRight className="mini-icon" />
-        <span>?��?𠺝䂻 諈拘�</span>
+        <span>프로젝트 목록</span>
       </div>
 
       <div className="page-head">
-        <h1>?��?𠺝䂻窵�謔?/h1>
-        <p>?��?𠺝䂻 諈拘�?韠� ?𡥄�???��?𠺝䂻???�� ?瑅陷諝??㻂𥘵?拘�??</p>
+        <h1>프로젝트관리</h1>
+        <p>프로젝트 목록에서 선택한 프로젝트의 상세 정보를 확인합니다.</p>
       </div>
 
       <div className="proj-mgmt-stats">
-        <div className="section-card proj-mgmt-stat"><div className="proj-mgmt-stat-icon blue"><FolderOpen className="mini-icon" /></div><div><span>?�眼 ?��?𠺝䂻</span><strong>12穈?/strong></div></div>
-        <div className="section-card proj-mgmt-stat"><div className="proj-mgmt-stat-icon green"><CheckCircle2 className="mini-icon" /></div><div><span>?渥�鴗?/span><strong>7穈?/strong></div></div>
-        <div className="section-card proj-mgmt-stat"><div className="proj-mgmt-stat-icon purple"><Clock3 className="mini-icon" /></div><div><span>鴗�赬��</span><strong>2穈?/strong></div></div>
-        <div className="section-card proj-mgmt-stat"><div className="proj-mgmt-stat-icon orange"><Clock4 className="mini-icon" /></div><div><span>鮈��</span><strong>3穈?/strong></div></div>
+        <div className="section-card proj-mgmt-stat"><div className="proj-mgmt-stat-icon blue"><FolderOpen className="mini-icon" /></div><div><span>전체 프로젝트</span><strong>12개</strong></div></div>
+        <div className="section-card proj-mgmt-stat"><div className="proj-mgmt-stat-icon green"><CheckCircle2 className="mini-icon" /></div><div><span>운영중</span><strong>7개</strong></div></div>
+        <div className="section-card proj-mgmt-stat"><div className="proj-mgmt-stat-icon purple"><Clock3 className="mini-icon" /></div><div><span>준비중</span><strong>2개</strong></div></div>
+        <div className="section-card proj-mgmt-stat"><div className="proj-mgmt-stat-icon orange"><Clock4 className="mini-icon" /></div><div><span>종료</span><strong>3개</strong></div></div>
       </div>
 
       <section className="section-card proj-mgmt-filter">
         <div className="proj-mgmt-filter-grid">
           <label>
-            ?��?𠺝䂻諈?            <div className="search-box proj-mgmt-search">
-              <input placeholder="?��?𠺝䂻 窶�??.." />
+            프로젝트명
+            <div className="search-box proj-mgmt-search">
+              <input placeholder="프로젝트 검색..." />
               <Search className="mini-icon" />
             </div>
           </label>
-          <label>?��<select><option>?�眼</option></select></label>
-          <label>PM<select><option>?�眼</option></select></label>
-          <label>篣國�<input type="text" value="?𨰰�??~ 鮈��?? readOnly /></label>"
+          <label>상태<select><option>전체</option></select></label>
+          <label>PM<select><option>전체</option></select></label>
+          <label>기간<input type="text" value="시작일 ~ 종료일" readOnly /></label>
           <div className="proj-mgmt-filter-actions">
-            <button type="button" className="primary">窶�??/button>
-            <button type="button" className="ghost">黕�萼??/button>
-            <button type="button" className="primary"><Plus className="mini-icon" /> ?��?𠺝䂻 ?梵�</button>
+            <button type="button" className="primary">검색</button>
+            <button type="button" className="ghost">초기화</button>
+            <button type="button" className="primary"><Plus className="mini-icon" /> 프로젝트 등록</button>
           </div>
         </div>
       </section>
 
       <div className="proj-mgmt-guide">
         <Info className="mini-icon blue" />
-        <strong>?��?𠺝䂻諝??𡥄�?䁪庖 ?�� ??尐諢??渠�?拘�??</strong>
-        <span>諈拘� ?吣� ?渠早?䁪庖 ?渠鰟 ?��?𠺝䂻 ?�� ?竾庖???𨰰�?拘�??</span>
+        <strong>프로젝트를 선택하면 상세 탭으로 이동합니다.</strong>
+        <span>목록 행을 클릭하면 해당 프로젝트 상세 화면이 표시됩니다.</span>
       </div>
 
       <section className="section-card">
         <table className="project-table proj-mgmt-table">
           <thead>
             <tr>
-              <th>?��?𠺝䂻諈?/th>
-              <th>?𡥄�</th>
-              <th>篣國�</th>
-              <th>?��</th>
+              <th>프로젝트명</th>
+              <th>유형</th>
+              <th>기간</th>
+              <th>상태</th>
               <th>PM</th>
-              <th>鴔��??/th>
-              <th>麆賄𤩐??/th>
-              <th>?䁯�??/th>
-              <th>?∫�</th>
+              <th>진척율</th>
+              <th>참여자</th>
+              <th>수정일</th>
+              <th>액션</th>
             </tr>
           </thead>
           <tbody>
@@ -1104,7 +1109,7 @@ export function ProjectManagementPage() {
                 <td><strong>{project.name}</strong></td>
                 <td>{project.type}</td>
                 <td>{project.period}</td>
-function statusLabel(status: ProjectItem["status"]) { if (status === "running") return "운영중"; if (status === "preparing") return "준비중"; return "종료"; }
+                <td><span className={statusClass(project.status)}>{statusLabel(project.status)}</span></td>
                 <td>{project.pm}</td>
                 <td><div className="proj-mgmt-progress-cell"><span>{project.progress}%</span><div className="bar"><i style={{ width: `${project.progress}%` }} /></div></div></td>
                 <td>{project.participants}</td>
@@ -1127,12 +1132,12 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
 
 function ProjectProgressTab({ project }: { project: ProjectItem }) {
   const steps = [
-    { id: 1, title: "謔禺� ?𧙖�", period: "2026.01.01 ~ 2026.01.09", status: "?��", statusClass: "closed" },
-    { id: 2, title: "?�??窱科�", period: "2026.01.10 ~ 2026.01.23", status: "鴔��鴗?, statusClass: "running" },"
-    { id: 3, title: "諻嶅???諻??嶅�赬?穈𨰰�", period: "2026.01.24 ~ 2026.01.30", status: "?��", statusClass: "pending" },
-    { id: 4, title: "鴥澎� 판매� ?渥�", period: "2026.02.01 ~ 2026.11.30", status: "?��", statusClass: "pending" },
-    { id: 5, title: "?䁪礆??黕�? ?科�", period: "2026.12.01 ~ 2026.12.15", status: "鴔�??, statusClass: "delayed" },"
-    { id: 6, title: "?𥔱鴡??黖𨰰� ?��", period: "2026.12.16 ~ 2026.12.31", status: "?��", statusClass: "pending" },
+    { id: 1, title: "리더 선발", period: "2026.01.01 ~ 2026.01.09", status: "완료", statusClass: "closed" },
+    { id: 2, title: "팀장 구성", period: "2026.01.10 ~ 2026.01.23", status: "진행중", statusClass: "running" },
+    { id: 3, title: "발대식 및 활동비 개시", period: "2026.01.24 ~ 2026.01.30", status: "예정", statusClass: "pending" },
+    { id: 4, title: "주간 모임 운영", period: "2026.02.01 ~ 2026.11.30", status: "예정", statusClass: "pending" },
+    { id: 5, title: "수련생 초대 달성", period: "2026.12.01 ~ 2026.12.15", status: "지연", statusClass: "delayed" },
+    { id: 6, title: "선언식/최종 전환", period: "2026.12.16 ~ 2026.12.31", status: "예정", statusClass: "pending" },
   ];
 
   const currentStep = steps[1];
@@ -1143,7 +1148,7 @@ function ProjectProgressTab({ project }: { project: ProjectItem }) {
         <div className="basic-title-row">
           <h2>{project.name}</h2>
           <div className="basic-owner">
-function statusLabel(status: ProjectItem["status"]) { if (status === "running") return "운영중"; if (status === "preparing") return "준비중"; return "종료"; }
+            <span className={statusClass(project.status)}>{statusLabel(project.status)}</span>
             <strong>PM {project.pm}</strong>
           </div>
         </div>
@@ -1152,33 +1157,33 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
           <div className="basic-top-card">
             <div className="basic-icon blue"><CalendarDays className="mini-icon" /></div>
             <div>
-              <span>?�� ?刷�</span>
-              <strong>{currentStep.id}?刷�</strong>
+              <span>현재 단계</span>
+              <strong>{currentStep.id}단계</strong>
               <small>{currentStep.title}</small>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon purple"><ClipboardList className="mini-icon" /></div>
             <div>
-              <span>?�眼 ?刷� ??/span>
-              <strong>{steps.length}?刷�</strong>
-              <small>(?��?𥔱� 篣域?)</small>
+              <span>전체 단계 수</span>
+              <strong>{steps.length}단계</strong>
+              <small>(프로토콜 기준)</small>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon green"><CheckCircle2 className="mini-icon" /></div>
             <div>
-              <span>?�� ?刷�</span>
-              <strong>1?刷�</strong>
-              <small>(?寢𥘵 ?��)</small>
+              <span>완료 단계</span>
+              <strong>1단계</strong>
+              <small>(승인 완료)</small>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon orange"><Clock4 className="mini-icon" /></div>
             <div>
-              <span>鴔�???刷�</span>
-              <strong>1?刷�</strong>
-              <small>(?潰� 黕�頃)</small>
+              <span>지연 단계</span>
+              <strong>1단계</strong>
+              <small>(일정 초과)</small>
             </div>
           </div>
         </div>
@@ -1188,13 +1193,13 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
         <div className="proj-progress-left">
           <section className="section-card timeline-card">
             <header className="card-header">
-              <h3>?�馬 窵�謔?/ ?刷� ?�?�𦉘??/h3>
+              <h3>절차 관리 / 단계 타임라인</h3>
             </header>
             <div className="vertical-timeline">
               {steps.map((step) => (
                 <div key={step.id} className={`timeline-item ${step.statusClass}`}>
                   <div className="timeline-marker">
-                    {step.status === "?��" ? <Check className="mini-icon" /> : <span>{step.id}</span>}
+                    {step.status === "완료" ? <Check className="mini-icon" /> : <span>{step.id}</span>}
                   </div>
                   <div className="timeline-info">
                     <strong>{step.title}</strong>
@@ -1210,32 +1215,32 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
         <div className="proj-progress-right">
           <section className="section-card detail-card">
             <header className="card-header">
-              <h3>?�� ?刷� ?��</h3>
+              <h3>현재 단계 상세</h3>
               <div className="header-actions">
-                <button type="button" className="ghost mini-btn">?��?䇹痍</button>
-                <button type="button" className="primary mini-btn">?刷� ?寢𥘵</button>
+                <button type="button" className="ghost mini-btn">완료요청</button>
+                <button type="button" className="primary mini-btn">단계 승인</button>
               </div>
             </header>
             <table className="info-table">
               <tbody>
                 <tr>
-                  <th>?刷�諈?/th>
+                  <th>단계명</th>
                   <td>{currentStep.title}</td>
                 </tr>
                 <tr>
-                  <th>諈拗�/?�� 篣域?</th>
-                  <td>?�?伊� 窱科�?瞘� ?�???瑅陷諝??梵�?䁯𤩐 ?寢𥘵 ?��</td>
+                  <th>목표/완료 기준</th>
+                  <td>팀장을 구성하고 팀원 정보를 등록하여 승인 완료</td>
                 </tr>
                 <tr>
-                  <th>?渠鰟??/th>
-                  <td>?𨰰??� 諤月�?� (諤�??�雩賱�)</td>
+                  <th>담당자</th>
+                  <td>한지은 매니저 (마케팅본부)</td>
                 </tr>
                 <tr>
-                  <th>諤��??/th>
-                  <td>2026.01.23 (篣?</td>
+                  <th>마감일</th>
+                  <td>2026.01.23 (금)</td>
                 </tr>
                 <tr>
-                  <th>鴔��諝?/th>
+                  <th>진행률</th>
                   <td>
                     <div className="progress-row">
                       <div className="progress-bar-bg">
@@ -1251,14 +1256,14 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
 
           <section className="section-card checklist-card">
             <header className="card-header">
-              <h3>麮渣�謔科擪??/h3>
-              <button type="button" className="ghost mini-btn">麮渣�謔科擪??窵�謔?/button>
+              <h3>체크리스트</h3>
+              <button type="button" className="ghost mini-btn">체크리스트 관리</button>
             </header>
             <div className="checklist-list">
-              <label><input type="checkbox" defaultChecked /> ?�???�陷??諈�𡆀 ?𨰰�</label>
-              <label><input type="checkbox" defaultChecked /> ?�??窱科� 諻???� 諻域�</label>
-              <label><input type="checkbox" /> ?� ?瑅陷 ?𨰰擪???梵�</label>
-              <label><input type="checkbox" /> ?�??窱科� ?�� 貐湊� 諻??寢𥘵 ?䇹痍</label>
+              <label><input type="checkbox" defaultChecked /> 팀장 후보자 명단 제출</label>
+              <label><input type="checkbox" defaultChecked /> 팀원 구성 및 역할 배정</label>
+              <label><input type="checkbox" /> 팀 정보 시스템 등록</label>
+              <label><input type="checkbox" /> 팀장 구성 완료 보고 및 승인 요청</label>
             </div>
           </section>
         </div>
@@ -1266,44 +1271,44 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
 
       <section className="section-card approval-table-card">
         <header className="card-header">
-          <h3>?刷�貐??寢𥘵 諻?鴞噃� ?�埯</h3>
-          <button type="button" className="primary mini-btn">?木� ?刷� 穈嶅骨</button>
+          <h3>단계별 승인 및 증빙 현황</h3>
+          <button type="button" className="primary mini-btn">다음 단계 개방</button>
         </header>
         <div className="table-wrapper">
           <table className="project-table">
             <thead>
               <tr>
-                <th>?刷�</th>
-                <th>鴞噃�?韒�</th>
-                <th>?寢𥘵?��</th>
-                <th>?䇹痍??/th>
-                <th>?寢𥘵??/th>
-                <th>?𡢾�</th>
+                <th>단계</th>
+                <th>증빙자료</th>
+                <th>승인상태</th>
+                <th>요청일</th>
+                <th>승인자</th>
+                <th>작업</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1. 謔禺� ?𧙖�</td>
-                <td>謔禺� ?𧙖� 諈�𡆀.pdf <FileText className="inline-icon" /></td>
-                <td><span className="status closed">?寢𥘵?��</span></td>
+                <td>1. 리더 선발</td>
+                <td>리더 선발 명단.pdf <FileText className="inline-icon" /></td>
+                <td><span className="status closed">승인완료</span></td>
                 <td>2026.01.09</td>
-                <td>?渥�鴔??�??/td>
+                <td>이수진 팀장</td>
                 <td>
                   <div className="btn-group">
-                    <button type="button" className="ghost mini-btn">?��貐湊萼</button>
+                    <button type="button" className="ghost mini-btn">상세보기</button>
                   </div>
                 </td>
               </tr>
               <tr className="active">
-                <td>2. ?�??窱科�</td>
-                <td>?� 窱科� 窸��??pdf <FileText className="inline-icon" /></td>
-                <td><span className="status running">?寢𥘵?䇹痍</span></td>
+                <td>2. 팀장 구성</td>
+                <td>팀 구성 계획서.pdf <FileText className="inline-icon" /></td>
+                <td><span className="status running">승인요청</span></td>
                 <td>2026.01.21</td>
                 <td>-</td>
                 <td>
                   <div className="btn-group">
-                    <button type="button" className="ghost mini-btn">?��貐湊萼</button>
-                    <button type="button" className="primary mini-btn">?寢𥘵</button>
+                    <button type="button" className="ghost mini-btn">상세보기</button>
+                    <button type="button" className="primary mini-btn">승인</button>
                   </div>
                 </td>
               </tr>
@@ -1311,7 +1316,7 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
                 <tr key={s.id} className="dimmed">
                   <td>{s.id}. {s.title}</td>
                   <td>-</td>
-                  <td><span className="status pending">?�篣?/span></td>
+                  <td><span className="status pending">대기</span></td>
                   <td>-</td>
                   <td>-</td>
                   <td>-</td>
@@ -1327,25 +1332,25 @@ function statusLabel(status: ProjectItem["status"]) { if (status === "running") 
 
 function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
   const rankingData = [
-    { rank: 1, name: "篧�諯潰�", role: "PM", recruit: 412, sales: 942, achievement: 104.7, status: "?域�", avatar: "https://i.pravatar.cc/150?u=1" },
-    { rank: 2, name: "?渥??�", role: "穈��", recruit: 326, sales: 783, achievement: 97.9, status: "?域�", avatar: "https://i.pravatar.cc/150?u=2" },
-    { rank: 3, name: "諻㻂???, role: "?��?𠺝䂻?�??, recruit: 298, sales: 657, achievement: 91.3, status: "?域�", avatar: "https://i.pravatar.cc/150?u=3" },
-    { rank: 4, name: "黖𨰰�謔?, role: "?��?𠺝䂻?�??, recruit: 221, sales: 484, achievement: 67.2, status: "貐渣�", avatar: "https://i.pravatar.cc/150?u=4" },
-    { rank: 5, name: "?𤣿�??, role: "?��?𠺝䂻?�??, recruit: 198, sales: 412, achievement: 57.2, status: "貐渣�", avatar: "https://i.pravatar.cc/150?u=5" },
+    { rank: 1, name: "김민수", role: "PM", recruit: 412, sales: 942, achievement: 104.7, status: "우수", avatar: "https://i.pravatar.cc/150?u=1" },
+    { rank: 2, name: "이지은", role: "간사", recruit: 326, sales: 783, achievement: 97.9, status: "우수", avatar: "https://i.pravatar.cc/150?u=2" },
+    { rank: 3, name: "박준형", role: "프로젝트팀원", recruit: 298, sales: 657, achievement: 91.3, status: "우수", avatar: "https://i.pravatar.cc/150?u=3" },
+    { rank: 4, name: "최유리", role: "프로젝트팀원", recruit: 221, sales: 484, achievement: 67.2, status: "보통", avatar: "https://i.pravatar.cc/150?u=4" },
+    { rank: 5, name: "정현우", role: "프로젝트팀원", recruit: 198, sales: 412, achievement: 57.2, status: "보통", avatar: "https://i.pravatar.cc/150?u=5" },
   ];
 
   const recentApprovals = [
-    { user: "篧�?域黱", action: "?韒坐 ?木� 28?貲䂻", date: "2026-05-14 15:32" },
-    { user: "?��1?�", action: "판매� ?木� 35諈?, date: "2026-05-14 14:21" },"
-    { user: "?渥�赬?, action: "?韒坐 ?木� 22?貲䂻", date: "2026-05-14 11:07" },"
-    { user: "?𤣿�??, action: "?韒坐 ?木� 18?貲䂻", date: "2026-05-14 09:48" },"
-    { user: "諻㻂???, action: "판매� ?木� 12諈?, date: "2026-05-14 09:15" },
+    { user: "김연우", action: "판매 실적 28세트", date: "2026-05-14 15:32" },
+    { user: "영업1팀", action: "모집 실적 35명", date: "2026-05-14 14:21" },
+    { user: "이수빈", action: "판매 실적 22세트", date: "2026-05-14 11:07" },
+    { user: "정현우", action: "판매 실적 18세트", date: "2026-05-14 09:48" },
+    { user: "박지호", action: "모집 실적 12명", date: "2026-05-14 09:15" },
   ];
 
   const roleStats = [
-    { role: "PM", count: 8, record: "1,132?貲䂻", achievement: 94.3 },
-    { role: "穈��", count: 24, record: "1,028?貲䂻", achievement: 85.7 },
-    { role: "?��?𠺝䂻?�??, count: 96, record: "700?貲䂻", achievement: 72.2 },"
+    { role: "PM", count: 8, record: "1,132세트", achievement: 94.3 },
+    { role: "간사", count: 24, record: "1,028세트", achievement: 85.7 },
+    { role: "프로젝트팀원", count: 96, record: "700세트", achievement: 72.2 },
   ];
 
   // Circular Progress Circle Calculations
@@ -1360,8 +1365,8 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
         <div className="basic-title-row">
           <h2>{project.name}</h2>
           <div className="basic-owner">
-            <span className="status running">?渥�鴗?/span>
-            <strong>PM 篧�鴔�??/strong>
+            <span className="status running">운영중</span>
+            <strong>PM 김지훈</strong>
           </div>
         </div>
 
@@ -1369,31 +1374,31 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
           <div className="perf-stat-card">
             <div className="basic-icon blue"><Users className="mini-icon" /></div>
             <div className="perf-stat-info">
-              <span>黕?麆賄𤩐??/span>
-              <strong>128諈?/strong>
-              <small>?𨰰� 116諈?/small>
+              <span>총 참여자</span>
+              <strong>128명</strong>
+              <small>활성 116명</small>
             </div>
           </div>
           <div className="perf-stat-card">
             <div className="basic-icon purple"><UserPlus className="mini-icon" /></div>
             <div className="perf-stat-info">
-              <span>판매� ?木�</span>
-              <strong>1,245諈?/strong>
-              <small>諈拗� 1,500諈?/small>
+              <span>모집 실적</span>
+              <strong>1,245명</strong>
+              <small>목표 1,500명</small>
             </div>
           </div>
           <div className="perf-stat-card">
             <div className="basic-icon blue"><ShoppingCart className="mini-icon" /></div>
             <div className="perf-stat-info">
-              <span>?韒坐 ?木�</span>
-              <strong>2,860?貲䂻</strong>
-              <small>諈拗� 3,600?貲䂻</small>
+              <span>판매 실적</span>
+              <strong>2,860세트</strong>
+              <small>목표 3,600세트</small>
             </div>
           </div>
           <div className="perf-stat-card">
             <div className="basic-icon green"><Target className="mini-icon" /></div>
             <div className="perf-stat-info">
-              <span>諈拗� ?科�諝?/span>
+              <span>목표 달성률</span>
               <strong>79.4%</strong>
               <div className="achieve-bar-bg" style={{ width: '60px', marginTop: '4px' }}>
                 <div className="achieve-bar-fill" style={{ width: '79.4%' }} />
@@ -1403,9 +1408,9 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
           <div className="perf-stat-card">
             <div className="basic-icon orange"><Trophy className="mini-icon" /></div>
             <div className="perf-stat-info">
-              <span>?渠� 鴥?TOP ?�</span>
-              <strong>?��1?�</strong>
-              <small>?韒坐 628?貲䂻</small>
+              <span>이번 주 TOP 팀</span>
+              <strong>영업1팀</strong>
+              <small>판매 628세트</small>
             </div>
           </div>
         </div>
@@ -1417,9 +1422,9 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
       <div className="perf-notice-box">
         <div className="notice-content">
           <Info className="mini-icon" />
-          ?木�?� 窸虛�?䁪庚, 穈𨰰𥘵貐?보상�?∫? 보상�/?㻂� 諰竾�?韠� 窷龲�???圉𦉘 貐��諢?窵�謔禺𨫥?�𠹻.
+          실적은 공개되며, 개인별 보상액은 보상/정산 메뉴에서 권한에 따라 별도로 관리됩니다.
         </div>
-        <button type="button" className="ghost mini-btn">�</button>
+        <button type="button" className="ghost mini-btn">×</button>
       </div>
 
       {/* Main Content Layout */}
@@ -1428,17 +1433,17 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
           {/* Performance Board Table */}
           <section className="perf-board-card">
             <header className="perf-card-head">
-              <h3>?木� 窸虛� 貐渠� <Info className="mini-icon" style={{ opacity: 0.4 }} /></h3>
+              <h3>실적 공개 보드 <Info className="mini-icon" style={{ opacity: 0.4 }} /></h3>
             </header>
             <table className="ranking-table">
               <thead>
                 <tr>
-                  <th className="rank-cell">?𨰰�</th>
-                  <th>?渠�/??�</th>
-                  <th>판매�??/th>
-                  <th>?韒坐?貲䂻</th>
-                  <th className="achievement-cell">?科�諝?/th>
-                  <th>?��</th>
+                  <th className="rank-cell">순위</th>
+                  <th>이름/역할</th>
+                  <th>모집수</th>
+                  <th>판매세트</th>
+                  <th className="achievement-cell">달성률</th>
+                  <th>상태</th>
                 </tr>
               </thead>
               <tbody>
@@ -1447,7 +1452,7 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
                     <td className="rank-cell">
                       {item.rank <= 3 ? (
                         <div className="rank-medal-wrap">
-                          <span style={{ fontSize: '18px' }}>{item.rank === 1 ? '?�' : item.rank === 2 ? '?�' : '?�'}</span>
+                          <span style={{ fontSize: '18px' }}>{item.rank === 1 ? '🥇' : item.rank === 2 ? '🥈' : '🥉'}</span>
                         </div>
                       ) : (
                         item.rank
@@ -1462,8 +1467,8 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
                         </div>
                       </div>
                     </td>
-                    <td>{item.recruit}諈?/td>
-                    <td>{item.sales}?貲䂻</td>
+                    <td>{item.recruit}명</td>
+                    <td>{item.sales}세트</td>
                     <td className="achievement-cell">
                       <div className="achieve-bar-wrap">
                         <span>{item.achievement}%</span>
@@ -1473,7 +1478,7 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
                       </div>
                     </td>
                     <td>
-                      <span className={item.status === "?域�" ? "status-chip excel" : "status-chip normal"}>
+                      <span className={item.status === "우수" ? "status-chip excel" : "status-chip normal"}>
                         {item.status}
                       </span>
                     </td>
@@ -1482,7 +1487,7 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
               </tbody>
             </table>
             <button type="button" className="view-all-btn">
-              ?�眼 ?𨰰� 貐湊萼 <ChevronRight className="mini-icon" />
+              전체 순위 보기 <ChevronRight className="mini-icon" />
             </button>
           </section>
 
@@ -1490,27 +1495,26 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
           <div className="perf-bottom-grid">
             <section className="perf-board-card">
               <header className="perf-card-head">
-                <h3>?木� 黺䇹𦚯</h3>
-                <h3>?木 黺䇹𦚯</h3>
+                <h3>실적 추이</h3>
                 <div className="legend" style={{ fontSize: '11px', display: 'flex', gap: '8px', color: '#64748b' }}>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><i style={{ width: '8px', height: '8px', background: '#2563eb', borderRadius: '50%' }} /> ?韒坐?貲䂻</span>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><i style={{ width: '8px', height: '8px', border: '1px solid #2563eb', borderRadius: '50%' }} /> ?성과?%)</span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><i style={{ width: '8px', height: '8px', background: '#2563eb', borderRadius: '50%' }} /> 판매세트</span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><i style={{ width: '8px', height: '8px', border: '1px solid #2563eb', borderRadius: '50%' }} /> 달성률(%)</span>
                 </div>
               </header>
-              <img src={trendChart} alt="이미지" className="trend-img" />
+              <img src={trendChart} alt="실적 추이 그래프" className="trend-img" />
             </section>
 
             <section className="perf-board-card">
               <header className="perf-card-head">
-                <h3>黖𨁈滂 ?寢𥘵 ?木</h3>
-                <button type="button" className="ghost mini-btn" style={{ fontSize: '11px' }}>?竾陷篣?&gt;</button>
+                <h3>최근 승인 실적</h3>
+                <button type="button" className="ghost mini-btn" style={{ fontSize: '11px' }}>더보기 &gt;</button>
               </header>
               <div className="approval-list">
                 {recentApprovals.map((item, idx) => (
                   <div key={idx} className="approval-item">
                     <div className="approval-icon"><CheckCircle2 className="mini-icon" /></div>
                     <div className="approval-text">
-                      <p><b>{item.user}</b>?䁯𦚯 {item.action}諝??梵?𠽌?𠹻.</p>
+                      <p><b>{item.user}</b>님이 {item.action}를 등록했습니다.</p>
                       <span>{item.date}</span>
                     </div>
                   </div>
@@ -1524,7 +1528,7 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
           {/* Circular Progress Side Card */}
           <section className="perf-board-card">
             <header className="perf-card-head">
-              <h3>??𠺝䂻 鴔諝?/h3>
+              <h3>프로젝트 진행률</h3>
             </header>
             <div className="circular-progress-wrap">
               <svg className="progress-circle-svg">
@@ -1540,14 +1544,14 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
               </svg>
               <div className="progress-text-overlay">
                 <strong>{project.progress}%</strong>
-                <span>?科</span>
+                <span>달성</span>
               </div>
             </div>
             <div className="progress-stats-list">
-              <div className="prog-stat-item"><label>?韒坐 ?木</label><b>2,860 / 3,600?貲䂻</b></div>
-              <div className="prog-stat-item"><label>판매 ?木</label><b>1,245 / 1,500諈?/b></div>
+              <div className="prog-stat-item"><label>판매 실적</label><b>2,860 / 3,600세트</b></div>
+              <div className="prog-stat-item"><label>모집 실적</label><b>1,245 / 1,500명</b></div>
               <div className="prog-stat-item" style={{ borderTop: '1px solid #f8fafc', paddingTop: '10px', marginTop: '4px' }}>
-                <label>?到? 篣國</label><b>61??/b>
+                <label>남은 기간</label><b>61일</b>
               </div>
             </div>
           </section>
@@ -1555,13 +1559,13 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
           {/* Role Summary Side Card */}
           <section className="perf-board-card">
             <header className="perf-card-head">
-              <h3>??貐??木 ?䇹烄</h3>
+              <h3>역할별 실적 요약</h3>
             </header>
             <div className="role-summary-list">
               {roleStats.map((item) => (
                 <div key={item.role} className="role-stat-item">
                   <div className="role-stat-head">
-                    <span>{item.role} <b>{item.count}諈?/b></span>
+                    <span>{item.role} <b>{item.count}명</b></span>
                     <b>{item.record}</b>
                   </div>
                   <div className="role-bar-group">
@@ -1578,30 +1582,30 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
           {/* Top Performer Side Card */}
           <section className="perf-board-card">
             <header className="perf-card-head">
-              <h3>TOP ?퍼포머??/h3>
+              <h3>TOP 성과자</h3>
             </header>
             <table className="top-performer-table">
               <thead>
                 <tr style={{ borderBottom: '1px solid #f1f5f9' }}>
-                  <th style={{ textAlign: 'left', paddingBottom: '8px', fontSize: '11px', color: '#94a3b8' }}>窱禺</th>
-                  <th style={{ textAlign: 'left', paddingBottom: '8px', fontSize: '11px', color: '#94a3b8' }}>?渠</th>
-                  <th style={{ textAlign: 'right', paddingBottom: '8px', fontSize: '11px', color: '#94a3b8' }}>관리</th>
+                  <th style={{ textAlign: 'left', paddingBottom: '8px', fontSize: '11px', color: '#94a3b8' }}>구분</th>
+                  <th style={{ textAlign: 'left', paddingBottom: '8px', fontSize: '11px', color: '#94a3b8' }}>이름</th>
+                  <th style={{ textAlign: 'right', paddingBottom: '8px', fontSize: '11px', color: '#94a3b8' }}>기록</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><div className="category-cell"><User className="mini-icon" /> 카테고리𠹻 ?韒坐</div></td>
-                  <td className="performer-name">篧諯潰</td>
-                  <td className="performer-record">942?貲䂻</td>
+                  <td><div className="category-cell"><User className="mini-icon" /> 최다 판매</div></td>
+                  <td className="performer-name">김민수</td>
+                  <td className="performer-record">942세트</td>
                 </tr>
                 <tr>
-                  <td><div className="category-cell"><Users className="mini-icon" /> 카테고리𠹻 판매</div></td>
-                  <td className="performer-name">篧諯潰</td>
-                  <td className="performer-record">412諈?/td>
+                  <td><div className="category-cell"><Users className="mini-icon" /> 최다 모집</div></td>
+                  <td className="performer-name">김민수</td>
+                  <td className="performer-record">412명</td>
                 </tr>
                 <tr>
-                  <td><div className="category-cell"><TrendingUp className="mini-icon" /> 黖𨁈 ?성과?/div></td>
-                  <td className="performer-name">篧諯潰</td>
+                  <td><div className="category-cell"><TrendingUp className="mini-icon" /> 최고 달성률</div></td>
+                  <td className="performer-name">김민수</td>
                   <td className="performer-record">104.7%</td>
                 </tr>
               </tbody>
@@ -1615,61 +1619,61 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
 
 function ProjectEvidenceTab({ project }: { project: ProjectItem }) {
   const evidenceList = [
-    { id: 1, name: '발대식 참석명단_20260101', type: '참석명단', step: '1단계 (진행중)', uploader: '홍길동 (영업기획팀)', date: '2026.01.01 11:24', status: 'approved' },
-    { id: 2, name: '발대식 현장사진', type: '사진자료', step: '1단계 (진행중)', uploader: '홍길동 (영업기획팀)', date: '2026.01.01 11:28', status: 'approved' },
-    { id: 3, name: '1주차 주간모임 회의록', type: '회의록', step: '1단계 (진행중)', uploader: '김수연 (영업기획팀)', date: '2026.01.08 14:35', status: 'review' },
-    { id: 4, name: '판매실적 증빙_1주차', type: '판매실적', step: '1단계 (진행중)', uploader: '김수연 (영업기획팀)', date: '2026.01.08 14:40', status: 'review' },
-    { id: 5, name: '매장 디스플레이 사진_1주차', type: '사진자료', step: '1단계 (진행중)', uploader: '이영희 (영업기획팀)', date: '2026.01.09 10:12', status: 'approved' },
-    { id: 6, name: '2주차 주간모임 회의록', type: '회의록', step: '2단계 (예정)', uploader: '박지훈 (영업기획팀)', date: '2026.01.15 16:05', status: 'pending' },
-    { id: 7, name: '판매실적 증빙_2주차', type: '판매실적', step: '2단계 (예정)', uploader: '박지훈 (영업기획팀)', date: '2026.01.15 16:08', status: 'pending' },
-    { id: 8, name: '프로모션 홍보물 이미지', type: '기타', step: '3단계 (예정)', uploader: '최은지 (영업기획팀)', date: '2026.01.16 09:22', status: 'pending' },
+    { id: 1, name: "발대식 참석명단_20260101", type: "참석명단", step: "1단계 (진행중)", uploader: "홍길동 (영업기획팀)", date: "2026.01.01 11:24", status: "approved" },
+    { id: 2, name: "발대식 현장사진", type: "사진자료", step: "1단계 (진행중)", uploader: "홍길동 (영업기획팀)", date: "2026.01.01 11:28", status: "approved" },
+    { id: 3, name: "1주차 주간모임 회의록", type: "회의록", step: "1단계 (진행중)", uploader: "김수연 (영업기획팀)", date: "2026.01.08 14:35", status: "review" },
+    { id: 4, name: "판매실적 증빙_1주차", type: "판매실적", step: "1단계 (진행중)", uploader: "김수연 (영업기획팀)", date: "2026.01.08 14:40", status: "review" },
+    { id: 5, name: "매장 디스플레이 사진_1주차", type: "사진자료", step: "1단계 (진행중)", uploader: "이영희 (영업기획팀)", date: "2026.01.09 10:12", status: "approved" },
+    { id: 6, name: "2주차 주간모임 회의록", type: "회의록", step: "2단계 (예정)", uploader: "박지훈 (영업기획팀)", date: "2026.01.15 16:05", status: "pending" },
+    { id: 7, name: "판매실적 증빙_2주차", type: "판매실적", step: "2단계 (예정)", uploader: "박지훈 (영업기획팀)", date: "2026.01.15 16:08", status: "pending" },
+    { id: 8, name: "프로모션 홍보물 이미지", type: "기타", step: "3단계 (예정)", uploader: "최은지 (영업기획팀)", date: "2026.01.16 09:22", status: "pending" },
   ];
 
   const typeStats = [
-    { type: '판매실적', count: 28, percent: 32.2 },
-    { type: '사진자료', count: 22, percent: 25.3 },
-    { type: '회의록', count: 14, percent: 16.1 },
-    { type: '참석명단', count: 10, percent: 11.5 },
-    { type: '기타', count: 13, percent: 14.9 },
+    { type: "판매실적", count: 28, percent: 32.2 },
+    { type: "사진자료", count: 22, percent: 25.3 },
+    { type: "회의록", count: 14, percent: 16.1 },
+    { type: "참석명단", count: 10, percent: 11.5 },
+    { type: "기타", count: 13, percent: 14.9 },
   ];
 
   return (
-    <div className='evidence-tab-container'>
-      <section className='section-card basic-hero-card' style={{ marginBottom: '24px' }}>
-        <div className='basic-title-row'>
+    <div className="evidence-tab-container">
+      <section className="section-card basic-hero-card" style={{ marginBottom: '24px' }}>
+        <div className="basic-title-row">
           <h2>{project.name}</h2>
-          <div className='basic-owner'>
-            <span className='status running'>운영중</span>
+          <div className="basic-owner">
+            <span className="status running">운영중</span>
             <strong>PM 김지훈</strong>
           </div>
         </div>
 
-        <div className='basic-top-cards'>
-          <div className='basic-top-card'>
-            <div className='basic-icon blue'><Files className='mini-icon' /></div>
+        <div className="basic-top-cards">
+          <div className="basic-top-card">
+            <div className="basic-icon blue"><Files className="mini-icon" /></div>
             <div>
               <span>전체 자료 수</span>
               <strong>87건</strong>
             </div>
           </div>
-          <div className='basic-top-card'>
-            <div className='basic-icon green'><CheckCircle className='mini-icon' /></div>
+          <div className="basic-top-card">
+            <div className="basic-icon green"><CheckCircle className="mini-icon" /></div>
             <div>
               <span>승인완료 자료</span>
               <strong>58건</strong>
               <small>(66.7%)</small>
             </div>
           </div>
-          <div className='basic-top-card'>
-            <div className='basic-icon orange'><Clock3 className='mini-icon' /></div>
+          <div className="basic-top-card">
+            <div className="basic-icon orange"><Clock3 className="mini-icon" /></div>
             <div>
               <span>검토중 자료</span>
               <strong>21건</strong>
               <small>(24.1%)</small>
             </div>
           </div>
-          <div className='basic-top-card'>
-            <div className='basic-icon purple'><Folder className='mini-icon' /></div>
+          <div className="basic-top-card">
+            <div className="basic-icon purple"><Folder className="mini-icon" /></div>
             <div>
               <span>미분류 자료</span>
               <strong>8건</strong>
@@ -1679,61 +1683,76 @@ function ProjectEvidenceTab({ project }: { project: ProjectItem }) {
         </div>
       </section>
 
-      <div className='evidence-main-layout'>
-        <div className='evidence-left-col'>
-          <section className='section-card'>
-            <header className='evidence-list-header'>
+      <div className="evidence-main-layout">
+        <div className="evidence-left-col">
+          <section className="section-card">
+            <header className="evidence-list-header">
               <h3>증빙자료 목록</h3>
-              <div className='evidence-header-actions'>
-                <button type='button' className='primary-btn'><Plus size={16} /> 자료 업로드</button>
-                <button type='button' className='outline-btn'><Download size={16} /> 일괄 다운로드</button>
-                <button type='button' className='outline-btn'><RefreshCcw size={16} /> 승인 요청</button>
+              <div className="evidence-header-actions">
+                <button type="button" className="evidence-primary-btn"><Plus size={16} /> 자료 업로드</button>
+                <button type="button" className="evidence-outline-btn"><Download size={16} /> 일괄 다운로드</button>
+                <button type="button" className="evidence-outline-btn"><RefreshCcw size={16} /> 승인 요청</button>
               </div>
             </header>
 
-            <div className='evidence-filters'>
-              <select className='form-select'><option>瞪羹 欽啗</option></select>
-              <select className='form-select'><option>瞪羹 嶸И</option></select>
-              <select className='form-select'><option>瞪羹 鼻鷓</option></select>
-              <div className='search-box'>
-                <input type='text' placeholder='濠猿貲 匐儀' />
+            <div className="evidence-filters">
+              <select className="form-select"><option>전체 단계</option></select>
+              <select className="form-select"><option>전체 유형</option></select>
+              <select className="form-select"><option>전체 상태</option></select>
+              <div className="search-box">
+                <input type="text" placeholder="자료명 검색" />
                 <Search size={16} />
               </div>
-              <button type='button' className='reset-btn'>蟾晦�</button>
+              <button type="button" className="reset-btn">초기화</button>
             </div>
 
-            <table className='evidence-table'>
+            <table className="evidence-table">
               <thead>
                 <tr>
-                  <th>濠猿貲</th>
-                  <th>濠猿嶸И</th>
-                  <th>翱唸 欽啗</th>
-                  <th>機煎渦</th>
-                  <th>機煎萄橾</th>
-                  <th>蝓檣鼻鷓</th>
-                  <th>擋暮</th>
+                  <th>자료명</th>
+                  <th>자료유형</th>
+                  <th>연결 단계</th>
+                  <th>업로드자</th>
+                  <th>업로드일</th>
+                  <th>승인상태</th>
+                  <th>액션</th>
                 </tr>
               </thead>
               <tbody>
                 {evidenceList.map((item) => (
                   <tr key={item.id}>
-                    <td className='evidence-name-cell'>
-                      <FileText size={16} className='file-icon' />
+                    <td className="evidence-name-cell">
+                      <FileText size={16} className="file-icon" />
                       {item.name}
                     </td>
                     <td>{item.type}</td>
-                    <td><span className='step-badge'>{item.step}</span></td>
-                    <td>{item.uploader}</td>
-                    <td>{item.date}</td>
                     <td>
-                      <span className={'status-badge ' + item.status}>
-                        {item.status === 'approved' ? '蝓檣諫猿' : item.status === 'review' ? '匐饜醞' : '嘐碟盟'}
+                      <div className="two-line-cell">
+                        <span className="first-line">{item.step.split(' ')[0]}</span>
+                        <small className="second-line blue">{item.step.split(' ')[1]}</small>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="two-line-cell">
+                        <span className="first-line">{item.uploader.split(' ')[0]}</span>
+                        <small className="second-line gray">{item.uploader.split(' ')[1]}</small>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="two-line-cell">
+                        <span className="first-line">{item.date.split(' ')[0]}</span>
+                        <small className="second-line gray">{item.date.split(' ')[1]}</small>
+                      </div>
+                    </td>
+                    <td>
+                      <span className={`status-capsule ${item.status}`}>
+                        {item.status === 'approved' ? '승인완료' : item.status === 'review' ? '검토중' : '미분류'}
                       </span>
                     </td>
-                    <td className='action-cell'>
-                      <div className='btn-group'>
-                        <button type='button' className='ghost mini-btn'><Eye size={18} /></button>
-                        <button type='button' className='ghost mini-btn'><MoreVertical size={18} /></button>
+                    <td className="action-cell">
+                      <div className="btn-group">
+                        <button type="button" className="ghost mini-btn"><Eye size={18} /></button>
+                        <button type="button" className="ghost mini-btn"><MoreVertical size={18} /></button>
                       </div>
                     </td>
                   </tr>
@@ -1741,58 +1760,58 @@ function ProjectEvidenceTab({ project }: { project: ProjectItem }) {
               </tbody>
             </table>
 
-            <div className='pagination-wrap'>
-              <div className='page-numbers'>
-                <button type='button' className='page-btn active'>1</button>
-                <button type='button' className='page-btn'>2</button>
-                <button type='button' className='page-btn'>3</button>
-                <button type='button' className='page-btn'>4</button>
-                <button type='button' className='page-btn'>5</button>
+            <div className="pagination-wrap">
+              <div className="page-numbers">
+                <button type="button" className="page-btn active">1</button>
+                <button type="button" className="page-btn">2</button>
+                <button type="button" className="page-btn">3</button>
+                <button type="button" className="page-btn">4</button>
+                <button type="button" className="page-btn">5</button>
                 <ChevronRight size={16} />
               </div>
-              <select className='form-select mini'>
-                <option>10偃噶 爾晦</option>
+              <select className="form-select mini">
+                <option>10개씩 보기</option>
               </select>
             </div>
           </section>
         </div>
 
-        <div className='evidence-right-col'>
-          <section className='section-card'>
-            <header className='side-card-header'>
-              <h3>濠猿 嶸И滌 Г�</h3>
-              <button type='button' className='text-btn'>濠撮ɛ 爾晦</button>
+        <div className="evidence-right-col">
+          <section className="section-card">
+            <header className="side-card-header">
+              <h3>자료 유형별 현황</h3>
+              <button type="button" className="text-btn">자세히 보기</button>
             </header>
-            <div className='type-stats-list'>
+            <div className="type-stats-list">
               {typeStats.map(stat => (
-                <div key={stat.type} className='type-stat-item'>
-                  <div className='stat-label-row'>
+                <div key={stat.type} className="type-stat-item">
+                  <div className="stat-label-row">
                     <label>{stat.type}</label>
-                    <div className='stat-values'>
-                      <strong>{stat.count}勒</strong>
+                    <div className="stat-values">
+                      <strong>{stat.count}건</strong>
                       <span>({stat.percent}%)</span>
                     </div>
                   </div>
-                  <div className='type-progress-bg'>
-                    <div className='type-progress-fill' style={{ width: stat.percent + '%' }} />
+                  <div className="type-progress-bg">
+                    <div className="type-progress-fill" style={{ width: `${stat.percent}%` }} />
                   </div>
                 </div>
               ))}
             </div>
           </section>
 
-          <section className='section-card'>
-            <header className='side-card-header'>
-              <h3>譆斬 機煎萄 濠猿</h3>
-              <button type='button' className='text-btn'>濠撮ɛ 爾晦</button>
+          <section className="section-card">
+            <header className="side-card-header">
+              <h3>최근 업로드 자료</h3>
+              <button type="button" className="text-btn">자세히 보기</button>
             </header>
-            <div className='recent-files-list'>
+            <div className="recent-files-list">
               {evidenceList.slice(0, 5).map(file => (
-                <div key={file.id} className='recent-file-item'>
-                  <FileText size={16} className='file-icon' />
-                  <div className='file-info'>
+                <div key={file.id} className="recent-file-item">
+                  <FileText size={16} className="file-icon" />
+                  <div className="file-info">
                     <strong>{file.name}</strong>
-                    <div className='file-meta'>
+                    <div className="file-meta">
                       <span>{file.uploader.split(' ')[0]}</span>
                       <span>{file.date}</span>
                     </div>
@@ -1802,21 +1821,21 @@ function ProjectEvidenceTab({ project }: { project: ProjectItem }) {
             </div>
           </section>
 
-          <section className='section-card guide-card'>
-            <header className='side-card-header'>
-              <h3>機煎萄 陛檜萄</h3>
+          <section className="section-card guide-card">
+            <header className="side-card-header">
+              <h3>업로드 가이드</h3>
             </header>
-            <ul className='guide-list'>
-              <li>ョ辨 冖橾 И衝: PDF, JPG, JPEG, PNG, XLS, XLSX, DOC, DOCX, PPT, PPTX (冖橾渡 譆渠 50MB)</li>
-              <li>冖橾貲 敘罌: [欽啗]_[嶸И]_[頂辨]_[陳瞼] И衝 掏濰</li>
-              <li>ノ熱 隸綵 寰頂:
+            <ul className="guide-list">
+              <li>허용 파일 형식: PDF, JPG, JPEG, PNG, XLS, XLSX, DOC, DOCX, PPT, PPTX (파일당 최대 50MB)</li>
+              <li>파일명 규칙: [단계]_[유형]_[내용]_[날짜] 형식 권장</li>
+              <li>필수 증빙 안내:
                 <ul>
-                  <li>1欽啗: 嫦渠衝 霤戮貲欽, 輿除賅歜 �曖煙, 匸衙褒瞳 隸綵, 餌霞濠猿</li>
-                  <li>2欽啗: 匸衙褒瞳 隸綵, 衙濰 蛤蝶デ溯檜 餌霞, ヅ煎賅暮 奩擬 撲僥</li>
-                  <li>3欽啗: 譆謙 褒瞳 爾堅憮, 唸骯 隸綵, 辦熱餌滔 濠猿</li>
+                  <li>1단계: 발대식 참석명단, 주간모임 회의록, 판매실적 증빙, 사진자료</li>
+                  <li>2단계: 판매실적 증빙, 매장 디스플레이 사진, 프로모션 반응 설문</li>
+                  <li>3단계: 최종 실적 보고서, 결산 증빙, 우수사례 자료</li>
                 </ul>
               </li>
-              <li>蝓檣檜 諫猿脹 濠猿朝 熱薑檜 碳陛棟ベ棲棻.</li>
+              <li>승인이 완료된 자료는 수정이 불가능합니다.</li>
             </ul>
           </section>
         </div>
