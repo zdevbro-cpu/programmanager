@@ -17,7 +17,7 @@ export const mockParticipants: ParticipantItem[] = [
     id: "PT-0002",
     name: "이진호",
     phone: "010-2234-2222",
-    role: "간사",
+    role: "Admin",
     status: "approved",
     projectId: "PROJ-2026-001",
     projectName: "2026 유아도서 판매 프로모션",

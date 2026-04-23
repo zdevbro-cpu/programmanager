@@ -52,3 +52,20 @@ export function saveRule(rule: RuleDraft): SavedRuleItem[] {
   localStorage.setItem(RULES_KEY, JSON.stringify(next));
   return next;
 }
+
+export function updateSavedRule(id: string, rule: RuleDraft): SavedRuleItem[] {
+  const current = loadSavedRules();
+  const next = current.map((item) =>
+    item.id === id
+      ? {
+          ...item,
+          name: rule.ruleName,
+          projectId: rule.projectId,
+          savedAt: new Date().toISOString(),
+          data: rule
+        }
+      : item
+  );
+  localStorage.setItem(RULES_KEY, JSON.stringify(next));
+  return next;
+}

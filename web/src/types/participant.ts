@@ -1,4 +1,4 @@
-export type ParticipantRole = "PM" | "간사" | "프로젝트팀원" | "거점" | "전문가";
+export type ParticipantRole = "PM" | "Admin" | "프로젝트팀원" | "거점" | "전문가";
 export type ParticipantStatus = "approved" | "pending" | "rejected";
 
 export interface ParticipantItem {

@@ -9,7 +9,7 @@ export const mockRule: RuleDraft = {
   enabled: true,
   target: {
     targetType: "role",
-    targetRoles: ["PM", "간사", "프로젝트팀원"],
+    targetRoles: ["PM", "Admin", "프로젝트팀원"],
     orgScope: "direct_lower",
     allowDuplicate: false
   },

@@ -16,9 +16,9 @@ function validateRule(rule: RuleDraft): string[] {
   if (!rule.projectId.trim()) errors.push("프로젝트를 선택하세요.");
   if (rule.ruleName.trim().length < 3) errors.push("조건명은 3자 이상이어야 합니다.");
   if (!rule.effectiveFrom || !rule.effectiveTo) errors.push("적용기간을 입력하세요.");
-  if (rule.effectiveFrom > rule.effectiveTo) errors.push("적용 시작일은 종료일보다 늦을 수 없습니다.");
+  if (rule.effectiveFrom > rule.effectiveTo) errors.push("적용 시작일이 종료일보다 늦을 수 없습니다.");
   if (rule.target.targetType === "role" && rule.target.targetRoles.length === 0) {
-    errors.push("적용역할을 1개 이상 선택하세요.");
+    errors.push("적용 역할을 1개 이상 선택하세요.");
   }
   if (rule.condition.operator === "between" && rule.condition.value2 === null) {
     errors.push("BETWEEN 연산자는 기준값2가 필요합니다.");
@@ -40,7 +40,7 @@ function validateRule(rule: RuleDraft): string[] {
   return errors;
 }
 
-export function ConditionManagementPage() {
+export function ConditionManagementPage({ projectName }: { projectName?: string }) {
   const [rule, setRule] = useState<RuleDraft>(mockRule);
   const [savedRules, setSavedRules] = useState<SavedRuleItem[]>([]);
   const [notice, setNotice] = useState("");
@@ -83,7 +83,7 @@ export function ConditionManagementPage() {
           <span className="logo-mark page-logo" aria-hidden="true">
             <span className="logo-dot" />
           </span>
-          프로젝트 조건 입력
+          {projectName ? `${projectName} 조건 입력` : "프로젝트 조건 입력"}
         </h1>
         <p>프로젝트별 달성조건, 자격조건, 보상조건을 설정합니다.</p>
         {notice ? <div className="notice-bar">{notice}</div> : null}

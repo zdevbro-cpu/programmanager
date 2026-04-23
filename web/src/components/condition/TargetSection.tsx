@@ -8,7 +8,7 @@ interface TargetSectionProps {
   onChange: (next: RuleDraft) => void;
 }
 
-const ROLE_OPTIONS = ["PM", "간사", "프로젝트팀원", "거점", "전문가"];
+const ROLE_OPTIONS = ["PM", "Admin", "프로젝트팀원", "거점", "전문가"];
 
 export function TargetSection({ value, onChange }: TargetSectionProps) {
   const target = value.target;
