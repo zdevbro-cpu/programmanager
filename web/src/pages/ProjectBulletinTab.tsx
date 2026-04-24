@@ -6,20 +6,20 @@ import {
   ChevronRight as ChevronRightIcon, X, Upload, Check
 } from 'lucide-react';
 
-export const ProgramBoardPage: React.FC = () => {
+export const ProjectBulletinTab: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const allPosts = [
-    { id: 236, category: "공지사항", title: "[공지] 2026년 LAS 프로그램 일정 및 통합 운영 안내", author: "시스템관리자", date: "2026-06-01 10:30", views: 1245, comments: 12, files: 3, color: "blue-light" },
-    { id: 235, category: "공지사항", title: "[필독] LAS 프로그램 운영 규정 및 유의사항 개정 안내", author: "시스템관리자", date: "2026-05-29 14:12", views: 982, comments: 8, files: 2, color: "blue-light" },
-    { id: 234, category: "업무지시", title: "6월 프로그램 운영일정 및 주요 변경사항 준수 요청", author: "운영관리자", date: "2026-05-28 09:15", views: 321, comments: 4, files: 1, color: "red-light" },
-    { id: 233, category: "공지사항", title: "정부 지원사업 변경 지침(2026년) 프로그램 적용 안내", author: "정책담당자", date: "2026-05-27 16:45", views: 412, comments: 2, files: 1, color: "blue-light" },
-    { id: 232, category: "질의응답", title: "프로그램 정산 증빙 서류 제출 관련 FAQ 업데이트", author: "운영팀", date: "2026-05-26 11:22", views: 204, comments: 15, files: 0, color: "orange-light" },
-    { id: 231, category: "활동보고", title: "상반기 프로그램 활동 우수 사례 공유 및 시상 안내", author: "운영관리자", date: "2026-05-22 17:00", views: 167, comments: 5, files: 2, color: "purple-light" },
-    { id: 230, category: "자료실", title: "LAS 프로그램 브랜딩 가이드 및 로고 데이터 배포", author: "디자인팀", date: "2026-05-20 13:40", views: 93, comments: 0, files: 5, color: "green-light" },
-    { id: 229, category: "자료실", title: "2026년 프로그램 운영 매뉴얼 (최종본) 다운로드", author: "시스템관리자", date: "2026-05-18 10:05", views: 156, comments: 3, files: 1, color: "green-light" },
-    { id: 228, category: "공지사항", title: "LAS 프로그램 핵심 가치 및 슬로건 공유", author: "운영관리자", date: "2026-05-15 16:20", views: 211, comments: 1, files: 1, color: "blue-light" },
-    { id: 227, category: "공지사항", title: "차세대 프로그램 지원 시스템 고도화 일정 안내", author: "IT팀", date: "2026-05-14 09:50", views: 273, comments: 6, files: 1, color: "blue-light" },
+    { id: 102, category: "공지사항", title: "2026 유아도서 판매 프로모션 오리엔테이션 안내", author: "김지훈(PM)", date: "2026-06-01 10:30", views: 256, comments: 8, files: 2, color: "blue-light" },
+    { id: 101, category: "공지사항", title: "프로모션 보상조건 및 지급 기준 안내", author: "김지훈(PM)", date: "2026-05-29 14:12", views: 189, comments: 4, files: 1, color: "blue-light" },
+    { id: 100, category: "업무지시", title: "진행 매장 담당자 연락처 및 담당 지역 안내", author: "김지훈(PM)", date: "2026-05-28 09:15", views: 132, comments: 2, files: 1, color: "red-light" },
+    { id: 99, category: "공지사항", title: "5월 실적 집계 일정 및 제출 안내", author: "김지훈(PM)", date: "2026-05-27 16:45", views: 118, comments: 3, files: 1, color: "blue-light" },
+    { id: 98, category: "질의응답", title: "FAQ 업데이트 안내 (프로모션 자주 묻는 질문)", author: "김지훈(PM)", date: "2026-05-26 11:22", views: 204, comments: 6, files: 0, color: "orange-light" },
+    { id: 97, category: "활동보고", title: "활동보고 작성 가이드 및 유의사항", author: "김지훈(PM)", date: "2026-05-22 17:00", views: 167, comments: 1, files: 1, color: "purple-light" },
+    { id: 96, category: "자료실", title: "프로모션 교재 및 POP 배포 일정 안내", author: "운영팀", date: "2026-05-20 13:40", views: 93, comments: 0, files: 2, color: "green-light" },
+    { id: 95, category: "자료실", title: "교육 세션 일정 및 참석 링크 안내", author: "운영팀", date: "2026-05-18 10:05", views: 156, comments: 3, files: 1, color: "green-light" },
+    { id: 94, category: "공지사항", title: "프로모션 슬로건 및 핵심 메시지 공유", author: "김지훈(PM)", date: "2026-05-15 16:20", views: 211, comments: 2, files: 1, color: "blue-light" },
+    { id: 93, category: "공지사항", title: "프로모션 일정 변경 안내 (5/30 -> 6/1)", author: "김지훈(PM)", date: "2026-05-14 09:50", views: 273, comments: 7, files: 1, color: "blue-light" },
   ];
 
   const categories = [
@@ -32,13 +32,13 @@ export const ProgramBoardPage: React.FC = () => {
 
   return (
     <div className="activity-tab-container">
-      {/* 🚨 타이틀: LAS 프로그램 게시판 */}
+      {/* 활동로그 탭과 동일한 Hero Section */}
       <section className="section-card basic-hero-card" style={{ marginBottom: '24px' }}>
         <div className="basic-title-row">
-          <h2 style={{ fontSize: '20px' }}>LAS 프로그램 게시판</h2>
+          <h2 style={{ fontSize: '20px' }}>2026 유아도서 판매 프로모션</h2>
           <div className="basic-owner">
             <span className="status running">운영중</span>
-            <strong style={{ fontSize: '13px' }}>Admin 시스템관리자</strong>
+            <strong style={{ fontSize: '13px' }}>PM 김지훈</strong>
           </div>
         </div>
 
@@ -47,28 +47,28 @@ export const ProgramBoardPage: React.FC = () => {
             <div className="basic-icon blue" style={{ width: '32px', height: '32px' }}><FileText size={16} /></div>
             <div>
               <span style={{ fontSize: '12px' }}>전체 게시글</span>
-              <strong style={{ fontSize: '20px', display: 'block' }}>1,248건</strong>
+              <strong style={{ fontSize: '20px', display: 'block' }}>236건</strong>
             </div>
           </div>
           <div className="basic-top-card" style={{ padding: '12px' }}>
             <div className="basic-icon green" style={{ width: '32px', height: '32px' }}><CalendarDays size={16} /></div>
             <div>
               <span style={{ fontSize: '12px' }}>오늘 활동</span>
-              <strong style={{ fontSize: '20px', display: 'block' }}>42건</strong>
+              <strong style={{ fontSize: '20px', display: 'block' }}>24건</strong>
             </div>
           </div>
           <div className="basic-top-card" style={{ padding: '12px' }}>
             <div className="basic-icon orange" style={{ width: '32px', height: '32px' }}><Bell size={16} /></div>
             <div>
-              <span style={{ fontSize: '12px' }}>공지 등록</span>
-              <strong style={{ fontSize: '20px', display: 'block' }}>16건</strong>
+              <span style={{ fontSize: '12px' }}>승인 이벤트</span>
+              <strong style={{ fontSize: '20px', display: 'block' }}>158건</strong>
             </div>
           </div>
           <div className="basic-top-card" style={{ padding: '12px' }}>
             <div className="basic-icon purple" style={{ width: '32px', height: '32px' }}><RefreshCcw size={16} /></div>
             <div>
-              <span style={{ fontSize: '12px' }}>최근 업데이트</span>
-              <strong style={{ fontSize: '20px', display: 'block' }}>85건</strong>
+              <span style={{ fontSize: '12px' }}>변경 이력</span>
+              <strong style={{ fontSize: '20px', display: 'block' }}>386건</strong>
             </div>
           </div>
         </div>
@@ -127,6 +127,7 @@ export const ProgramBoardPage: React.FC = () => {
               <div className="pagination-left">
                 <span className="total-count" style={{ fontSize: '12px', color: '#64748b' }}>총 {allPosts.length}건</span>
               </div>
+              {/* 🚨 네비게이션(페이지 번호) 개수 5개로 확장 */}
               <div className="page-numbers-std">
                 <button type="button" className="page-btn-sq" style={{ width: '28px', height: '28px' }}><ChevronLeft size={12} /></button>
                 <button type="button" className="page-btn-sq active" style={{ width: '28px', height: '28px' }}>1</button>
@@ -144,14 +145,14 @@ export const ProgramBoardPage: React.FC = () => {
           <section className="section-card" style={{ padding: '16px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', color: '#3b82f6' }}>
               <Info size={16} />
-              <h3 style={{ fontSize: '14px', fontWeight: 700, margin: 0 }}>프로그램 게시판 안내</h3>
+              <h3 style={{ fontSize: '14px', fontWeight: 700, margin: 0 }}>프로젝트 게시판 안내</h3>
             </div>
             <ul className="guide-list" style={{ padding: 0, margin: 0, listStyle: 'none', display: 'grid', gap: '4px' }}>
               {categories.map((item, idx) => (
                 <li key={idx} style={{ fontSize: '12px', display: 'flex', gap: '4px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   <span style={{ color: '#cbd5e1' }}>•</span>
                   <div style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    <b style={{ color: '#334155' }}>{item.label}:</b> <span style={{ color: '#64748b' }}>전체 프로그램 관련 내용을 확인합니다.</span>
+                    <b style={{ color: '#334155' }}>{item.label}:</b> <span style={{ color: '#64748b' }}>프로젝트 관련 내용을 확인합니다.</span>
                   </div>
                 </li>
               ))}
@@ -160,16 +161,16 @@ export const ProgramBoardPage: React.FC = () => {
 
           <section className="section-card" style={{ padding: '16px' }}>
             <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 700, margin: 0, color: '#1e293b' }}>최근 프로그램 활동</h3>
+              <h3 style={{ fontSize: '14px', fontWeight: 700, margin: 0, color: '#1e293b' }}>최근 활동보고</h3>
               <button style={{ border: 0, background: 'transparent', fontSize: '11px', color: '#3b82f6', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center' }}>더보기 <ChevronRightIcon size={12} /></button>
             </header>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               {[
-                { status: "활동보고", title: "6월 프로그램 운영 보고", user: "운영팀", date: "2026-06-02", color: "purple-light" },
-                { status: "공지사항", title: "LAS 지원 시스템 고도화", user: "IT개발팀", date: "2026-06-01", color: "blue-light" },
-                { status: "업무지시", title: "분기별 정산 서류 제출 건", author: "시스템관리자", user: "관리부", date: "2026-06-01", color: "red-light" },
-                { status: "질의응답", title: "FAQ 추가 업데이트 안내", author: "운영팀", user: "운영관리자", date: "2026-05-31", color: "orange-light" },
-                { status: "자료실", title: "브랜딩 가이드 최종 배포", author: "디자인팀", user: "디자인팀", date: "2026-05-31", color: "green-light" },
+                { status: "활동보고", title: "6월 1주차 활동보고", user: "이지연(서울 강남점)", date: "2026-06-02", color: "purple-light" },
+                { status: "공지사항", title: "5월 4주차 활동보고", user: "박민수(부산 해운대점)", date: "2026-06-01", color: "blue-light" },
+                { status: "업무지시", title: "6월 1주차 활동보고", user: "최수빈(대구 수성점)", date: "2026-06-01", color: "red-light" },
+                { status: "질의응답", title: "5월 3주차 활동보고", user: "김현우(광주 상무점)", date: "2026-05-31", color: "orange-light" },
+                { status: "자료실", title: "5월 4주차 활동보고", user: "정유진(인천 부평점)", date: "2026-05-31", color: "green-light" },
               ].map((item, idx) => (
                 <div key={idx} style={{ display: 'flex', gap: '8px', alignItems: 'center', padding: '2px 0' }}>
                   <span className={`chip-std ${item.color}`} style={{ width: '68px', fontSize: '9px', padding: '2px 0', display: 'inline-flex', justifyContent: 'center', fontWeight: 700 }}>{item.status}</span>
@@ -185,15 +186,15 @@ export const ProgramBoardPage: React.FC = () => {
 
           <section className="section-card" style={{ padding: '16px', flex: 1 }}>
             <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 700, margin: 0, color: '#1e293b' }}>통합 일정</h3>
+              <h3 style={{ fontSize: '14px', fontWeight: 700, margin: 0, color: '#1e293b' }}>주요 일정</h3>
               <button style={{ border: 0, background: 'transparent', fontSize: '11px', color: '#3b82f6', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center' }}>전체 <ChevronRightIcon size={12} /></button>
             </header>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               {[
-                { title: "상반기 성과 보고회", date: "2026-06-15" },
-                { title: "LAS 프로그램 만족도 조사", date: "06-20 ~ 06-30" },
-                { title: "통합 운영 시스템 점검", date: "06-25 23:00" },
-                { title: "하반기 운영안내 오리엔테이션", date: "2026-07-01" },
+                { title: "5월 실적 제출 마감", date: "2026-06-05" },
+                { title: "보상 신청 기간", date: "06-10 ~ 06-16" },
+                { title: "6월 중간 점검 회의", date: "06-15 14:00" },
+                { title: "프로모션 최종 성과 보고", date: "2026-06-30" },
               ].map((item, idx) => (
                 <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '2px 0' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -233,7 +234,9 @@ export const ProgramBoardPage: React.FC = () => {
                         color: idx === 0 ? '#2563eb' : '#64748b',
                         borderColor: idx === 0 ? '#3b82f6' : '#e2e8f0',
                         fontSize: '13px', fontWeight: 600, cursor: 'pointer',
-                        whiteSpace: 'nowrap', padding: '0 4px', display: 'flex', justifyContent: 'center', alignItems: 'center'
+                        whiteSpace: 'nowrap',
+                        padding: '0 4px',
+                        display: 'flex', justifyContent: 'center', alignItems: 'center'
                       }}
                     >
                       {cat.label}

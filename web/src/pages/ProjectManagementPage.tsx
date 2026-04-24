@@ -47,6 +47,7 @@ import {
 import { ParticipantsManagementPage } from "./ParticipantsManagementPage";
 import { ProgramBoardPage } from "./ProgramBoardPage";
 import { ProjectSettlementTab } from "./ProjectSettlementTab";
+import { ProjectBulletinTab } from "./ProjectBulletinTab";
 import { mockRule } from "../data/mockCondition";
 import { loadSavedRules, saveRule, type SavedRuleItem, updateSavedRule } from "../services/ruleStorage";
 import type { RuleDraft } from "../types/rule";
@@ -988,7 +989,7 @@ function ProjectTabContent({ tab, project }: { tab: SubMenu; project: ProjectIte
   if (tab === "settlement") return <ProjectSettlementTab project={project} />;
   if (tab === "evidence") return <ProjectEvidenceTab project={project} />;
   if (tab === "activity") return <ProjectActivityLogTab project={project} />;
-  if (tab === "board") return <ProgramBoardPage />;
+  if (tab === "board") return <ProjectBulletinTab project={project} />;
   if (tab === "basic") return <ProjectBasicInfoTab project={project} />;
   return (
     <section className="section-card proj-mgmt-related-content">
@@ -1086,23 +1087,23 @@ function ProjectActivityLogTab({ project }: { project: ProjectItem }) {
             <table className="activity-table-std" style={{ fontSize: '13px' }}>
               <thead>
                 <tr>
-                  <th style={{ width: '150px' }}>일시</th>
-                  <th style={{ width: '120px' }}>사용자</th>
-                  <th style={{ width: '120px' }}>활동유형</th>
-                  <th>상세내용</th>
-                  <th style={{ width: '120px' }}>관련 메뉴</th>
-                  <th style={{ width: '80px' }}>결과</th>
+                  <th className="text-center" style={{ width: '150px' }}>일시</th>
+                  <th className="text-center" style={{ width: '120px' }}>사용자</th>
+                  <th className="text-center" style={{ width: '120px' }}>활동유형</th>
+                  <th className="text-center">상세내용</th>
+                  <th className="text-center" style={{ width: '120px' }}>관련 메뉴</th>
+                  <th className="text-center" style={{ width: '80px' }}>결과</th>
                 </tr>
               </thead>
               <tbody>
                 {logs.map(log => (
                   <tr key={log.id}>
-                    <td className="text-center gray-text">{log.date}</td>
-                    <td className="text-center font-600">{log.user}</td>
-                    <td className="text-center">{log.type}</td>
+                    <td className="text-center-force gray-text">{log.date}</td>
+                    <td className="text-center-force font-600">{log.user}</td>
+                    <td className="text-center-force">{log.type}</td>
                     <td className="text-left">{log.detail}</td>
-                    <td className="text-center">{log.menu}</td>
-                    <td className="text-center">
+                    <td className="text-center-force">{log.menu}</td>
+                    <td className="text-center-force">
                       <span className="status-badge-mini green">{log.result}</span>
                     </td>
                   </tr>
@@ -1269,6 +1270,14 @@ export function ProjectManagementPage() {
 
   return (
     <div className="proj-mgmt-page">
+      <style>{`
+        .proj-mgmt-table th {
+          text-align: center !important;
+        }
+        .proj-mgmt-table td {
+          text-align: left !important;
+        }
+      `}</style>
       <div className="proj-breadcrumb">
         <span>프로젝트관리</span>
         <ChevronRight className="mini-icon" />
@@ -1317,29 +1326,29 @@ export function ProjectManagementPage() {
         <table className="project-table proj-mgmt-table">
           <thead>
             <tr>
-              <th>프로젝트명</th>
-              <th>유형</th>
-              <th>기간</th>
-              <th>상태</th>
-              <th>PM</th>
-              <th>진척율</th>
-              <th>참여자</th>
-              <th>수정일</th>
-              <th>액션</th>
+              <th className="text-center">프로젝트명</th>
+              <th className="text-center">유형</th>
+              <th className="text-center">기간</th>
+              <th className="text-center">상태</th>
+              <th className="text-center">PM</th>
+              <th className="text-center">진척율</th>
+              <th className="text-center">참여자</th>
+              <th className="text-center">수정일</th>
+              <th className="text-center">액션</th>
             </tr>
           </thead>
           <tbody>
             {PROJECTS.map((project) => (
               <tr key={project.id} className={project.id === selectedProjectId ? "selected" : undefined} onClick={() => openDetail(project)}>
-                <td><strong>{project.name}</strong></td>
-                <td>{project.type}</td>
-                <td>{project.period}</td>
-                <td><span className={statusClass(project.status)}>{statusLabel(project.status)}</span></td>
-                <td>{project.pm}</td>
-                <td><div className="proj-mgmt-progress-cell"><span>{project.progress}%</span><div className="bar"><i style={{ width: `${project.progress}%` }} /></div></div></td>
-                <td>{project.participants}</td>
-                <td>{project.updatedAt}</td>
-                <td>
+                <td className="text-center"><strong>{project.name}</strong></td>
+                <td className="text-center">{project.type}</td>
+                <td className="text-center">{project.period}</td>
+                <td className="text-center"><span className={statusClass(project.status)}>{statusLabel(project.status)}</span></td>
+                <td className="text-center">{project.pm}</td>
+                <td className="text-center"><div className="proj-mgmt-progress-cell"><span>{project.progress}%</span><div className="bar"><i style={{ width: `${project.progress}%` }} /></div></div></td>
+                <td className="text-center">{project.participants}</td>
+                <td className="text-center">{project.updatedAt}</td>
+                <td className="text-center">
                   <div className="proj-mgmt-action-buttons">
                     <button type="button" className="proj-mgmt-action-btn" onClick={(e) => { e.stopPropagation(); openDetail(project); }}><Eye className="mini-icon" /></button>
                     <button type="button" className="proj-mgmt-action-btn" onClick={(e) => { e.stopPropagation(); openDetail(project); }}><Pencil className="mini-icon" /></button>
@@ -1503,12 +1512,12 @@ function ProjectProgressTab({ project }: { project: ProjectItem }) {
           <table className="project-table">
             <thead>
               <tr>
-                <th>단계</th>
-                <th>증빙자료</th>
-                <th>승인상태</th>
-                <th>요청일</th>
-                <th>승인자</th>
-                <th>작업</th>
+                <th className="text-center">단계</th>
+                <th className="text-center">증빙자료</th>
+                <th className="text-center">승인상태</th>
+                <th className="text-center">요청일</th>
+                <th className="text-center">승인자</th>
+                <th className="text-center">작업</th>
               </tr>
             </thead>
             <tbody>
@@ -1956,36 +1965,36 @@ function ProjectEvidenceTab({ project }: { project: ProjectItem }) {
               <tbody>
                 {evidenceList.map((item) => (
                   <tr key={item.id}>
-                    <td className="evidence-name-cell">
+                    <td className="evidence-name-cell" style={{ textAlign: 'left !important' }}>
                       <FileText size={16} className="file-icon" />
                       {item.name}
                     </td>
-                    <td>{item.type}</td>
-                    <td>
-                      <div className="two-line-cell">
+                    <td className="text-left">{item.type}</td>
+                    <td className="text-left">
+                      <div className="two-line-cell" style={{ alignItems: 'flex-start' }}>
                         <span className="first-line">{item.step.split(' ')[0]}</span>
                         <small className="second-line blue">{item.step.split(' ')[1]}</small>
                       </div>
                     </td>
-                    <td>
-                      <div className="two-line-cell">
+                    <td className="text-left">
+                      <div className="two-line-cell" style={{ alignItems: 'flex-start' }}>
                         <span className="first-line">{item.uploader.split(' ')[0]}</span>
                         <small className="second-line gray">{item.uploader.split(' ')[1]}</small>
                       </div>
                     </td>
-                    <td>
-                      <div className="two-line-cell">
+                    <td className="text-center-force">
+                      <div className="two-line-cell" style={{ alignItems: 'center' }}>
                         <span className="first-line">{item.date.split(' ')[0]}</span>
                         <small className="second-line gray">{item.date.split(' ')[1]}</small>
                       </div>
                     </td>
-                    <td>
+                    <td className="text-center-force">
                       <span className={`status-capsule ${item.status}`}>
                         {item.status === 'approved' ? '승인완료' : item.status === 'review' ? '검토중' : '미분류'}
                       </span>
                     </td>
-                    <td className="action-cell">
-                      <div className="btn-group">
+                    <td className="text-center-force">
+                      <div className="btn-group" style={{ justifyContent: 'center' }}>
                         <button type="button" className="action-btn-std blue" onClick={() => handleView(item.name)}><Eye size={18} /></button>
                         <button type="button" className="action-btn-std red" onClick={() => handleDelete(item.id)}><Trash2 size={18} /></button>
                       </div>

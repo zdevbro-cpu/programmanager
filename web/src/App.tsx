@@ -12,6 +12,7 @@ import { ConditionManagementPage } from "./pages/ConditionManagementPage";
 import { ParticipantsManagementPage } from "./pages/ParticipantsManagementPage";
 import { ProgramBoardPage } from "./pages/ProgramBoardPage";
 import { ProjectManagementPage } from "./pages/ProjectManagementPage";
+import { DashboardPage } from "./pages/DashboardPage";
 import logoImg from "./assets/logo.png";
 
 type MenuKey = "dashboard" | "projects" | "participants" | "conditions" | "program_board";
@@ -39,7 +40,7 @@ function ComingSoonPage({ title }: { title: string }) {
 }
 
 export default function App() {
-  const [currentMenu, setCurrentMenu] = useState<MenuKey>("projects");
+  const [currentMenu, setCurrentMenu] = useState<MenuKey>("dashboard");
 
   return (
     <div className="app-shell">
@@ -82,7 +83,7 @@ export default function App() {
         <main className="main">
           {currentMenu === "conditions" ? <ConditionManagementPage /> : null}
           {currentMenu === "projects" ? <ProjectManagementPage /> : null}
-          {currentMenu === "dashboard" ? <ComingSoonPage title="대시보드" /> : null}
+          {currentMenu === "dashboard" ? <DashboardPage /> : null}
           {currentMenu === "participants" ? <ParticipantsManagementPage /> : null}
           {currentMenu === "program_board" ? <ProgramBoardPage /> : null}
         </main>
