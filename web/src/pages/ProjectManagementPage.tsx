@@ -38,10 +38,15 @@ import {
   Files,
   Folder,
   MoreVertical,
-  RefreshCcw
+  RefreshCcw,
+  Calendar,
+  ChevronsLeft,
+  ChevronsRight,
+  ChevronLeft
 } from "lucide-react";
 import { ParticipantsManagementPage } from "./ParticipantsManagementPage";
 import { ProgramBoardPage } from "./ProgramBoardPage";
+import { ProjectSettlementTab } from "./ProjectSettlementTab";
 import { mockRule } from "../data/mockCondition";
 import { loadSavedRules, saveRule, type SavedRuleItem, updateSavedRule } from "../services/ruleStorage";
 import type { RuleDraft } from "../types/rule";
@@ -980,7 +985,9 @@ function ProjectTabContent({ tab, project }: { tab: SubMenu; project: ProjectIte
   if (tab === "rules") return <ProjectRulesTabEnhanced project={project} />;
   if (tab === "progress") return <ProjectProgressTab project={project} />;
   if (tab === "performance") return <ProjectPerformanceTab project={project} />;
+  if (tab === "settlement") return <ProjectSettlementTab project={project} />;
   if (tab === "evidence") return <ProjectEvidenceTab project={project} />;
+  if (tab === "activity") return <ProjectActivityLogTab project={project} />;
   if (tab === "board") return <ProgramBoardPage />;
   if (tab === "basic") return <ProjectBasicInfoTab project={project} />;
   return (
@@ -988,6 +995,224 @@ function ProjectTabContent({ tab, project }: { tab: SubMenu; project: ProjectIte
       <h3 className="panel-title">{PROJECT_TABS.find((t) => t.key === tab)?.label}</h3>
       <p className="helper-text">{TAB_SUMMARY[tab]}</p>
     </section>
+  );
+}
+
+function ProjectActivityLogTab({ project }: { project: ProjectItem }) {
+  const [logs] = useState([
+    { id: 1, date: "2026.05.14 15:42:18", user: "김지훈 (PM)", type: "참여자 등록", detail: "협력사 '책마을(주)' 참여자 5명 등록", menu: "참여자/조직", result: "성공" },
+    { id: 2, date: "2026.05.14 15:30:02", user: "이수빈 (매니저)", type: "실적 승인", detail: "참여자 '홍길동' 4월 실적 승인", menu: "실적", result: "성공" },
+    { id: 3, date: "2026.05.14 14:58:31", user: "이수빈 (매니저)", type: "조건 수정", detail: "1단계 목표 판매액을 500백만원 -> 550백만원으로 수정", menu: "조건/보상규칙", result: "성공" },
+    { id: 4, date: "2026.05.14 14:12:07", user: "박현우 (운영자)", type: "증빙자료 업로드", detail: "참여자 '정소연' 4월 증빙자료 3건 업로드", menu: "증빙자료", result: "성공" },
+    { id: 5, date: "2026.05.14 13:45:20", user: "김지훈 (PM)", type: "게시판 공지 등록", detail: "공지사항 '5월 프로모션 안내' 게시", menu: "게시판", result: "성공" },
+    { id: 6, date: "2026.05.14 11:20:11", user: "이수빈 (매니저)", type: "단계 승인", detail: "참여자 '홍길동' 1단계(진행 중) 승인", menu: "진행관리", result: "성공" },
+    { id: 7, date: "2026.05.14 10:05:44", user: "박현우 (운영자)", type: "조건 수정", detail: "2단계 추가 보상률을 10% -> 12%로 수정", menu: "조건/보상규칙", result: "성공" },
+    { id: 8, date: "2026.05.14 09:33:27", user: "이수빈 (매니저)", type: "실적 승인", detail: "참여자 '김유나' 4월 실적 승인", menu: "실적", result: "성공" },
+    { id: 9, date: "2026.05.14 09:10:55", user: "박현우 (운영자)", type: "참여자 등록", detail: "참여자 '최민수' 등록", menu: "참여자/조직", result: "성공" },
+    { id: 10, date: "2026.05.14 08:52:13", user: "김지훈 (PM)", type: "증빙자료 업로드", detail: "참여자 '이영희' 3월 증빙자료 2건 업로드", menu: "증빙자료", result: "성공" },
+    { id: 11, date: "2026.05.14 08:30:15", user: "박현우 (운영자)", type: "단계 승인", detail: "참여자 '박서준' 2단계 완료 승인", menu: "진행관리", result: "성공" },
+    { id: 12, date: "2026.05.14 08:15:42", user: "이수빈 (매니저)", type: "게시판 공지 등록", detail: "긴급공지 '정산 일정 변경 안내' 게시", menu: "게시판", result: "성공" },
+  ]);
+
+  const stats = [
+    { label: "실적 승인", count: 412, percent: 32.8, color: "#3b82f6" },
+    { label: "조건 수정", count: 286, percent: 22.8, color: "#10b981" },
+    { label: "참여자 등록", count: 214, percent: 17.0, color: "#8b5cf6" },
+    { label: "증빙자료 업로드", count: 168, percent: 13.4, color: "#f59e0b" },
+    { label: "게시판 공지 등록", count: 96, percent: 7.6, color: "#06b6d4" },
+    { label: "단계 승인", count: 80, percent: 6.4, color: "#ec4899" },
+  ];
+
+  return (
+    <div className="activity-tab-container">
+      <section className="section-card basic-hero-card" style={{ marginBottom: '24px' }}>
+        <div className="basic-title-row">
+          <h2>{project.name}</h2>
+          <div className="basic-owner">
+            <span className="status running">운영중</span>
+            <strong>PM 김지훈</strong>
+          </div>
+        </div>
+
+        <div className="basic-top-cards">
+          <div className="basic-top-card">
+            <div className="basic-icon blue"><FileText className="mini-icon" /></div>
+            <div>
+              <span style={{ fontSize: '14px' }}>총 로그 수</span>
+              <strong style={{ fontSize: '26px', display: 'block', margin: '4px 0' }}>1,256건</strong>
+              <small style={{ fontSize: '12px' }}>전체 기간 누적</small>
+            </div>
+          </div>
+          <div className="basic-top-card">
+            <div className="basic-icon green"><CalendarDays className="mini-icon" /></div>
+            <div>
+              <span style={{ fontSize: '14px' }}>오늘 활동</span>
+              <strong style={{ fontSize: '26px', display: 'block', margin: '4px 0' }}>24건</strong>
+              <small style={{ fontSize: '12px' }}>2026.05.14 기준</small>
+            </div>
+          </div>
+          <div className="basic-top-card">
+            <div className="basic-icon orange"><CheckCircle2 className="mini-icon" /></div>
+            <div>
+              <span style={{ fontSize: '14px' }}>승인 이벤트</span>
+              <strong style={{ fontSize: '26px', display: 'block', margin: '4px 0' }}>158건</strong>
+              <small style={{ fontSize: '12px' }}>전체 기간 누적</small>
+            </div>
+          </div>
+          <div className="basic-top-card">
+            <div className="basic-icon purple"><RefreshCcw className="mini-icon" /></div>
+            <div>
+              <span style={{ fontSize: '14px' }}>변경 이력</span>
+              <strong style={{ fontSize: '26px', display: 'block', margin: '4px 0' }}>386건</strong>
+              <small style={{ fontSize: '12px' }}>전체 기간 누적</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="activity-main-grid">
+        <div className="activity-left-col">
+          <section className="section-card">
+            <header className="table-header">
+              <div className="header-left">
+                <h3>활동 로그</h3>
+              </div>
+              <div className="header-right">
+                <button type="button" className="evidence-outline-btn" style={{ height: '34px', display: 'flex', alignItems: 'center', gap: '6px' }}><Download size={16} /> 내보내기</button>
+                <button type="button" className="ghost mini-btn" style={{ width: '34px', height: '34px', padding: 0, border: '1px solid #dfe6f3', borderRadius: '6px' }}><RefreshCcw size={16} /></button>
+              </div>
+            </header>
+
+            <table className="activity-table-std" style={{ fontSize: '13px' }}>
+              <thead>
+                <tr>
+                  <th style={{ width: '150px' }}>일시</th>
+                  <th style={{ width: '120px' }}>사용자</th>
+                  <th style={{ width: '120px' }}>활동유형</th>
+                  <th>상세내용</th>
+                  <th style={{ width: '120px' }}>관련 메뉴</th>
+                  <th style={{ width: '80px' }}>결과</th>
+                </tr>
+              </thead>
+              <tbody>
+                {logs.map(log => (
+                  <tr key={log.id}>
+                    <td className="text-center gray-text">{log.date}</td>
+                    <td className="text-center font-600">{log.user}</td>
+                    <td className="text-center">{log.type}</td>
+                    <td className="text-left">{log.detail}</td>
+                    <td className="text-center">{log.menu}</td>
+                    <td className="text-center">
+                      <span className="status-badge-mini green">{log.result}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            <div className="pagination-wrap-std">
+              <div className="pagination-left">
+                <span className="total-count">전체 1,256건</span>
+                <select className="form-select sm" style={{ width: '90px' }}>
+                  <option>12개씩</option>
+                  <option>50개씩</option>
+                  <option>100개씩</option>
+                </select>
+              </div>
+              <div className="page-numbers-std">
+                <button type="button" className="page-btn-sq"><ChevronsLeft size={14} /></button>
+                <button type="button" className="page-btn-sq"><ChevronLeft size={14} /></button>
+                <button type="button" className="page-btn-sq active">1</button>
+                <button type="button" className="page-btn-sq">2</button>
+                <button type="button" className="page-btn-sq">3</button>
+                <button type="button" className="page-btn-sq">4</button>
+                <button type="button" className="page-btn-sq">5</button>
+                <button type="button" className="page-btn-sq"><ChevronRight size={14} /></button>
+                <button type="button" className="page-btn-sq"><ChevronsRight size={14} /></button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div className="activity-right-col">
+          <section className="section-card">
+            <header className="side-card-header">
+              <h3>활동유형 분포</h3>
+              <button type="button" className="text-btn">자세히 보기</button>
+            </header>
+            <div className="dist-list">
+              {stats.map((stat, idx) => (
+                <div key={idx} className="dist-item-row">
+                  <span className="dist-label">{stat.label}</span>
+                  <div className="dist-bar-container">
+                    <div className="dist-bar-fill" style={{ width: `${stat.percent}%`, background: stat.color }} />
+                  </div>
+                  <div className="dist-values-inline">
+                    <strong>{stat.count}건</strong>
+                    <span className="percent">({stat.percent}%)</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="section-card">
+            <header className="side-card-header">
+              <h3>필터</h3>
+              <button type="button" className="ghost mini-btn" style={{ border: '1px solid #dfe6f3', borderRadius: '6px', height: '30px', padding: '0 8px', display: 'flex', alignItems: 'center', gap: '4px' }}><RefreshCcw size={14} /> 초기화</button>
+            </header>
+            <div className="filter-grid-2col">
+              <div className="filter-group full">
+                <label>기간</label>
+                <div className="date-range-iconic">
+                  <div className="date-input-wrap">
+                    <input type="text" value="2026.04.14" readOnly />
+                    <Calendar size={14} className="input-icon" />
+                  </div>
+                  <span>~</span>
+                  <div className="date-input-wrap">
+                    <input type="text" value="2026.05.14" readOnly />
+                    <Calendar size={14} className="input-icon" />
+                  </div>
+                </div>
+              </div>
+              <div className="filter-group">
+                <label>사용자</label>
+                <select className="form-select sm"><option>전체 사용자</option></select>
+              </div>
+              <div className="filter-group">
+                <label>관련 메뉴</label>
+                <select className="form-select sm"><option>전체 메뉴</option></select>
+              </div>
+              <div className="filter-group">
+                <label>활동유형</label>
+                <select className="form-select sm"><option>전체 활동유형</option></select>
+              </div>
+              <div className="filter-group">
+                <label>결과</label>
+                <select className="form-select sm"><option>전체 결과</option></select>
+              </div>
+              <div className="filter-actions-row">
+                <button type="button" className="primary-btn-sm full"><Search size={14} /> 필터 적용</button>
+                <button type="button" className="outline-btn-sm full">필터 해제</button>
+              </div>
+            </div>
+          </section>
+
+          <section className="section-card guide-card">
+            <header className="side-card-header">
+              <h3>감사 메모 <Info size={16} /></h3>
+            </header>
+            <ul className="audit-guide-list">
+              <li>모든 변경 및 승인 이력은 자동으로 기록되며, 삭제할 수 없습니다.</li>
+              <li>로그 보관 기간: 5년 (2026.01.01 ~ 2031.12.31)</li>
+              <li>개인정보가 포함된 로그는 보안 정책에 따라 암호화되어 보관됩니다.</li>
+              <li>로그 내보내기는 엑셀(.xlsx) 형식으로 제공됩니다.</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -1007,9 +1232,9 @@ export function ProjectManagementPage() {
     return (
       <div className="proj-mgmt-page proj-mgmt-detail-compact">
         <div className="proj-breadcrumb">
-          <span>프로젝트관리</span>
+          <span className="breadcrumb-link" onClick={() => setIsDetailView(false)}>프로젝트관리</span>
           <ChevronRight className="mini-icon" />
-          <span>{selectedProject.name}</span>
+          <span className="breadcrumb-link" onClick={() => setSubMenu("basic")}>{selectedProject.name}</span>
           <ChevronRight className="mini-icon" />
           <span>{PROJECT_TABS.find(t => t.key === subMenu)?.label}</span>
         </div>
@@ -1618,7 +1843,7 @@ function ProjectPerformanceTab({ project }: { project: ProjectItem }) {
 }
 
 function ProjectEvidenceTab({ project }: { project: ProjectItem }) {
-  const evidenceList = [
+  const [evidenceList, setEvidenceList] = useState([
     { id: 1, name: "발대식 참석명단_20260101", type: "참석명단", step: "1단계 (진행중)", uploader: "홍길동 (영업기획팀)", date: "2026.01.01 11:24", status: "approved" },
     { id: 2, name: "발대식 현장사진", type: "사진자료", step: "1단계 (진행중)", uploader: "홍길동 (영업기획팀)", date: "2026.01.01 11:28", status: "approved" },
     { id: 3, name: "1주차 주간모임 회의록", type: "회의록", step: "1단계 (진행중)", uploader: "김수연 (영업기획팀)", date: "2026.01.08 14:35", status: "review" },
@@ -1627,7 +1852,17 @@ function ProjectEvidenceTab({ project }: { project: ProjectItem }) {
     { id: 6, name: "2주차 주간모임 회의록", type: "회의록", step: "2단계 (예정)", uploader: "박지훈 (영업기획팀)", date: "2026.01.15 16:05", status: "pending" },
     { id: 7, name: "판매실적 증빙_2주차", type: "판매실적", step: "2단계 (예정)", uploader: "박지훈 (영업기획팀)", date: "2026.01.15 16:08", status: "pending" },
     { id: 8, name: "프로모션 홍보물 이미지", type: "기타", step: "3단계 (예정)", uploader: "최은지 (영업기획팀)", date: "2026.01.16 09:22", status: "pending" },
-  ];
+  ]);
+
+  const handleDelete = (id: number) => {
+    if (window.confirm("해당 증빙자료를 삭제하시겠습니까?")) {
+      setEvidenceList(prev => prev.filter(item => item.id !== id));
+    }
+  };
+
+  const handleView = (name: string) => {
+    alert(`${name} 자료를 조회합니다.`);
+  };
 
   const typeStats = [
     { type: "판매실적", count: 28, percent: 32.2 },
@@ -1751,8 +1986,8 @@ function ProjectEvidenceTab({ project }: { project: ProjectItem }) {
                     </td>
                     <td className="action-cell">
                       <div className="btn-group">
-                        <button type="button" className="ghost mini-btn"><Eye size={18} /></button>
-                        <button type="button" className="ghost mini-btn"><MoreVertical size={18} /></button>
+                        <button type="button" className="action-btn-std blue" onClick={() => handleView(item.name)}><Eye size={18} /></button>
+                        <button type="button" className="action-btn-std red" onClick={() => handleDelete(item.id)}><Trash2 size={18} /></button>
                       </div>
                     </td>
                   </tr>
