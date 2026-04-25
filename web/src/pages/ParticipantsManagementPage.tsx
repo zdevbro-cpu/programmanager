@@ -256,7 +256,7 @@ export function ParticipantsManagementPage({ projectId, projectName }: Participa
               <option>승인대기</option>
               <option>보류</option>
             </select>
-            <button type="submit" className="primary">저장</button>
+            <button type="submit" className="primary-btn-premium">저장</button>
           </form>
         ) : null}
 
@@ -276,7 +276,7 @@ export function ParticipantsManagementPage({ projectId, projectName }: Participa
             <option value="승인대기">상태: 승인대기</option>
             <option value="보류">상태: 보류</option>
           </select>
-          <button type="button" className="primary">검색</button>
+          <button type="button" className="primary-btn-premium">검색</button>
         </div>
       </section>
 
@@ -376,7 +376,7 @@ export function ParticipantsManagementPage({ projectId, projectName }: Participa
               </label>
             </div>
             <div className="participants-modal-actions">
-              <button type="button" className="primary" onClick={onSaveDetail}>수정</button>
+              <button type="button" className="primary-btn-premium" onClick={onSaveDetail}>수정</button>
               <button type="button" className="ghost" onClick={onCancelDetail}>취소</button>
             </div>
           </div>

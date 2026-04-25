@@ -15,7 +15,17 @@ export type ResultType =
   | "qualification_keep"
   | "payment_restrict";
 export type RewardType = "fixed" | "rate" | "mixed";
-export type PayCycle = "once" | "month" | "quarter";
+export type PayCycle = "once" | "month" | "quarter" | "ad_hoc";
+
+export interface ConditionItem {
+  id: string;
+  metric: Metric;
+  aggregationScope: OrgScope;
+  aggregationPeriod: AggregationPeriod;
+  operator: Operator;
+  value1: number;
+  value2: number | null;
+}
 
 export interface RuleDraft {
   projectId: string;
@@ -31,12 +41,8 @@ export interface RuleDraft {
     allowDuplicate: boolean;
   };
   condition: {
-    metric: Metric;
-    aggregationScope: OrgScope;
-    aggregationPeriod: AggregationPeriod;
-    operator: Operator;
-    value1: number;
-    value2: number | null;
+    logic: "AND" | "OR";
+    items: ConditionItem[];
     requireApproval: boolean;
     excludeCanceled: boolean;
     maintainPeriod: string;

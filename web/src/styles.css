@@ -185,7 +185,7 @@ body {
 
 .page-head h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 24px;
   letter-spacing: -0.2px;
   display: flex;
   align-items: center;
@@ -193,9 +193,9 @@ body {
 }
 
 .page-head p {
-  margin: 8px 0 18px;
+  margin: 4px 0 12px;
   color: #697691;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .notice-bar {
@@ -279,11 +279,7 @@ body {
 
 .participants-filters-simple {
   grid-template-columns: 1.6fr 1fr 1fr auto;
-}
 
-.participants-filters-simple button {
-  height: 40px;
-}
 
 .participants-add-form {
   display: grid;
@@ -502,7 +498,6 @@ body {
   margin-top: 12px;
 }
 
-.participants-pagination button {
   width: 34px;
   height: 34px;
   padding: 0;
@@ -1260,11 +1255,7 @@ body {
   gap: 8px;
 }
 
-.settle-pages button {
   width: 36px;
-  height: 36px;
-  padding: 0;
-}
 
 .settle-approve-toolbar {
   display: flex;
@@ -1636,11 +1627,7 @@ body {
   margin: 0;
 }
 
-.basic-memo-head button {
   height: 32px;
-  padding: 0 12px;
-  font-size: 13px;
-}
 
 .trend-legend {
   display: flex;
@@ -1950,9 +1937,6 @@ body {
   gap: 8px;
 }
 
-.proj-mgmt-filter-actions button {
-  height: 40px;
-}
 
 .proj-mgmt-filter-actions .primary,
 .proj-mgmt-filter-actions .ghost {
@@ -2056,11 +2040,7 @@ body {
   gap: 8px;
 }
 
-.proj-mgmt-pagination button {
   width: 38px;
-  height: 38px;
-  padding: 0;
-}
 
 .proj-mgmt-selected {
   display: grid;
@@ -2423,10 +2403,6 @@ body {
   gap: 6px;
 }
 
-.proj-rules-pager button {
-  min-width: 36px;
-  height: 36px;
-}
 
 .proj-rules-policy-list {
   display: grid;
@@ -2711,7 +2687,7 @@ body {
 .left-col,
 .right-col {
   display: grid;
-  gap: 14px;
+  gap: 8px;
 }
 
 .section-card,
@@ -2719,13 +2695,13 @@ body {
   background: var(--tm-bg-surface, #ffffff);
   border: 1px solid var(--tm-border-default, #dfe6f3);
   border-radius: 12px;
-  padding: 16px;
+  padding: 12px;
 }
 
 .card-title,
 .panel-title {
-  margin: 0 0 14px;
-  font-size: 22px;
+  margin: 0 0 10px;
+  font-size: 18px;
   color: var(--tm-text-primary, #1a2438);
   display: flex;
   align-items: center;
@@ -2751,8 +2727,8 @@ body {
 
 .grid {
   display: grid;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 .grid.two {
@@ -2825,7 +2801,6 @@ select {
   gap: 10px;
 }
 
-button.toggle-button {
   width: 56px;
   height: 32px;
   border-radius: 999px;
@@ -2834,7 +2809,6 @@ button.toggle-button {
   padding: 0;
   position: relative;
   cursor: pointer;
-}
 
 button.toggle-button.is-on {
   border-color: #2f5eea;
@@ -3128,14 +3102,7 @@ button.toggle-button.is-on .toggle-thumb {
   padding-top: 14px;
 }
 
-button {
-  height: 44px;
-  padding: 0 18px;
-  border-radius: 9px;
-  border: 1px solid #2f5eea;
-  font-size: 14px;
   cursor: pointer;
-}
 
 button.primary {
   background: #2f5eea;
@@ -3741,14 +3708,12 @@ button.nav-btn {
   gap: 6px;
 }
 
-.proj-rules-pager button {
   width: 28px;
   height: 28px;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
 .proj-rules-policy-list {
   display: grid;
@@ -4406,7 +4371,6 @@ button.nav-btn {
 
 .perf-stat-icon {
   width: 44px;
-  height: 44px;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -5205,7 +5169,7 @@ button.nav-btn {
 
 .evidence-filters {
   display: flex;
-  align-items: flex-end; /* í•˜ë‹¨ ì •ë ¬ ë°˜ì˜ */
+  align-items: flex-end; /* ?˜ë‹¨ ?•ë ¬ ë°˜ì˜ */
   gap: 12px;
   padding: 16px;
   background: #f8faff;
@@ -5216,7 +5180,7 @@ button.nav-btn {
 .evidence-filters .form-select,
 .evidence-filters .search-box,
 .evidence-filters .reset-btn {
-  margin-bottom: 0; /* í•„í„° ë‚´ë¶€ ë§ˆì§„ ì œê±°ë¡œ í•˜ë‹¨ ì •ë ¬ ë³´ì¡° */
+  margin-bottom: 0; /* ?„í„° ?´ë? ë§ˆì§„ ?œê±°ë¡??˜ë‹¨ ?•ë ¬ ë³´ì¡° */
 }
 
 .evidence-filters .search-box {
@@ -5247,7 +5211,7 @@ button.nav-btn {
 }
 
 .evidence-table .evidence-name-cell {
-  text-align: left; /* ìžë£Œëª…ì€ ì¢Œì¸¡ ì •ë ¬ ìœ ì§€ */
+  text-align: left; /* ?ë£Œëª…ì? ì¢Œì¸¡ ?•ë ¬ ? ì? */
   display: flex;
   align-items: center;
   gap: 10px;
@@ -5472,7 +5436,7 @@ button.nav-btn {
 .status-capsule {
   display: inline-flex;
   padding: 4px 14px;
-  border-radius: 999px; /* ì™„ì „í•œ ìº¡ìŠ í˜•íƒœ */
+  border-radius: 999px; /* ?„ì „??ìº¡ìŠ ?•íƒœ */
   font-size: 12px;
   font-weight: 600;
 }
@@ -5491,11 +5455,11 @@ button.nav-btn {
 }
 
 .evidence-table th, .evidence-table td {
-  text-align: center !important; /* ëª¨ë“  ì…€ ì¤‘ì•™ ì •ë ¬ ê°•ì œ */
+  text-align: center !important; /* ëª¨ë“  ?€ ì¤‘ì•™ ?•ë ¬ ê°•ì œ */
 }
 
 .evidence-name-cell {
-  text-align: left !important; /* ìžë£Œëª…ë§Œ ì¢Œì¸¡ ì •ë ¬ */
+  text-align: left !important; /* ?ë£Œëª…ë§Œ ì¢Œì¸¡ ?•ë ¬ */
 }
 
 /* Settlement Tab Styles */
@@ -6569,7 +6533,7 @@ button.nav-btn {
 }
 
 .audit-guide-list li::before {
-  content: "â€¢";
+  content: "??;
   position: absolute;
   left: 0;
   color: #94a3b8;
@@ -6766,7 +6730,7 @@ button.nav-btn {
   height: 34px !important;
   min-height: 34px !important;
   max-height: 34px !important;
-  line-height: 32px !important; /* Adjusted for borders */
+  line-height: 44px !important; /* Adjusted for borders */
   padding: 0 12px !important;
   border-radius: 6px !important;
   border: 1px solid #dfe6f3 !important;
@@ -6841,3 +6805,1344 @@ button.nav-btn {
 .chip-std.red-light { background-color: #fef2f2; color: #dc2626; border: 1px solid #fee2e2; }
 .chip-std.purple-light { background-color: #faf5ff; color: #7c3aed; border: 1px solid #f3e8ff; }
 .chip-std.gray-light { background-color: #f8fafc; color: #475569; border: 1px solid #f1f5f9; }
+
+/* Target Section New Design Overrides */
+.section-card {
+  padding: 16px !important;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  margin: 0 !important;
+}
+
+.target-type-selector {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.target-type-selector .label {
+  font-size: 13px;
+  color: #61708e;
+  font-weight: 500;
+}
+
+.radio-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: #4b5a78;
+  font-size: 14px;
+}
+
+.radio-btn input[type="radio"] {
+  display: none;
+}
+
+.radio-mark {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid #ced7e8;
+  background: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.radio-btn input:checked + .radio-mark {
+  border-color: #ef4444;
+}
+
+.radio-btn input:checked + .radio-mark::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: #ef4444;
+  border-radius: 999px;
+}
+
+.field-label {
+  font-weight: 600 !important;
+  color: #35425f !important;
+  margin-bottom: 8px !important;
+}
+
+.role-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.icon-btn.delete-btn {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff5f5;
+  border: 1px solid #fedcdc;
+  color: #ef4444;
+  border-radius: 8px;
+}
+
+.icon-btn.delete-btn:hover {
+  background: #fee2e2;
+}
+
+.role-chip {
+  background: #eef2ff !important;
+  color: #2563eb !important;
+  border: 1px solid #dbeafe !important;
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+  font-weight: 500;
+}
+
+.chip-x {
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.toggle-with-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-text {
+  font-size: 13.5px;
+  color: #4b5a78;
+  font-weight: 500;
+}
+
+.target-type-selector .separator {
+  color: #e1e7f2;
+  font-size: 13px;
+  margin: 0 4px;
+}
+
+
+/* Type Selector Typography Adjustments */
+.target-type-selector .label {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #35425f !important;
+}
+
+.radio-btn {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+
+.manual-input-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  position: relative;
+}
+
+.manual-input-group input {
+  width: 100%;
+}
+
+.back-to-select {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: #9aa5bf;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.back-to-select:hover {
+  color: #ef4444;
+}
+
+
+
+/* Safe Height Alignment */
+.target-left, .target-right {
+  gap: 0 !important;
+}
+
+.field-label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+.field-label:first-child {
+  margin-top: 0;
+}
+
+
+/* Builder Section New Design */
+.builder-header-options {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.builder-header-options .label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #35425f;
+}
+
+/* Builder Section Horizontal Layout Restoration */
+.builder-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.condition-row-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.logic-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0;
+}
+
+.logic-select {
+  height: 28px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  width: 60px !important;
+}
+
+.logic-line {
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.condition-grid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 100px 1.5fr 40px; /* Original 5-column + delete slot */
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.value-input-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.value-input-group input {
+  flex: 1;
+}
+
+.tilde {
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+.builder-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.add-condition-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-condition-btn:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.checkbox-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #4b5a78;
+  cursor: pointer;
+}
+
+.checkbox-item input {
+  width: 16px;
+  height: 16px;
+}
+
+.preview-logic-badge {
+  align-self: flex-start;
+  font-size: 10px;
+  font-weight: 800;
+  color: #64748b;
+  background: #e2e8f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 12px;
+}
+
+.preview-cond-text {
+  font-size: 13px;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.preview-logic-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+/* Global UI Polish: Compact Buttons & Deep Navy Theme */
+:root {
+  --primary-color: #1a2438; /* ¸ÞÀÎ Å¸ÀÌÆ²ÀÇ ÁøÇÑ »ö»óÀ¸·Î ÅëÀÏ */
+  --primary-hover: #2d3a54;
+}
+
+button, .primary, .btn {
+  height: 36px !important;
+  padding: 0 16px !important;
+  font-size: 13.5px !important;
+  border-radius: 6px !important;
+}
+
+button.primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  color: #fff !important;
+}
+
+button.primary:hover {
+  background-color: var(--primary-hover) !important;
+}
+
+/* Toggle Switch Primary Color Sync */
+button.toggle-button.is-on {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* Bottom Actions Layout */
+.actions {
+  gap: 8px !important;
+  margin-top: 24px !important;
+}
+
+
+/* Compact specific buttons */
+.add-role-btn, .add-condition-btn {
+  height: 44px !important;
+  font-size: 12.5px !important;
+}
+
+
+/* Ultra-Compact & Rounded Toggle Switch */
+  width: 44px !important;
+  height: 24px !important;
+  border-radius: 999px !important;
+  border: 1px solid #d1d5db !important;
+  background: #e5e7eb !important;
+
+button.toggle-button.is-on {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.toggle-thumb {
+  top: 2px !important;
+  left: 2px !important;
+  width: 18px !important;
+  height: 18px !important;
+  background: #ffffff !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+button.toggle-button.is-on .toggle-thumb {
+  transform: translateX(20px) !important; /* ³Êºñ¿¡ ¸Â°Ô ÀÌµ¿ °Å¸® Á¶Á¤ */
+}
+
+.toggle-text {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+
+/* Action Buttons Compact Positioning */
+.actions {
+  margin-top: 12px !important; /* ºó °ø°£À» ÃÖ¼ÒÈ­ÇÏ¿© ÄÜÅÙÃ÷¿¡ ¹ÐÂø */
+  padding-bottom: 20px !important;
+  justify-content: flex-end !important; /* ¿ìÃø Á¤·Ä À¯Áö */
+  gap: 6px !important; /* ¹öÆ° °£°ÝÀ» ´õ ÃÎÃÎÇÏ°Ô */
+}
+
+  min-width: 80px !important; /* ¹öÆ° ³Êºñµµ ´õ ÄÄÆÑÆ®ÇÏ°Ô Á¶Á¤ */
+  height: 44px !important; /* ³ôÀÌ¸¦ ÇÑ ´Ü°è ´õ Ãà¼Ò */
+
+
+/* Brand Primary Color Update */
+:root {
+  --primary-color: #2f5eea !important;
+  --primary-hover: #166991 !important;
+}
+
+button.primary {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+button.primary:hover {
+  background-color: var(--primary-hover) !important;
+}
+
+button.toggle-button.is-on {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+.mini-icon.blue {
+  color: var(--primary-color) !important;
+}
+
+.logo-dot {
+  background-color: var(--primary-color) !important;
+}
+
+
+/* Trash Icon & Delete Button Fix */
+.icon-btn.delete-btn {
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  padding: 0 !important; /* ÆÐµù Á¦°ÅÇÏ¿© ¾ÆÀÌÄÜ °ø°£ È®º¸ */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.row-icon {
+  width: 18px !important;
+  height: 18px !important;
+  stroke-width: 2px !important; /* ¼± ±½±â Á¶Àý·Î °¡µ¶¼º Çâ»ó */
+}
+
+/* Ensure row height alignment */
+.role-row {
+  height: 36px !important;
+}
+
+
+/* Rock-Solid Layout Stability */
+.condition-grid-row {
+  grid-template-columns: 220px 140px 140px 100px 1fr 40px !important; /* °íÁ¤ ³Êºñ¿Í °¡º¯ ³ÊºñÀÇ ¸íÈ®ÇÑ ±¸ºÐ */
+  width: 100% !important;
+}
+
+.role-row {
+  display: grid !important;
+  grid-template-columns: 32px 1fr 40px !important; /* µå·¡±×ÇÚµé(32px), ÀÔ·ÂÃ¢(1fr), »èÁ¦¹öÆ°(40px) °íÁ¤ */
+  width: 100% !important;
+  gap: 8px !important;
+}
+
+/* Ensure no jumping on hover or focus */
+input:focus, select:focus {
+  outline: 2px solid var(--primary-color) !important;
+  outline-offset: -2px !important;
+}
+
+/* Prevent container height jumping */
+.section-card {
+  min-height: auto !important;
+  transition: none !important; /* ¾Ö´Ï¸ÞÀÌ¼ÇÀ¸·Î ÀÎÇÑ Èçµé¸² Á¦°Å */
+}
+
+
+/* Global Width & Right Panel Compactness */
+.content-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 340px !important; /* ¿ìÃø ÆÐ³Î ³Êºñ¸¦ 340px·Î ¿ÏÀüÈ÷ °íÁ¤ */
+  gap: 20px !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+/* Right Panel Font Adjustments (Red Box Area) */
+.panel-title {
+  font-size: 14px !important;
+}
+
+.preview-summary {
+  font-size: 12.5px !important; /* ¿ä¾à¹® Ãà¼Ò */
+  line-height: 1.5 !important;
+}
+
+.preview-cond-text {
+  font-size: 12px !important; /* °³º° Á¶°Ç Ãà¼Ò */
+}
+
+.meta-label {
+  font-size: 12px !important;
+  color: #64748b !important;
+}
+
+.meta-row strong {
+  font-size: 12.5px !important;
+}
+
+.preview-logic-badge {
+  font-size: 9px !important;
+  padding: 1px 4px !important;
+}
+
+/* Validation Results Compactness */
+.validation-list {
+  font-size: 12px !important;
+  gap: 4px !important;
+}
+
+.validation-item {
+  padding: 4px 0 !important;
+}
+
+/* Saved Rules Compactness */
+.saved-rule-item {
+  padding: 8px 12px !important;
+  font-size: 12.5px !important;
+}
+
+.saved-rule-item .name {
+  font-size: 13px !important;
+}
+
+
+/* Overflow & Absolute Fix: Get everything back inside the box */
+.condition-row-wrapper {
+  padding-right: 0 !important; /* ¹ÛÀ¸·Î ¹Ð¾î³»´ø ÆÐµù Á¦°Å */
+}
+
+.condition-grid-row {
+  display: grid !important;
+  /* 6°³ Ç×¸ñÀÌ ÁÂÃø Ä«µå ¾È¿¡¼­¸¸ 100% Á¡À¯ÇÏµµ·Ï Àç¼³Á¤ */
+  grid-template-columns: 2fr 1fr 1fr 80px 1.2fr 36px !important; 
+  width: 100% !important;
+  position: static !important; /* absolute ÇØÁ¦ */
+  gap: 10px !important;
+}
+
+.row-delete-cell {
+  position: static !important; /* ±×¸®µå Èå¸§ ¾ÈÀ¸·Î º¹±Í */
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: flex-end !important;
+  width: 36px !important;
+}
+
+/* Ensure Left column card is contained */
+.left-col .section-card {
+  overflow: visible !important; /* Tooltips might need this, but grid must stay inside */
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+
+/* Global Alignment Final Fix: Action Buttons Parity */
+.actions {
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: 100% !important;
+  max-width: 1200px !important; /* À§ÂÊ Ä«µå ±×¸®µå¿Í µ¿ÀÏÇÑ ³Êºñ °­Á¦ */
+  margin: 12px auto 0 !important; /* Áß¾Ó Á¤·Ä·Î À§ÂÊ Ä«µå ¿ìÃø ³¡¼±°ú ÀÏÄ¡½ÃÅ´ */
+  padding-left: 0 !important;
+  padding-right: 0 !important; /* ³»ºÎ ÆÐµù Á¦°ÅÇÏ¿© ³¡¼± ¹ÐÂø */
+  box-sizing: border-box !important;
+}
+
+/* Ensure individual buttons don't have weird margins */
+.actions button:last-child {
+  margin-right: 0 !important;
+}
+
+
+/* Result Section Enhancement Styles */
+.disabled-field {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.label-with-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.checkbox-item.mini {
+  font-size: 11px;
+  color: #64748b;
+  gap: 4px;
+}
+
+.checkbox-item.mini input {
+  width: 13px;
+  height: 13px;
+}
+
+.input-disabled-text {
+  background-color: #f1f5f9 !important;
+  color: #94a3b8 !important;
+  font-weight: 600;
+  text-align: center;
+}
+
+
+/* Result Section Precision Alignment Fix */
+.label-with-action {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  height: 19px !important; /* ´Ù¸¥ ¶óº§µé°ú ³ôÀÌ ¿Ïº® ÀÏÄ¡ */
+  margin-bottom: 8px !important;
+  font-weight: 600 !important;
+  color: #35425f !important;
+}
+
+.checkbox-item.mini {
+  margin: 0 !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+}
+
+/* Ensure all inputs in the grid start at the same line */
+.grid.four label {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important; /* ¾Æ·¡ÂÊ ÀÔ·ÂÃ¢ ±âÁØÀ¸·Î Á¤·Ä */
+}
+
+.input-disabled-text {
+  height: 36px !important;
+  background-color: #f8fafc !important; /* ´õ ±ò²ûÇÑ ¹è°æ»ö */
+  border-color: #e2e8f0 !important;
+  text-align: center !important;
+}
+
+
+/* Checkbox & Label Single Line Fix */
+.checkbox-item.mini {
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: nowrap !important; /* Àý´ë ÁÙ¹Ù²Þ µÇÁö ¾Êµµ·Ï ¼³Á¤ */
+  gap: 4px !important;
+}
+
+.label-with-action {
+  white-space: nowrap !important;
+}
+
+
+/* Checkbox & Text: Absolute Single Row Fix */
+.label-with-action {
+  display: flex !important;
+  flex-direction: row !important; /* °¡·Î ¹è¿­ °­Á¦ */
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.checkbox-item.mini {
+  display: flex !important;
+  flex-direction: row !important; /* ³»ºÎ ¾ÆÀÌÅÛ(Ã¼Å©¹Ú½º+±ÛÀÚ) °¡·Î ¹è¿­ °­Á¦ */
+  align-items: center !important;
+  gap: 6px !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+}
+
+.checkbox-item.mini input {
+  margin: 0 !important; /* ºÒÇÊ¿äÇÑ ¸¶Áø Á¦°Å */
+}
+
+/* Base Metric Field Visibility */
+.disabled-field select {
+  background-color: #f8fafc !important;
+  color: #94a3b8 !important;
+}
+
+
+/* Relaxed Disabled Style */
+.disabled-field {
+  opacity: 0.5;
+  /* pointer-events: none; Á¦°ÅÇÏ¿© ¸¶¿ì½º ¹ÝÀÀÀº ÇÏµµ·Ï ¼öÁ¤ */
+}
+
+/* Checkbox Label Fix */
+.checkbox-item.mini label {
+  cursor: pointer !important;
+  margin: 0 !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+}
+
+
+/* Saved Item Meta Compact Layout */
+.saved-item-btn {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 2px !important;
+  width: 100% !important;
+  padding: 10px 12px !important;
+  text-align: left !important;
+}
+
+.saved-item-meta {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  font-size: 11.5px !important;
+  color: #64748b !important;
+}
+
+.saved-item-meta .dot {
+  color: #cbd5e1 !important;
+  font-weight: 800 !important;
+}
+
+.saved-item-meta .time {
+  color: #94a3b8 !important;
+}
+
+
+/* Saved Rules Template List Style */
+.saved-item-main {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.rule-name {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #1e293b !important;
+}
+
+.save-date {
+  font-size: 11px !important;
+  color: #94a3b8 !important;
+  font-family: monospace; /* ³¯Â¥ ¼ýÀÚ°¡ ±ò²ûÇÏ°Ô Á¤·ÄµÇµµ·Ï */
+}
+
+.saved-item-btn:hover .rule-name {
+  color: var(--primary-color) !important;
+}
+
+
+/* Page Header Alignment with Content Grid */
+.page-head {
+  width: 100% !important;
+  max-width: 1200px !important; /* ¾Æ·¡ Ä«µåµé°ú µ¿ÀÏÇÑ ³Êºñ Àû¿ë */
+  margin: 0 auto 16px auto !important; /* Áß¾Ó Á¤·Ä·Î ³¡¼± ¸ÂÃã, ¾Æ·¡ °£°Ý Ãà¼Ò */
+  padding-left: 0 !important; /* ¿ÞÂÊ ¿©¹é Á¦°ÅÇÏ¿© ³¡¼± ¹ÐÂø */
+  text-align: left !important;
+}
+
+/* Further Compact Action Buttons */
+.actions {
+  margin-top: 4px !important; /* È­»ìÇ¥°¡ °¡¸®Å°´Â °ø°£À» ÃÖ¼ÒÈ­ */
+  padding-bottom: 12px !important;
+}
+
+.content-grid {
+  margin-bottom: 0 !important; /* ±×¸®µå ¾Æ·¡ ¸¶Áø Á¦°Å */
+}
+
+
+/* Section Title Alignment: Flush to Left Edge */
+.section-header {
+  padding-left: 0 !important; /* Ä«µå ³»ºÎ¿¡¼­ Å¸ÀÌÆ²ÀÌ ¿ÞÂÊ ³¡¿¡ ºÙµµ·Ï Á¶Á¤ */
+  margin-bottom: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.section-header h2 {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #1a2438 !important;
+}
+
+.mini-icon {
+  width: 18px !important;
+  height: 18px !important;
+  color: #2f5eea !important;
+}
+
+
+/* Inline Toggle Group Alignment */
+.inline-group {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-top: 4px !important;
+}
+
+.inline-group .field-label {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #35425f !important;
+  margin-bottom: 0 !important; /* ÇÑ ÁÙÀÏ ¶§´Â ¾Æ·¡ ¸¶Áø Á¦°Å */
+  min-width: 60px !important;
+}
+
+
+/* Rock-Solid Vertical Centering for Toggles and Fields */
+.grid.four {
+  align-items: center !important; /* ±×¸®µå ³» ¸ðµç Ç×¸ñÀÇ ¼öÁ÷ Áß¾Ó Á¤·Ä °­Á¦ */
+}
+
+.toggle-field.inline-group {
+  display: flex !important;
+  align-items: center !important; /* ³»ºÎ ¶óº§°ú ¹öÆ°ÀÇ ¼öÁ÷ Áß¾Ó Á¤·Ä */
+  height: 36px !important; /* ¿·ÀÇ ÀÔ·ÂÃ¢µé°ú ³ôÀÌ¸¦ 36px·Î ÅëÀÏ */
+  margin-top: 24px !important; /* ¶óº§ÀÌ ¾ø´Â °æ¿ì À§ÂÊ ¶óº§ ³ôÀÌ¸¸Å­ º¸Á¤ (»óÈ²¿¡ µû¶ó Á¶Á¤) */
+}
+
+/* If the toggle is in a grid row where others have labels above them */
+.grid label + .toggle-field.inline-group {
+  margin-top: 19px !important; /* ¶óº§ ³ôÀÌ(¾à 19px)¸¸Å­ ³»·Á¼­ ÀÔ·ÂÃ¢µé°ú Áß½ÉÀ» ¸ÂÃã */
+}
+
+/* Specific fix for TargetSection 'Áßº¹Àû¿ë' */
+.target-actions-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-top: 12px !important;
+  height: 36px !important;
+}
+
+.toggle-with-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+
+/* Saved List Item Layout */
+.saved-list-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  width: 100% !important;
+}
+
+.saved-item-btn {
+  flex: 1 !important; /* °ø°£À» ²Ë Ã¤¿ò */
+}
+
+/* Delete Button Style */
+.item-delete-btn {
+  background: none !important;
+  border: none !important;
+  color: #cbd5e1 !important;
+  cursor: pointer !important;
+  padding: 8px !important;
+  transition: all 0.2s ease !important;
+  border-radius: 4px !important;
+}
+
+.item-delete-btn:hover {
+  color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+}
+
+/* Edit Mode Badge */
+.title-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.edit-badge {
+  background-color: #fff7ed !important;
+  color: #c2410c !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  padding: 2px 8px !important;
+  border-radius: 12px !important;
+  border: 1px solid #ffedd5 !important;
+}
+
+.mt-12 {
+  margin-top: 12px !important;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+
+/* Custom Modal Styles */
+.modal-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10000 !important;
+  backdrop-filter: blur(2px) !important;
+}
+
+.modal-container.mini {
+  background: white !important;
+  border-radius: 12px !important;
+  width: 360px !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  overflow: hidden !important;
+  animation: modalPop 0.2s ease-out !important;
+}
+
+@keyframes modalPop {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+  padding: 16px 20px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+}
+
+.modal-title-with-icon {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.modal-title-with-icon h3 {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+}
+
+.alert-icon {
+  color: #f59e0b !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.modal-body {
+  padding: 24px 20px !important;
+}
+
+.modal-body p {
+  margin: 0 !important;
+  color: #475569 !important;
+  line-height: 1.5 !important;
+}
+
+.modal-footer {
+  padding: 12px 20px !important;
+  background-color: #f8fafc !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+}
+
+.danger-btn {
+  background-color: #ef4444 !important;
+  color: white !important;
+  border: none !important;
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+
+.danger-btn:hover {
+  background-color: #dc2626 !important;
+}
+
+
+/* Updated Saved Item Content Style */
+.saved-item-content {
+  flex: 1 !important;
+  padding: 10px 12px !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease !important;
+  border-radius: 6px 0 0 6px !important;
+}
+
+.saved-item-content:hover {
+  background-color: #f1f5f9 !important;
+}
+
+.saved-item-content:active {
+  background-color: #e2e8f0 !important;
+}
+
+
+/* Actions Bar Layout Enhancement */
+.actions {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 12px auto !important;
+  padding: 0 !important;
+}
+
+.action-right {
+  display: flex !important;
+  gap: 8px !important;
+}
+
+/* Secondary Button (New Template) */
+.secondary-btn {
+  background-color: white !important;
+  color: #475569 !important;
+  border: 1px solid #cbd5e1 !important;
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.secondary-btn:hover {
+  background-color: #f8fafc !important;
+  border-color: #94a3b8 !important;
+  color: #1e293b !important;
+}
+
+
+/* Draft Tag & Item Styles */
+.draft-tag {
+  background-color: #f1f5f9 !important;
+  color: #64748b !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  padding: 1px 4px !important;
+  border-radius: 3px !important;
+  margin-right: 6px !important;
+  border: 1px solid #e2e8f0 !important;
+  vertical-align: middle !important;
+}
+
+.saved-list-item.is-draft .rule-name {
+  color: #64748b !important; /* ÀÓ½Ã Ç×¸ñÀº ±ÛÀÚ»öÀ» ¾à°£ ¿¬ÇÏ°Ô */
+}
+
+.saved-list-item.is-draft .saved-item-content:hover {
+  background-color: #f8fafc !important;
+}
+
+
+/* Ultimate Click Guarantee for Delete Button */
+.item-delete-btn {
+  position: relative !important;
+  z-index: 10 !important; /* Å¬¸¯ ¿ì¼±¼øÀ§ È®º¸ */
+  padding: 10px !important; /* Å¬¸¯ ¿µ¿ª ´ëÆø È®Àå */
+  margin-right: 4px !important;
+  opacity: 0.8 !important;
+}
+
+.item-delete-btn:hover {
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+  background-color: #fee2e2 !important;
+}
+
+.item-delete-btn svg {
+  pointer-events: none !important; /* ¾ÆÀÌÄÜÀÌ Å¬¸¯À» ¹æÇØÇÏÁö ¾Êµµ·Ï ¼³Á¤ */
+}
+
+
+/* Ensure Modal Buttons are Clickable */
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 10001 !important;
+
+.danger-btn:active {
+  transform: translateY(1px) !important;
+}
+
+/* Hide SR only text if any remains */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
+}
+
+
+/* Fix Vertical Alignment in Result Section */
+.label-with-action {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  min-height: 20px !important; /* ¶óº§ ³ôÀÌ °íÁ¤À¸·Î ¼öÆò Á¤·Ä º¸Àå */
+  margin-bottom: 4px !important;
+}
+
+.grid.four > label {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important; /* ÀÔ·ÂÃ¢ ÇÏ´Ü ¶óÀÎ Á¤·Ä */
+}
+
+
+/* Fix Button Centering in Project Rules Tab */
+.mini-btn.primary {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  padding: 0 12px !important;
+  min-height: 44px !important;
+  text-align: center !important;
+}
+
+.mini-btn .mini-icon {
+  margin: 0 !important; /* ±âÁ¸ Ä¡¿ìÄ§ À¯¹ß ¸¶Áø Á¦°Å */
+}
+
+
+/* Project Rules Item Actions Styling */
+.proj-rules-item-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-left: auto !important;
+}
+
+.status-toggle {
+  padding: 4px 10px !important;
+  border-radius: 20px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  border: 1px solid #dfe6f3 !important;
+  background: #f8fafc !important;
+  color: #64748b !important;
+}
+
+.status-toggle.active {
+  background: #eff6ff !important;
+  border-color: #3b82f6 !important;
+  color: #3b82f6 !important;
+}
+
+.status-toggle:hover {
+  filter: brightness(0.95) !important;
+}
+
+.rule-delete-btn {
+  width: 28px !important;
+  height: 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 6px !important;
+  border: 1px solid #fecaca !important;
+  background: #fff !important;
+  color: #ef4444 !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+}
+
+.rule-delete-btn:hover {
+  background: #fef2f2 !important;
+  transform: scale(1.05) !important;
+}
+
+
+/* Premium Toggle Switch Styling */
+.premium-toggle {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  user-select: none !important;
+}
+
+.toggle-handle {
+  width: 36px !important;
+  height: 20px !important;
+  background: #cbd5e1 !important;
+  border-radius: 100px !important;
+  position: relative !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.toggle-handle::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 2px !important;
+  left: 2px !important;
+  width: 16px !important;
+  height: 16px !important;
+  background: #fff !important;
+  border-radius: 50% !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1) !important;
+}
+
+.premium-toggle.active .toggle-handle {
+  background: #3b82f6 !important;
+}
+
+.premium-toggle.active .toggle-handle::after {
+  left: 18px !important;
+}
+
+.toggle-label {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+}
+
+.premium-toggle.active .toggle-label {
+  color: #3b82f6 !important;
+}
+
+/* Premium Delete Icon Button */
+.premium-delete-icon-btn {
+  background: transparent !important;
+  border: none !important;
+  color: #94a3b8 !important;
+  padding: 6px !important;
+  cursor: pointer !important;
+  border-radius: 50% !important;
+  transition: all 0.2s !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.premium-delete-icon-btn:hover {
+  background: #fef2f2 !important;
+  color: #ef4444 !important;
+}
+
+/* List Item Selection Refinement */
+.proj-rules-item {
+  border-left: 4px solid transparent !important;
+  transition: all 0.2s !important;
+}
+
+.proj-rules-item.active {
+  border-left-color: #3b82f6 !important;
+  background: #f0f7ff !important;
+  border-radius: 0 8px 8px 0 !important;
+}
+
+
+/* Premium Primary Button Styling */
+.primary-btn-premium {
+  background: #2f5eea !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 8px 16px !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+}
+
+/* [RECOVERY] Essential Layout & UI Styles */
+
+/* 1. Premium Brand Blue Button */
+.primary-btn-premium {
+  background: #1e81b0 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+
+.basic-icon {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 999px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.basic-icon.blue { background: #eff6ff !important; color: #1e81b0 !important; }
+.basic-icon.green { background: #f0fdf4 !important; color: #16a34a !important; }
+.basic-icon.orange { background: #fff7ed !important; color: #ea580c !important; }
+.basic-icon.purple { background: #faf5ff !important; color: #9333ea !important; }
+
+.mini-icon {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+}

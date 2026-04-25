@@ -5,7 +5,7 @@ interface PreviewPanelProps {
   value: RuleDraft;
 }
 
-const METRIC_LABEL: Record<RuleDraft["condition"]["metric"], string> = {
+const METRIC_LABEL: Record<string, string> = {
   lower_base_count: "하위 거점 수",
   lower_expert_count: "하위 전문가 수",
   sales_count: "판매건수",
@@ -13,14 +13,14 @@ const METRIC_LABEL: Record<RuleDraft["condition"]["metric"], string> = {
   sales_amount: "판매금액"
 };
 
-const SCOPE_LABEL: Record<RuleDraft["condition"]["aggregationScope"], string> = {
+const SCOPE_LABEL: Record<string, string> = {
   self: "본인",
   direct_lower: "직접하위",
   all_lower: "전체하위",
   team: "팀전체"
 };
 
-const CYCLE_LABEL: Record<RuleDraft["result"]["payCycle"], string> = {
+const CYCLE_LABEL: Record<string, string> = {
   once: "1회",
   month: "월",
   quarter: "분기"
@@ -30,7 +30,7 @@ function formatWon(value: number) {
   return `${value.toLocaleString("ko-KR")}원`;
 }
 
-function formatCriteria(operator: RuleDraft["condition"]["operator"], value1: number, value2: number | null) {
+function formatCriteria(operator: string, value1: number, value2: number | null) {
   if (operator === "between") return `${value1} ~ ${value2 ?? "-"}`;
   if (operator === ">=") return `${value1} 이상`;
   if (operator === "<=") return `${value1} 이하`;
@@ -40,15 +40,23 @@ function formatCriteria(operator: RuleDraft["condition"]["operator"], value1: nu
 }
 
 export function PreviewPanel({ value }: PreviewPanelProps) {
+  const { condition, result, target } = value;
+  
   const rewardText =
-    value.result.rewardType === "fixed"
-      ? `${formatWon(value.result.fixedAmount)}`
-      : value.result.rewardType === "rate"
-        ? `${value.result.ratePercent}%`
-        : `${formatWon(value.result.fixedAmount)} + ${value.result.ratePercent}%`;
+    result.rewardType === "fixed"
+      ? `${formatWon(result.fixedAmount)}`
+      : result.rewardType === "rate"
+        ? `${result.ratePercent}%`
+        : `${formatWon(result.fixedAmount)} + ${result.ratePercent}%`;
 
-  const rolesText = value.target.targetRoles.length > 0 ? value.target.targetRoles.join(", ") : "미선택";
-  const criteriaText = formatCriteria(value.condition.operator, value.condition.value1, value.condition.value2);
+  const rolesText = target.targetRoles.length > 0 ? target.targetRoles.join(", ") : "미선택";
+  
+  const conditionTexts = condition.items.map(item => {
+    const criteria = formatCriteria(item.operator, item.value1, item.value2);
+    return `[${SCOPE_LABEL[item.aggregationScope]}] ${METRIC_LABEL[item.metric]} ${criteria}`;
+  });
+
+  const fullConditionText = conditionTexts.join(` ${condition.logic} `);
 
   return (
     <aside className="panel">
@@ -56,11 +64,19 @@ export function PreviewPanel({ value }: PreviewPanelProps) {
         <Eye className="mini-icon blue" />
         조건 미리보기
       </h3>
-      <p className="preview-text">
-        선택된 역할({rolesText})에 대해 {SCOPE_LABEL[value.condition.aggregationScope]}{" "}
-        {METRIC_LABEL[value.condition.metric]}를 {criteriaText} 충족하면 {rewardText}을(를){" "}
-        {CYCLE_LABEL[value.result.payCycle]} 기준 {value.result.payCount}회 지급합니다.
-      </p>
+      <div className="preview-content">
+        <p className="preview-summary">
+          <strong>{rolesText}</strong>에게 아래 조건을 충족 시 <strong>{rewardText}</strong>을(를) {CYCLE_LABEL[result.payCycle]} 기준 {result.payCount}회 지급합니다.
+        </p>
+        <div className="preview-logic-box">
+          {conditionTexts.map((text, idx) => (
+            <div key={idx} className="preview-cond-item">
+              {idx > 0 && <span className="preview-logic-badge">{condition.logic}</span>}
+              <span className="preview-cond-text">{text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="meta-rows">
         <div className="meta-row">
           <Users className="mini-icon" />
@@ -69,13 +85,8 @@ export function PreviewPanel({ value }: PreviewPanelProps) {
         </div>
         <div className="meta-row">
           <Filter className="mini-icon" />
-          <span className="meta-label">측정항목</span>
-          <strong>{METRIC_LABEL[value.condition.metric]}</strong>
-        </div>
-        <div className="meta-row">
-          <ShieldCheck className="mini-icon" />
-          <span className="meta-label">판정기준</span>
-          <strong>{criteriaText}</strong>
+          <span className="meta-label">조건수</span>
+          <strong>{condition.items.length}건 ({condition.logic})</strong>
         </div>
         <div className="meta-row">
           <Gift className="mini-icon" />

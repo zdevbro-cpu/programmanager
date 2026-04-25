@@ -3,25 +3,28 @@ import {
   AlertTriangle,
   ArrowLeft,
   BookOpen,
-  ClipboardList,
-  CircleDollarSign,
   CalendarDays,
   Check,
   CheckCircle2,
   ChevronRight,
+  ClipboardList,
   Clock3,
   Clock4,
+  Download,
   Eye,
   FileText,
+  Files,
   Flag,
+  Folder,
   FolderOpen,
   Gift,
   Info,
   Pencil,
   Percent,
   Plus,
-  ShieldCheck,
+  RefreshCcw,
   Search,
+  ShieldCheck,
   ShoppingCart,
   Tag,
   Target,
@@ -34,22 +37,19 @@ import {
   Users,
   Zap,
   CheckCircle,
-  Download,
-  Files,
-  Folder,
   MoreVertical,
-  RefreshCcw,
   Calendar,
   ChevronsLeft,
   ChevronsRight,
   ChevronLeft
 } from "lucide-react";
+import { ConfirmModal } from "../components/common/ConfirmModal";
 import { ParticipantsManagementPage } from "./ParticipantsManagementPage";
 import { ProgramBoardPage } from "./ProgramBoardPage";
 import { ProjectSettlementTab } from "./ProjectSettlementTab";
 import { ProjectBulletinTab } from "./ProjectBulletinTab";
 import { mockRule } from "../data/mockCondition";
-import { loadSavedRules, saveRule, type SavedRuleItem, updateSavedRule } from "../services/ruleStorage";
+import { loadSavedRules, saveRule, type SavedRuleItem, updateSavedRule, deleteSavedRule } from "../services/ruleStorage";
 import type { RuleDraft } from "../types/rule";
 
 // Performance Assets
@@ -402,7 +402,7 @@ function ProjectRulesTab({ project }: { project: ProjectItem }) {
         </label>
         <div className="proj-rules-actions">
           <button type="button" className="ghost" onClick={openAdd}>조건추가</button>
-          <button type="button" className="primary" onClick={openEdit} disabled={!selectedRule}>조건수정</button>
+          <button type="button" className="primary-btn-premium" onClick={openEdit} disabled={!selectedRule}>조건수정</button>
         </div>
       </div>
 
@@ -466,7 +466,7 @@ function ProjectRulesTab({ project }: { project: ProjectItem }) {
             />
           </label>
           <div className="proj-rules-editor-actions">
-            <button type="button" className="primary" onClick={saveEditing}>저장</button>
+            <button type="button" className="primary-btn-premium" onClick={saveEditing}>저장</button>
             <button type="button" className="ghost" onClick={() => { setEditing(null); setEditingId(null); }}>취소</button>
           </div>
         </div>
@@ -500,28 +500,28 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
     () => [
       {
         id: "sample-1",
-        name: "PM 거점 확보 보상",
+        name: "PM 시리즈 판매 보상",
         projectId: project.id,
         savedAt: "2026-05-14T00:00:00.000Z",
         data: {
           ...mockRule,
           projectId: project.id,
-          ruleName: "PM 거점 확보 보상",
+          ruleName: "PM 시리즈 판매 보상",
           enabled: true,
           target: { ...mockRule.target, targetType: "role", targetRoles: ["PM"], orgScope: "direct_lower" },
-          condition: { ...mockRule.condition, metric: "lower_base_count", value1: 3, operator: ">=" },
+          condition: { ...mockRule.condition, metric: "sales_count", value1: 3, operator: ">=" },
           result: { ...mockRule.result, rewardType: "fixed", fixedAmount: 50000 }
         }
       },
       {
         id: "sample-2",
-        name: "거점 전문가 모집 보상",
+        name: "경력자 모집 보상",
         projectId: project.id,
         savedAt: "2026-05-10T00:00:00.000Z",
         data: {
           ...mockRule,
           projectId: project.id,
-          ruleName: "거점 전문가 모집 보상",
+          ruleName: "경력자 모집 보상",
           enabled: true,
           target: { ...mockRule.target, targetType: "role", targetRoles: ["Admin"], orgScope: "all_lower" },
           condition: { ...mockRule.condition, metric: "lower_expert_count", value1: 5, operator: ">=" },
@@ -530,13 +530,13 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
       },
       {
         id: "sample-3",
-        name: "유아도서 1세트 판매 보상",
+        name: "준경력자 모집 보상",
         projectId: project.id,
         savedAt: "2026-05-05T00:00:00.000Z",
         data: {
           ...mockRule,
           projectId: project.id,
-          ruleName: "유아도서 1세트 판매 보상",
+          ruleName: "준경력자 모집 보상",
           enabled: true,
           target: { ...mockRule.target, targetType: "role", targetRoles: ["프로젝트팀원"], orgScope: "self" },
           condition: { ...mockRule.condition, metric: "sales_set", value1: 1, operator: "=" },
@@ -564,8 +564,25 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
   }, [filteredRules, selectedRuleIds]);
 
   useEffect(() => {
-    setSavedRules(loadSavedRules());
-  }, []);
+    const loaded = loadSavedRules();
+    const projectRules = loaded.filter(r => r.projectId === project.id);
+    
+    // Check if this project has already been initialized to prevent re-seeding after deletion
+    const isInitialized = localStorage.getItem(`programmanager.init.${project.id}`);
+    
+    if (projectRules.length === 0 && !isInitialized) {
+      let current = loaded;
+      sampleRules.forEach(sr => {
+        if (!current.find(c => c.name === sr.name && c.projectId === project.id)) {
+          current = saveRule({ ...sr.data, projectId: project.id });
+        }
+      });
+      localStorage.setItem(`programmanager.init.${project.id}`, "true");
+      setSavedRules(current);
+    } else {
+      setSavedRules(loaded);
+    }
+  }, [project.id, sampleRules]);
 
   useEffect(() => {
     if (filteredRules.length === 0) {
@@ -586,11 +603,11 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
   };
 
   const metricLabel = (metric: RuleDraft["condition"]["metric"]) => {
-    if (metric === "lower_base_count") return "거점 확보 수";
-    if (metric === "lower_expert_count") return "전문가 등록 수";
-    if (metric === "sales_count") return "판매 건수";
-    if (metric === "sales_set") return "판매 세트 수";
-    return "매출액";
+    if (metric === "sales_count") return "시리즈 판매건수";
+    if (metric === "lower_expert_count") return "경력자 모집건수";
+    if (metric === "sales_set") return "준경력자 모집건수";
+    if (metric === "lower_base_count") return "하위 거점 수";
+    return "판매금액";
   };
 
   const targetLabel = (targetType: RuleDraft["target"]["targetType"]) => {
@@ -608,10 +625,35 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
     return "구간";
   };
 
+  const [deleteModal, setDeleteModal] = useState<{ show: boolean; id: string }>({ show: false, id: "" });
+
   const resultSummary = (rule: RuleDraft) => {
     if (rule.result.rewardType === "fixed") return "조건 충족 시 보상 지급";
     if (rule.result.rewardType === "rate") return "조건 충족 시 비율 지급";
     return "조건 충족 시 혼합 보상 지급";
+  };
+
+  const handleToggleStatus = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation();
+    const target = savedRules.find(r => r.id === id);
+    if (!target) return;
+    const next = updateSavedRule(id, { ...target.data, enabled: !target.data.enabled });
+    setSavedRules(next);
+    setNotice(`${!target.data.enabled ? '활성' : '비활성'} 상태로 변경되었습니다.`);
+  };
+
+  const handleDeleteClick = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    // alert("삭제 버튼이 클릭되었습니다. ID: " + id); // 임시 확인용 alert (작동 확인용)
+    setDeleteModal({ show: true, id });
+  };
+
+  const confirmDelete = () => {
+    const next = deleteSavedRule(deleteModal.id);
+    setSavedRules(next);
+    setDeleteModal({ show: false, id: "" });
+    setNotice("조건이 프로젝트에서 삭제되었습니다.");
   };
 
   const [showTemplates, setShowTemplates] = useState(false);
@@ -633,14 +675,14 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
   };
 
   const onSelectTemplate = (item: SavedRuleItem) => {
-    setEditingId(null); // 신규 등록 모드
+    setEditingId(null);
     setEditing({
       ...item.data,
       projectId: project.id,
-      ruleName: item.name // 마스터 규칙 명칭을 그대로 가져옴
+      ruleName: item.name,
+      enabled: true // Default to enabled when loading template
     });
     setShowTemplates(false);
-    setNotice("마스터 규칙을 불러왔습니다. 프로젝트에 맞게 조건을 수정하여 적용해 주세요.");
   };
 
   const onValidate = () => {
@@ -651,11 +693,11 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
     if (!editing) return;
     if (editingId) {
       const next = updateSavedRule(editingId, editing);
-      setAllRules(next);
+      setSavedRules(next);
       setNotice("규칙이 수정되었습니다.");
     } else {
       const next = saveRule(editing);
-      setAllRules(next);
+      setSavedRules(next);
       setNotice("새 규칙이 프로젝트에 추가되었습니다.");
     }
     setEditing(null);
@@ -746,14 +788,13 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
                 <span className="count-badge">{totalCount}건</span>
               </div>
               <div className="head-right">
-                <button type="button" className="primary mini-btn" onClick={openAdd}>
-                  <Plus className="mini-icon" /> 규칙 추가
+                <button 
+                  type="button" 
+                  className="primary-btn-premium" 
+                  onClick={openAdd}
+                >
+                  <Plus size={16} /> 조건 추가
                 </button>
-                <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value as "all" | "enabled" | "disabled")}>
-                  <option value="all">전체</option>
-                  <option value="enabled">활성</option>
-                  <option value="disabled">비활성</option>
-                </select>
               </div>
             </header>
 
@@ -779,13 +820,23 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
                       tabIndex={0}
                     >
                       <div className="proj-rules-item-top">
-                        <div className={isSelected ? "proj-rules-check checked" : "proj-rules-check"}>
-                          {isSelected && <Check className="mini-icon" />}
-                        </div>
                         <strong>{item.name}</strong>
-                        <div className="proj-rules-item-status-col">
-                          <small>상태</small>
-                          <span className={item.data.enabled ? "status running" : "status closed"}>{item.data.enabled ? "활성" : "비활성"}</span>
+                        <div className="proj-rules-item-actions">
+                          <div 
+                            className={item.data.enabled ? "premium-toggle active" : "premium-toggle"}
+                            onClick={(e) => handleToggleStatus(e, item.id)}
+                            title={item.data.enabled ? "비활성화" : "활성화"}
+                          >
+                            <div className="toggle-handle"></div>
+                            <span className="toggle-label">{item.data.enabled ? "활성" : "비활성"}</span>
+                          </div>
+                          <button 
+                            className="premium-delete-icon-btn"
+                            onClick={(e) => handleDeleteClick(e, item.id)}
+                            title="삭제"
+                          >
+                            <Trash2 size={16} />
+                          </button>
                         </div>
                       </div>
                       <div className="proj-rules-item-meta">
@@ -845,8 +896,8 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
               <div className="proj-rules-action-btn" onClick={openAdd} role="button" tabIndex={0}>
                 <div className="icon-wrapper"><Plus /></div>
                 <div>
-                  <strong>규칙 추가</strong>
-                  <span>새 규칙을 등록합니다.</span>
+                  <strong>조건 추가</strong>
+                  <span>새 조건을 등록합니다.</span>
                 </div>
               </div>
               <div className="proj-rules-action-btn" onClick={onLoadTemplate} role="button" tabIndex={0}>
@@ -868,6 +919,18 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
         </div>
       </div>
 
+
+      {deleteModal.show && (
+        <ConfirmModal
+          title="조건 삭제 확인"
+          message="선택한 조건을 프로젝트에서 삭제하시겠습니까? 삭제 후에는 복구할 수 없습니다."
+          confirmLabel="삭제하기"
+          cancelLabel="취소"
+          onConfirm={confirmDelete}
+          onCancel={() => setDeleteModal({ show: false, id: "" })}
+          type="danger"
+        />
+      )}
 
       {notice ? <div className="notice-bar">{notice}</div> : null}
 
@@ -972,11 +1035,21 @@ function ProjectRulesTabEnhanced({ project }: { project: ProjectItem }) {
             </div>
             <footer className="proj-rules-modal-foot">
               <button type="button" className="ghost" onClick={() => { setEditing(null); setEditingId(null); }}>취소</button>
-              <button type="button" className="primary" onClick={saveEditing}>프로젝트 규칙 저장</button>
+              <button type="button" className="primary-btn-premium" onClick={saveEditing}>프로젝트 규칙 저장</button>
             </footer>
           </div>
         </div>
       ) : null}
+
+      {deleteModal.show && (
+        <ConfirmModal
+          isOpen={deleteModal.show}
+          title="조건 삭제 확인"
+          message="선택한 조건을 프로젝트에서 삭제하시겠습니까? 삭제 후에는 복구할 수 없습니다."
+          onConfirm={confirmDelete}
+          onCancel={() => setDeleteModal({ show: false, id: "" })}
+        />
+      )}
     </section>
   );
 }
@@ -1039,9 +1112,9 @@ function ProjectActivityLogTab({ project }: { project: ProjectItem }) {
           <div className="basic-top-card">
             <div className="basic-icon blue"><FileText className="mini-icon" /></div>
             <div>
-              <span style={{ fontSize: '14px' }}>총 로그 수</span>
-              <strong style={{ fontSize: '26px', display: 'block', margin: '4px 0' }}>1,256건</strong>
-              <small style={{ fontSize: '12px' }}>전체 기간 누적</small>
+              <span style={{ fontSize: '12px' }}>총 로그 수</span>
+              <strong style={{ fontSize: '20px', display: 'block' }}>1,256건</strong>
+              <small style={{ fontSize: '10px', color: '#94a3b8' }}>전체 기간 누적</small>
             </div>
           </div>
           <div className="basic-top-card">
@@ -1240,8 +1313,8 @@ export function ProjectManagementPage() {
           <span>{PROJECT_TABS.find(t => t.key === subMenu)?.label}</span>
         </div>
 
-        <section className="section-card proj-mgmt-selected">
-          <div className="perf-tabs proj-mgmt-tabs">
+        <section className="section-card proj-mgmt-selected" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 20px', gap: '20px' }}>
+          <div className="perf-tabs proj-mgmt-tabs" style={{ display: 'flex', flex: 1, gap: '4px', borderBottom: 0, marginBottom: 0, overflowX: 'auto' }}>
             {detailTabOrder.map((tabKey) => {
               const tab = PROJECT_TABS.find((item) => item.key === tabKey);
               if (!tab) return null;
@@ -1251,13 +1324,19 @@ export function ProjectManagementPage() {
                   type="button"
                   className={subMenu === tab.key ? "perf-tab active" : "perf-tab"}
                   onClick={() => setSubMenu(tab.key)}
+                  style={{ whiteSpace: 'nowrap' }}
                 >
                   {tab.label}
                 </button>
               );
             })}
           </div>
-          <button type="button" className="ghost proj-mgmt-back-btn" onClick={() => setIsDetailView(false)}>
+          <button 
+            type="button" 
+            className="ghost proj-mgmt-back-btn" 
+            onClick={() => setIsDetailView(false)}
+            style={{ flexShrink: 0, whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '6px', padding: '6px 12px', border: '1px solid #dfe6f3', borderRadius: '6px', background: '#fff', fontSize: '13px', cursor: 'pointer' }}
+          >
             <ArrowLeft className="mini-icon" />
             목록으로
           </button>
@@ -1309,9 +1388,9 @@ export function ProjectManagementPage() {
           <label>PM<select><option>전체</option></select></label>
           <label>기간<input type="text" value="시작일 ~ 종료일" readOnly /></label>
           <div className="proj-mgmt-filter-actions">
-            <button type="button" className="primary">검색</button>
+            <button type="button" className="primary-btn-premium">검색</button>
             <button type="button" className="ghost">초기화</button>
-            <button type="button" className="primary"><Plus className="mini-icon" /> 프로젝트 등록</button>
+            <button type="button" className="primary-btn-premium"><Plus className="mini-icon" /> 프로젝트 등록</button>
           </div>
         </div>
       </section>
@@ -1896,32 +1975,40 @@ function ProjectEvidenceTab({ project }: { project: ProjectItem }) {
           <div className="basic-top-card">
             <div className="basic-icon blue"><Files className="mini-icon" /></div>
             <div>
-              <span>전체 자료 수</span>
-              <strong>87건</strong>
+               <span>전체 자료 수</span>
+               <strong>87건</strong>
+               <small>(전체 기간 누적)</small>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon green"><CheckCircle className="mini-icon" /></div>
             <div>
-              <span>승인완료 자료</span>
-              <strong>58건</strong>
-              <small>(66.7%)</small>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                <span style={{ fontSize: '12px' }}>승인완료 자료</span>
+                <span style={{ fontSize: '11px', color: '#16a34a', fontWeight: 700 }}>66.7%</span>
+              </div>
+              <strong style={{ fontSize: '20px', display: 'block' }}>58건</strong>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon orange"><Clock3 className="mini-icon" /></div>
             <div>
-              <span>검토중 자료</span>
-              <strong>21건</strong>
-              <small>(24.1%)</small>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                <span style={{ fontSize: '12px' }}>검토중 자료</span>
+                <span style={{ fontSize: '11px', color: '#ea580c', fontWeight: 700 }}>24.1%</span>
+              </div>
+              <strong style={{ fontSize: '20px', display: 'block' }}>21건</strong>
             </div>
           </div>
           <div className="basic-top-card">
             <div className="basic-icon purple"><Folder className="mini-icon" /></div>
             <div>
-              <span>미분류 자료</span>
-              <strong>8건</strong>
-              <small>(9.2%)</small>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                <span style={{ fontSize: '12px' }}>미분류 자료</span>
+                <span style={{ fontSize: '11px', color: '#9333ea', fontWeight: 700 }}>9.2%</span>
+              </div>
+              <strong style={{ fontSize: '20px', display: 'block' }}>8건</strong>
+              <small>(분류 필요)</small>
             </div>
           </div>
         </div>
@@ -1933,7 +2020,7 @@ function ProjectEvidenceTab({ project }: { project: ProjectItem }) {
             <header className="evidence-list-header">
               <h3>증빙자료 목록</h3>
               <div className="evidence-header-actions">
-                <button type="button" className="evidence-primary-btn"><Plus size={16} /> 자료 업로드</button>
+                <button type="button" className="primary-btn-premium"><Plus size={16} /> 자료 업로드</button>
                 <button type="button" className="evidence-outline-btn"><Download size={16} /> 일괄 다운로드</button>
                 <button type="button" className="evidence-outline-btn"><RefreshCcw size={16} /> 승인 요청</button>
               </div>
@@ -1995,8 +2082,8 @@ function ProjectEvidenceTab({ project }: { project: ProjectItem }) {
                     </td>
                     <td className="text-center-force">
                       <div className="btn-group" style={{ justifyContent: 'center' }}>
-                        <button type="button" className="action-btn-std blue" onClick={() => handleView(item.name)}><Eye size={18} /></button>
-                        <button type="button" className="action-btn-std red" onClick={() => handleDelete(item.id)}><Trash2 size={18} /></button>
+                        <button type="button" className="proj-mgmt-action-btn" onClick={() => handleView(item.name)}><Eye className="mini-icon" /></button>
+                        <button type="button" className="proj-mgmt-action-btn danger" onClick={() => handleDelete(item.id)}><Trash2 className="mini-icon" /></button>
                       </div>
                     </td>
                   </tr>

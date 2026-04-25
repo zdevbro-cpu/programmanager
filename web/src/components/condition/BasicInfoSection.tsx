@@ -15,21 +15,13 @@ export function BasicInfoSection({ value, onChange }: BasicInfoSectionProps) {
 
   return (
     <SectionCard title="기본정보" icon={<Folder className="mini-icon" />}>
-      <div className="grid two">
-        <label>
-          프로젝트 선택
-          <input
-            value={value.projectId}
-            onChange={(e) => setField("projectId", e.target.value)}
-            placeholder="PROJ-2026-001"
-          />
-        </label>
+      <div className="grid one">
         <label>
           조건명
           <input
             value={value.ruleName}
             onChange={(e) => setField("ruleName", e.target.value)}
-            placeholder="조건명을 입력하세요"
+            placeholder="템플릿 명칭을 입력하세요"
           />
         </label>
       </div>
@@ -62,8 +54,8 @@ export function BasicInfoSection({ value, onChange }: BasicInfoSectionProps) {
             onChange={(e) => setField("effectiveTo", e.target.value)}
           />
         </label>
-        <div className="toggle-field inline">
-          <span>사용여부</span>
+        <div className="toggle-field inline-group">
+          <span className="field-label">사용여부</span>
           <ToggleSwitch
             checked={value.enabled}
             onChange={(next) => setField("enabled", next)}

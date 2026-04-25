@@ -44,28 +44,28 @@ export const ProjectBulletinTab: React.FC = () => {
 
         <div className="basic-top-cards" style={{ gap: '12px' }}>
           <div className="basic-top-card" style={{ padding: '12px' }}>
-            <div className="basic-icon blue" style={{ width: '32px', height: '32px' }}><FileText size={16} /></div>
+            <div className="basic-icon blue"><FileText className="mini-icon" /></div>
             <div>
               <span style={{ fontSize: '12px' }}>전체 게시글</span>
               <strong style={{ fontSize: '20px', display: 'block' }}>236건</strong>
             </div>
           </div>
           <div className="basic-top-card" style={{ padding: '12px' }}>
-            <div className="basic-icon green" style={{ width: '32px', height: '32px' }}><CalendarDays size={16} /></div>
+            <div className="basic-icon green"><CalendarDays className="mini-icon" /></div>
             <div>
               <span style={{ fontSize: '12px' }}>오늘 활동</span>
               <strong style={{ fontSize: '20px', display: 'block' }}>24건</strong>
             </div>
           </div>
           <div className="basic-top-card" style={{ padding: '12px' }}>
-            <div className="basic-icon orange" style={{ width: '32px', height: '32px' }}><Bell size={16} /></div>
+            <div className="basic-icon orange"><Bell className="mini-icon" /></div>
             <div>
               <span style={{ fontSize: '12px' }}>승인 이벤트</span>
               <strong style={{ fontSize: '20px', display: 'block' }}>158건</strong>
             </div>
           </div>
           <div className="basic-top-card" style={{ padding: '12px' }}>
-            <div className="basic-icon purple" style={{ width: '32px', height: '32px' }}><RefreshCcw size={16} /></div>
+            <div className="basic-icon purple"><RefreshCcw className="mini-icon" /></div>
             <div>
               <span style={{ fontSize: '12px' }}>변경 이력</span>
               <strong style={{ fontSize: '20px', display: 'block' }}>386건</strong>
@@ -80,11 +80,10 @@ export const ProjectBulletinTab: React.FC = () => {
             <header className="table-header" style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '16px' }}>
               <button 
                 type="button" 
-                className="pboard-btn-primary" 
-                style={{ display: 'flex', alignItems: 'center', gap: '6px', height: '36px', padding: '0 18px', borderRadius: '6px', background: '#2563eb', color: '#fff', border: 0, fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}
+                style={{ display: 'flex', alignItems: 'center', gap: '6px', height: '36px', padding: '0 18px', borderRadius: '6px', background: '#1e81b0', color: '#fff', border: 0, fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}
                 onClick={() => setIsModalOpen(true)}
               >
-                <Plus size={18} /> 게시물 등록
+                <Plus size={16} /> 게시물 등록
               </button>
             </header>
 

@@ -44,28 +44,28 @@ export const ProgramBoardPage: React.FC = () => {
 
         <div className="basic-top-cards" style={{ gap: '12px' }}>
           <div className="basic-top-card" style={{ padding: '12px' }}>
-            <div className="basic-icon blue" style={{ width: '32px', height: '32px' }}><FileText size={16} /></div>
+            <div className="basic-icon blue"><FileText className="mini-icon" /></div>
             <div>
               <span style={{ fontSize: '12px' }}>전체 게시글</span>
               <strong style={{ fontSize: '20px', display: 'block' }}>1,248건</strong>
             </div>
           </div>
           <div className="basic-top-card" style={{ padding: '12px' }}>
-            <div className="basic-icon green" style={{ width: '32px', height: '32px' }}><CalendarDays size={16} /></div>
+            <div className="basic-icon green"><CalendarDays className="mini-icon" /></div>
             <div>
               <span style={{ fontSize: '12px' }}>오늘 활동</span>
               <strong style={{ fontSize: '20px', display: 'block' }}>42건</strong>
             </div>
           </div>
           <div className="basic-top-card" style={{ padding: '12px' }}>
-            <div className="basic-icon orange" style={{ width: '32px', height: '32px' }}><Bell size={16} /></div>
+            <div className="basic-icon orange"><Bell className="mini-icon" /></div>
             <div>
               <span style={{ fontSize: '12px' }}>공지 등록</span>
               <strong style={{ fontSize: '20px', display: 'block' }}>16건</strong>
             </div>
           </div>
           <div className="basic-top-card" style={{ padding: '12px' }}>
-            <div className="basic-icon purple" style={{ width: '32px', height: '32px' }}><RefreshCcw size={16} /></div>
+            <div className="basic-icon purple"><RefreshCcw className="mini-icon" /></div>
             <div>
               <span style={{ fontSize: '12px' }}>최근 업데이트</span>
               <strong style={{ fontSize: '20px', display: 'block' }}>85건</strong>

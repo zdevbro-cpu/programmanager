@@ -146,6 +146,12 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
     setSelectedItem(null);
   };
 
+  const handleDelete = (id: number) => {
+    if (window.confirm("항목을 삭제하시겠습니까?")) {
+      setData(prev => prev.filter(item => item.id !== id));
+    }
+  };
+
   return (
     <div className="settlement-tab-container" style={{ gap: '8px' }}>
       <section className="section-card basic-hero-card" style={{ marginBottom: '8px' }}>
@@ -159,7 +165,7 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
 
         <div className="basic-top-cards" style={{ marginTop: '24px' }}>
           <div className="basic-top-card">
-            <div className="basic-icon blue"><CircleDollarSign size={24} /></div>
+            <div className="basic-icon blue"><CircleDollarSign className="mini-icon" /></div>
             <div className="stat-info-compact">
               <span>지급예정 총액</span>
               <strong>₩ 48,750,000</strong>
@@ -167,7 +173,7 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
             </div>
           </div>
           <div className="basic-top-card">
-            <div className="basic-icon green"><CheckCircle2 size={24} /></div>
+            <div className="basic-icon green"><CheckCircle2 className="mini-icon" /></div>
             <div className="stat-info-compact">
               <span>지급완료 건수</span>
               <strong>24 건</strong>
@@ -175,7 +181,7 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
             </div>
           </div>
           <div className="basic-top-card">
-            <div className="basic-icon orange"><Clock3 size={24} /></div>
+            <div className="basic-icon orange"><Clock3 className="mini-icon" /></div>
             <div className="stat-info-compact">
               <span>승인대기</span>
               <strong>9 건</strong>
@@ -183,7 +189,7 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
             </div>
           </div>
           <div className="basic-top-card">
-            <div className="basic-icon purple"><PauseCircle size={24} /></div>
+            <div className="basic-icon purple"><PauseCircle className="mini-icon" /></div>
             <div className="stat-info-compact">
               <span>보류 건수</span>
               <strong>2 건</strong>
@@ -260,8 +266,8 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
                       <td>{item.date}</td>
                       <td className="action-cell">
                       <div className="btn-group">
-                        <button type="button" className="action-btn-std blue" onClick={() => handleOpenModal(item)}><Eye size={18} /></button>
-                        <button type="button" className="action-btn-std red" onClick={() => handleDelete(item.id)}><Trash2 size={18} /></button>
+                        <button type="button" className="proj-mgmt-action-btn" onClick={() => handleOpenModal(item)}><Eye className="mini-icon" /></button>
+                        <button type="button" className="proj-mgmt-action-btn danger" onClick={() => handleDelete(item.id)}><Trash2 className="mini-icon" /></button>
                       </div>
                     </td>
                     </tr>
@@ -313,7 +319,7 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
                 <button type="button" className="outline-btn purple" onClick={() => alert('보류 처리되었습니다.')}><PauseCircle size={16} /> 보류</button>
                 <button type="button" className="outline-btn" onClick={() => alert('엑셀 다운로드를 시작합니다.')}><Download size={16} /> 엑셀다운로드</button>
               </div>
-              <button type="button" className="primary-btn settlement-final-btn" onClick={handleRegisterPayment}>지급완료</button>
+              <button type="button" className="primary-btn-premium settlement-final-btn" onClick={handleRegisterPayment}>지급완료</button>
             </div>
             
             <div className="panel-footer-note">
@@ -431,7 +437,7 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
             </div>
             <footer className="modal-footer">
               <button type="button" className="outline-btn" onClick={handleCloseModal}>취소</button>
-              <button type="button" className="primary-btn">수정</button>
+              <button type="button" className="primary-btn-premium">수정</button>
             </footer>
           </div>
         </div>
@@ -490,7 +496,7 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
               </table>
             </div>
             <footer className="modal-footer">
-              <button type="button" className="primary-btn" onClick={() => setIsHistoryModalOpen(false)}>닫기</button>
+              <button type="button" className="primary-btn-premium" onClick={() => setIsHistoryModalOpen(false)}>닫기</button>
             </footer>
           </div>
         </div>
