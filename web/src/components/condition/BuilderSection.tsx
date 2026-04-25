@@ -88,7 +88,7 @@ export function BuilderSection({ value, onChange }: BuilderSectionProps) {
     <SectionCard title="조건 빌더" icon={<Filter className="mini-icon" />} headerRight={headerRight}>
       <div className="builder-container">
         {condition.items.map((item, idx) => {
-          const isManualMetric = !METRIC_OPTIONS.some(opt => opt.value === item.metric) || item.metric === "직접 입력";
+          const isManualMetric = !METRIC_OPTIONS.some(opt => opt.value === item.metric) || (item.metric as any) === "직접 입력";
           
           return (
             <div key={item.id} className="condition-row-wrapper">
@@ -113,7 +113,7 @@ export function BuilderSection({ value, onChange }: BuilderSectionProps) {
                     <div className="manual-input-group">
                       <input
                         type="text"
-                        value={item.metric === "직접 입력" ? "" : item.metric}
+                        value={(item.metric as any) === "직접 입력" ? "" : item.metric}
                         onChange={(e) => updateItem(idx, { ...item, metric: e.target.value as Metric })}
                         placeholder="항목명 입력"
                         autoFocus

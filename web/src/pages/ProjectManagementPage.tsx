@@ -1444,19 +1444,110 @@ export function ProjectManagementPage() {
 }
 
 function ProjectProgressTab({ project }: { project: ProjectItem }) {
-  const steps = [
+  const [steps, setSteps] = useState([
     { id: 1, title: "리더 선발", period: "2026.01.01 ~ 2026.01.09", status: "완료", statusClass: "closed" },
     { id: 2, title: "팀장 구성", period: "2026.01.10 ~ 2026.01.23", status: "진행중", statusClass: "running" },
     { id: 3, title: "발대식 및 활동비 개시", period: "2026.01.24 ~ 2026.01.30", status: "예정", statusClass: "pending" },
     { id: 4, title: "주간 모임 운영", period: "2026.02.01 ~ 2026.11.30", status: "예정", statusClass: "pending" },
     { id: 5, title: "수련생 초대 달성", period: "2026.12.01 ~ 2026.12.15", status: "지연", statusClass: "delayed" },
     { id: 6, title: "선언식/최종 전환", period: "2026.12.16 ~ 2026.12.31", status: "예정", statusClass: "pending" },
-  ];
+    { id: 7, title: "결과 보고 및 회고", period: "2027.01.01 ~ 2027.01.15", status: "예정", statusClass: "pending" },
+    { id: 8, title: "프로젝트 최종 마감", period: "2027.01.16 ~ 2027.01.31", status: "예정", statusClass: "pending" },
+  ]);
 
-  const currentStep = steps[1];
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editingStep, setEditingStep] = useState<any>(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
+
+  const currentStep = steps.find(s => s.status === "진행중") || steps[0];
+
+  const handleAddStep = () => {
+    const nextId = steps.length > 0 ? Math.max(...steps.map(s => s.id)) + 1 : 1;
+    setSteps([...steps, { id: nextId, title: `신규 단계 ${nextId}`, period: "2027.01.01 ~ 2027.01.31", status: "예정", statusClass: "pending" }]);
+  };
+
+  const handleEditClick = (step: any) => {
+    setEditingStep({ ...step });
+    setIsEditModalOpen(true);
+  };
+
+  const handleSaveEdit = () => {
+    if (editingStep) {
+      setSteps(steps.map(s => s.id === editingStep.id ? editingStep : s));
+      setIsEditModalOpen(false);
+    }
+  };
+
+  const handleDeleteClick = (id: number) => {
+    setDeletingId(id);
+    setIsDeleteModalOpen(true);
+  };
+
+  const confirmDelete = () => {
+    if (deletingId !== null) {
+      setSteps(steps.filter(s => s.id !== deletingId));
+      setIsDeleteModalOpen(false);
+      setDeletingId(null);
+    }
+  };
 
   return (
-    <section className="basic-info-page proj-progress-tab">
+    <section className="basic-info-page proj-progress-tab compact-mode">
+      {/* Edit Modal Implementation */}
+      {isEditModalOpen && (
+        <div className="custom-modal-overlay">
+          <div className="custom-modal-content">
+            <h3>단계 정보 수정</h3>
+            <div className="form-group">
+              <label>단계명</label>
+              <input 
+                type="text" 
+                value={editingStep.title} 
+                onChange={(e) => setEditingStep({ ...editingStep, title: e.target.value })} 
+              />
+            </div>
+            <div className="form-group">
+              <label>기간</label>
+              <input 
+                type="text" 
+                value={editingStep.period} 
+                onChange={(e) => setEditingStep({ ...editingStep, period: e.target.value })} 
+              />
+            </div>
+            <div className="form-group">
+              <label>상태</label>
+              <select 
+                value={editingStep.status} 
+                onChange={(e) => {
+                  const status = e.target.value;
+                  const statusClass = status === "완료" ? "closed" : status === "진행중" ? "running" : status === "지연" ? "delayed" : "pending";
+                  setEditingStep({ ...editingStep, status, statusClass });
+                }}
+              >
+                <option value="완료">완료</option>
+                <option value="진행중">진행중</option>
+                <option value="지연">지연</option>
+                <option value="예정">예정</option>
+              </select>
+            </div>
+            <div className="modal-actions">
+              <button type="button" className="ghost" onClick={() => setIsEditModalOpen(false)}>취소</button>
+              <button type="button" className="primary" onClick={handleSaveEdit}>저장</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Confirmation Modal */}
+      <ConfirmModal
+        isOpen={isDeleteModalOpen}
+        title="단계 삭제 확인"
+        message="정말로 이 단계를 삭제하시겠습니까? 삭제된 정보는 복구할 수 없습니다."
+        onConfirm={confirmDelete}
+        onCancel={() => setIsDeleteModalOpen(false)}
+      />
+
       <section className="section-card basic-hero-card">
         <div className="basic-title-row">
           <h2>{project.name}</h2>
@@ -1487,7 +1578,7 @@ function ProjectProgressTab({ project }: { project: ProjectItem }) {
             <div className="basic-icon green"><CheckCircle2 className="mini-icon" /></div>
             <div>
               <span>완료 단계</span>
-              <strong>1단계</strong>
+              <strong>{steps.filter(s => s.status === "완료").length}단계</strong>
               <small>(승인 완료)</small>
             </div>
           </div>
@@ -1495,7 +1586,7 @@ function ProjectProgressTab({ project }: { project: ProjectItem }) {
             <div className="basic-icon orange"><Clock4 className="mini-icon" /></div>
             <div>
               <span>지연 단계</span>
-              <strong>1단계</strong>
+              <strong>{steps.filter(s => s.status === "지연").length}단계</strong>
               <small>(일정 초과)</small>
             </div>
           </div>
@@ -1507,25 +1598,65 @@ function ProjectProgressTab({ project }: { project: ProjectItem }) {
           <section className="section-card timeline-card">
             <header className="card-header">
               <h3>절차 관리 / 단계 타임라인</h3>
+              <button type="button" className="primary mini-btn" onClick={handleAddStep}>
+                <Plus size={14} /> 단계 추가
+              </button>
             </header>
-            <div className="vertical-timeline">
-              {steps.map((step) => (
-                <div key={step.id} className={`timeline-item ${step.statusClass}`}>
-                  <div className="timeline-marker">
-                    {step.status === "완료" ? <Check className="mini-icon" /> : <span>{step.id}</span>}
-                  </div>
-                  <div className="timeline-info">
-                    <strong>{step.title}</strong>
-                    <span>{step.period}</span>
-                  </div>
-                  <span className={`status-badge ${step.statusClass}`}>{step.status}</span>
-                </div>
-              ))}
+            <div className="table-wrapper">
+              <table className="project-table excel-table-view timeline-table">
+                <thead>
+                  <tr>
+                    <th className="text-center" style={{ width: '50px' }}>구분</th>
+                    <th className="text-center">단계명</th>
+                    <th className="text-center">기간</th>
+                    <th className="text-center" style={{ width: '80px' }}>상태</th>
+                    <th className="text-center" style={{ width: '80px' }}>관리</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {steps.map((step) => (
+                    <tr key={step.id} className={step.statusClass}>
+                      <td className="text-center">
+                        <div className={`timeline-marker-mini ${step.statusClass}`}>
+                          {step.status === "완료" ? <Check size={12} /> : step.id}
+                        </div>
+                      </td>
+                      <td className="text-left font-bold">{step.title}</td>
+                      <td className="text-center text-gray">{step.period}</td>
+                      <td className="text-center">
+                        <span className={`status-badge ${step.statusClass}`}>{step.status}</span>
+                      </td>
+                      <td className="text-center">
+                        <div className="btn-group" style={{ justifyContent: 'center', gap: '0', display: 'flex' }}>
+                          <button 
+                            type="button" 
+                            className="text-btn mini" 
+                            style={{ padding: '0 2px', minWidth: 'auto' }}
+                            onClick={() => handleEditClick(step)}
+                            title="수정"
+                          >
+                            <Pencil size={14} />
+                          </button>
+                          <button 
+                            type="button" 
+                            className="text-btn danger mini" 
+                            style={{ padding: '0 2px', minWidth: 'auto' }}
+                            onClick={() => handleDeleteClick(step.id)}
+                            title="삭제"
+                          >
+                            <Trash2 size={14} />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </section>
         </div>
 
-        <div className="proj-progress-right">
+        <div className="proj-progress-right detail-col">
           <section className="section-card detail-card">
             <header className="card-header">
               <h3>현재 단계 상세</h3>
@@ -1588,7 +1719,7 @@ function ProjectProgressTab({ project }: { project: ProjectItem }) {
           <button type="button" className="primary mini-btn">다음 단계 개방</button>
         </header>
         <div className="table-wrapper">
-          <table className="project-table">
+          <table className="project-table excel-table-view">
             <thead>
               <tr>
                 <th className="text-center">단계</th>
@@ -1603,9 +1734,9 @@ function ProjectProgressTab({ project }: { project: ProjectItem }) {
               <tr>
                 <td>1. 리더 선발</td>
                 <td>리더 선발 명단.pdf <FileText className="inline-icon" /></td>
-                <td><span className="status closed">승인완료</span></td>
-                <td>2026.01.09</td>
-                <td>이수진 팀장</td>
+                <td className="text-center"><span className="status closed">승인완료</span></td>
+                <td className="text-center">2026.01.09</td>
+                <td className="text-center">이수진 팀장</td>
                 <td>
                   <div className="btn-group">
                     <button type="button" className="ghost mini-btn">상세보기</button>
@@ -1615,9 +1746,9 @@ function ProjectProgressTab({ project }: { project: ProjectItem }) {
               <tr className="active">
                 <td>2. 팀장 구성</td>
                 <td>팀 구성 계획서.pdf <FileText className="inline-icon" /></td>
-                <td><span className="status running">승인요청</span></td>
-                <td>2026.01.21</td>
-                <td>-</td>
+                <td className="text-center"><span className="status running">승인요청</span></td>
+                <td className="text-center">2026.01.21</td>
+                <td className="text-center">-</td>
                 <td>
                   <div className="btn-group">
                     <button type="button" className="ghost mini-btn">상세보기</button>
@@ -1628,10 +1759,10 @@ function ProjectProgressTab({ project }: { project: ProjectItem }) {
               {steps.slice(2).map(s => (
                 <tr key={s.id} className="dimmed">
                   <td>{s.id}. {s.title}</td>
-                  <td>-</td>
-                  <td><span className="status pending">대기</span></td>
-                  <td>-</td>
-                  <td>-</td>
+                  <td className="text-center">-</td>
+                  <td className="text-center"><span className="status pending">대기</span></td>
+                  <td className="text-center">-</td>
+                  <td className="text-center">-</td>
                   <td>-</td>
                 </tr>
               ))}

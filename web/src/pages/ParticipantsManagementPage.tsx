@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useMemo, useRef, useState } from "react";
+﻿import { ChangeEvent, FormEvent, useMemo, useRef, useState } from "react";
 import { Download, Eye, Info, Search, Trash2, Upload, UserPlus2 } from "lucide-react";
 
 type ParticipantStatus = "활동중" | "승인대기" | "보류";
@@ -29,12 +29,61 @@ type ParticipantsManagementPageProps = {
 };
 
 const INITIAL_PARTICIPANTS: ParticipantRow[] = [
-  { id: "PT-0001", role: "PM", name: "김지훈", email: "jihun.kim@las.co.kr", phone: "010-2384-1123", projectCount: 3, status: "활동중", recentActivity: "2026-06-03", projectIds: ["PRJ-2026-0001", "PRJ-2026-0005", "PRJ-2026-0006"] },
-  { id: "PT-0002", role: "Admin", name: "박민지", email: "minji.park@las.co.kr", phone: "010-5512-4482", projectCount: 2, status: "활동중", recentActivity: "2026-06-02", projectIds: ["PRJ-2026-0001", "PRJ-2026-0003"] },
-  { id: "PT-0003", role: "프로젝트팀원", name: "이서윤", email: "seoyun.lee@las.co.kr", phone: "010-8831-2901", projectCount: 1, status: "승인대기", recentActivity: "2026-06-01", projectIds: ["PRJ-2026-0002"] },
-  { id: "PT-0004", role: "프로젝트팀원", name: "최유리", email: "yuri.choi@las.co.kr", phone: "010-7742-1108", projectCount: 2, status: "활동중", recentActivity: "2026-05-31", projectIds: ["PRJ-2026-0001", "PRJ-2026-0004"] },
-  { id: "PT-0005", role: "프로젝트팀원", name: "정현우", email: "hyunwoo.jeong@las.co.kr", phone: "010-9124-7703", projectCount: 1, status: "보류", recentActivity: "2026-05-30", projectIds: ["PRJ-2026-0001"] },
-  { id: "PT-0006", role: "Admin", name: "유다은", email: "daeun.yu@las.co.kr", phone: "010-6682-4419", projectCount: 4, status: "활동중", recentActivity: "2026-05-29", projectIds: ["PRJ-2026-0001", "PRJ-2026-0003", "PRJ-2026-0005", "PRJ-2026-0006"] }
+  {
+    id: "PT-0001",
+    role: "PM",
+    name: "김지훈",
+    email: "jihun.kim@las.co.kr",
+    phone: "010-2384-1123",
+    projectCount: 3,
+    status: "활동중",
+    recentActivity: "2026-06-03",
+    projectIds: ["PRJ-2026-0001", "PRJ-2026-0005", "PRJ-2026-0006"]
+  },
+  {
+    id: "PT-0002",
+    role: "Admin",
+    name: "박민지",
+    email: "minji.park@las.co.kr",
+    phone: "010-5512-4482",
+    projectCount: 2,
+    status: "활동중",
+    recentActivity: "2026-06-02",
+    projectIds: ["PRJ-2026-0001", "PRJ-2026-0003"]
+  },
+  {
+    id: "PT-0003",
+    role: "프로젝트팀원",
+    name: "최유리",
+    email: "yuri.choi@las.co.kr",
+    phone: "010-7742-1108",
+    projectCount: 2,
+    status: "활동중",
+    recentActivity: "2026-05-31",
+    projectIds: ["PRJ-2026-0001", "PRJ-2026-0004"]
+  },
+  {
+    id: "PT-0004",
+    role: "프로젝트팀원",
+    name: "정현우",
+    email: "hyunwoo.jeong@las.co.kr",
+    phone: "010-9124-7703",
+    projectCount: 1,
+    status: "보류",
+    recentActivity: "2026-05-30",
+    projectIds: ["PRJ-2026-0001"]
+  },
+  {
+    id: "PT-0005",
+    role: "Admin",
+    name: "유다은",
+    email: "daeun.yu@las.co.kr",
+    phone: "010-6682-4419",
+    projectCount: 4,
+    status: "활동중",
+    recentActivity: "2026-05-29",
+    projectIds: ["PRJ-2026-0001", "PRJ-2026-0003", "PRJ-2026-0005", "PRJ-2026-0006"]
+  }
 ];
 
 function emptyDraft(): ParticipantDraft {
@@ -51,7 +100,7 @@ function toCsv(rows: ParticipantRow[]) {
   const header = ["기본역할", "이름", "이메일", "연락처", "참여프로젝트 수", "상태", "최근활동"];
   const lines = rows.map((row) => [row.role, row.name, row.email, row.phone, `${row.projectCount}`, row.status, row.recentActivity]);
   return [header, ...lines]
-    .map((line) => line.map((field) => `"${String(field).replace(/"/g, "\"\"")}"`).join(","))
+    .map((line) => line.map((field) => `"${String(field).replace(/"/g, '""')}"`).join(","))
     .join("\n");
 }
 
@@ -73,11 +122,12 @@ export function ParticipantsManagementPage({ projectId, projectName }: Participa
   const filteredRows = useMemo(() => {
     const base = isProjectScoped ? rows.filter((item) => item.projectIds.includes(projectId as string)) : rows;
     return base.filter((item) => {
+      const key = keyword.trim();
       const byKeyword =
-        !keyword.trim() ||
-        item.name.includes(keyword.trim()) ||
-        item.email.includes(keyword.trim()) ||
-        item.phone.includes(keyword.trim());
+        !key ||
+        item.name.includes(key) ||
+        item.email.includes(key) ||
+        item.phone.includes(key);
       const byRole = roleFilter === "전체" || item.role === roleFilter;
       const byStatus = statusFilter === "전체" || item.status === statusFilter;
       return byKeyword && byRole && byStatus;
@@ -144,9 +194,7 @@ export function ParticipantsManagementPage({ projectId, projectName }: Participa
         })
         .filter((item) => item.name && item.email && item.phone);
 
-      if (parsed.length > 0) {
-        setRows((prev) => [...parsed, ...prev]);
-      }
+      if (parsed.length > 0) setRows((prev) => [...parsed, ...prev]);
       event.target.value = "";
     };
     reader.readAsText(file);
@@ -215,7 +263,7 @@ export function ParticipantsManagementPage({ projectId, projectName }: Participa
 
       <section className="section-card">
         <div className="participants-top-row">
-          <h2 className="participants-project-title">
+          <h2 className="participants-project-title" style={{ color: "#2596be" }}>
             {isProjectScoped ? (projectName ?? "프로젝트 참여자") : "참여자 관리"}
           </h2>
           <div className="participants-actions">
@@ -227,18 +275,12 @@ export function ParticipantsManagementPage({ projectId, projectName }: Participa
               <Upload className="mini-icon" />
               일괄등록
             </button>
-            <button type="button" className="primary icon-btn-inline" onClick={() => setShowAddForm((prev) => !prev)}>
+            <button type="button" className="primary-btn-premium icon-btn-inline" onClick={() => setShowAddForm((prev) => !prev)}>
               <UserPlus2 className="mini-icon" />
               참여자 추가
             </button>
           </div>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept=".csv,text/csv"
-            style={{ display: "none" }}
-            onChange={onBulkFileChange}
-          />
+          <input ref={fileInputRef} type="file" accept=".csv,text/csv" style={{ display: "none" }} onChange={onBulkFileChange} />
         </div>
 
         {showAddForm ? (
@@ -276,7 +318,10 @@ export function ParticipantsManagementPage({ projectId, projectName }: Participa
             <option value="승인대기">상태: 승인대기</option>
             <option value="보류">상태: 보류</option>
           </select>
-          <button type="button" className="primary-btn-premium">검색</button>
+          <button type="button" className="primary-btn-premium icon-btn-inline">
+            <Search className="mini-icon" />
+            검색
+          </button>
         </div>
       </section>
 
@@ -368,16 +413,12 @@ export function ParticipantsManagementPage({ projectId, projectName }: Participa
               </label>
               <label>
                 참여프로젝트 수
-                <input value={`${detailRow.projectCount}개`} readOnly />
-              </label>
-              <label>
-                최근활동
-                <input value={detailRow.recentActivity} readOnly />
+                <input value={`${detailRow.projectCount}개`} disabled />
               </label>
             </div>
             <div className="participants-modal-actions">
-              <button type="button" className="primary-btn-premium" onClick={onSaveDetail}>수정</button>
               <button type="button" className="ghost" onClick={onCancelDetail}>취소</button>
+              <button type="button" className="primary-btn-premium" onClick={onSaveDetail}>수정</button>
             </div>
           </div>
         </div>

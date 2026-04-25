@@ -6,7 +6,7 @@ import {
   ChevronRight as ChevronRightIcon, X, Upload, Check
 } from 'lucide-react';
 
-export const ProjectBulletinTab: React.FC = () => {
+export const ProjectBulletinTab: React.FC<{ project: any }> = ({ project }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const allPosts = [

@@ -153,7 +153,7 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
   };
 
   return (
-    <div className="settlement-tab-container" style={{ gap: '8px' }}>
+    <div className="settlement-tab-container compact-mode" style={{ gap: '8px' }}>
       <section className="section-card basic-hero-card" style={{ marginBottom: '8px' }}>
         <div className="basic-title-row">
           <h2>{project.name}</h2>
@@ -291,41 +291,6 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
               </select>
             </div>
           </section>
-
-          {/* Bottom Approval Panel */}
-          <section className="settlement-approval-panel">
-            <div className="approval-header-row">
-              <div className="panel-title">
-                <h3>정산 승인 패널 <Info size={16} className="info-icon" /></h3>
-              </div>
-              <div className="summary-group">
-                <div className="summary-item">
-                  <span>선택된 항목 <strong>{selectedIds.length} 건</strong></span>
-                </div>
-                <div className="summary-item">
-                  <span className="divider">|</span>
-                  <span>총 지급예정액 <strong>{formatCurrency(totalExpected)}</strong></span>
-                </div>
-                <div className="summary-item">
-                  <span className="divider">|</span>
-                  <span>총 지급확정액 <strong>{formatCurrency(totalConfirmed)}</strong></span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="approval-action-row">
-              <div className="action-btns-left">
-                <button type="button" className="outline-btn" onClick={handleApprove}><Check size={16} /> 승인</button>
-                <button type="button" className="outline-btn purple" onClick={() => alert('보류 처리되었습니다.')}><PauseCircle size={16} /> 보류</button>
-                <button type="button" className="outline-btn" onClick={() => alert('엑셀 다운로드를 시작합니다.')}><Download size={16} /> 엑셀다운로드</button>
-              </div>
-              <button type="button" className="primary-btn-premium settlement-final-btn" onClick={handleRegisterPayment}>지급완료</button>
-            </div>
-            
-            <div className="panel-footer-note">
-               <Info size={14} /> 승인 시 '지급확정액'이 확정되며, 이후 지급등록을 통해 실제 지급이 진행됩니다.
-            </div>
-          </section>
         </div>
 
         <div className="settlement-right-col">
@@ -382,7 +347,7 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
               <button type="button" className="text-btn" onClick={() => setIsHistoryModalOpen(true)}>더보기 &gt;</button>
             </header>
             <div className="history-list">
-              {history.slice(0, 3).map((log, idx) => (
+              {history.slice(0, 2).map((log, idx) => (
                 <div key={idx} className="history-item">
                   <div className="history-dot" style={{ backgroundColor: log.color }}></div>
                   <div className="history-content">
@@ -398,7 +363,45 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
               ))}
             </div>
           </section>
-          {/* Detail Modal */}
+        </div>
+      </div>
+
+      {/* Full Width Approval Panel moved out of main-layout */}
+      <section className="settlement-approval-panel full-width">
+        <div className="approval-header-row">
+          <div className="panel-title">
+            <h3>정산 승인 패널 <Info size={16} className="info-icon" /></h3>
+          </div>
+          <div className="summary-group">
+            <div className="summary-item">
+              <span>선택된 항목 <strong>{selectedIds.length} 건</strong></span>
+            </div>
+            <div className="summary-item">
+              <span className="divider">|</span>
+              <span>총 지급예정액 <strong>{formatCurrency(totalExpected)}</strong></span>
+            </div>
+            <div className="summary-item">
+              <span className="divider">|</span>
+              <span>총 지급확정액 <strong>{formatCurrency(totalConfirmed)}</strong></span>
+            </div>
+          </div>
+        </div>
+        
+        <div className="approval-action-row">
+          <div className="action-btns-left">
+            <button type="button" className="outline-btn" onClick={handleApprove}><Check size={16} /> 승인</button>
+            <button type="button" className="outline-btn purple" onClick={() => alert('보류 처리되었습니다.')}><PauseCircle size={16} /> 보류</button>
+            <button type="button" className="outline-btn" onClick={() => alert('엑셀 다운로드를 시작합니다.')}><Download size={16} /> 엑셀다운로드</button>
+          </div>
+          <button type="button" className="primary-btn-premium settlement-final-btn" onClick={handleRegisterPayment}>지급완료</button>
+        </div>
+        
+        <div className="panel-footer-note">
+           <Info size={14} /> 승인 시 '지급확정액'이 확정되며, 이후 지급등록을 통해 실제 지급이 진행됩니다.
+        </div>
+      </section>
+
+      {/* Detail Modal */}
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content settlement-detail-modal">
@@ -501,8 +504,6 @@ export const ProjectSettlementTab: React.FC<ProjectSettlementTabProps> = ({ proj
           </div>
         </div>
       )}
-    </div>
-      </div>
     </div>
   );
 };
