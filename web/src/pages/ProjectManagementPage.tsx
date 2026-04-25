@@ -1425,6 +1425,201 @@ export function ProjectManagementPage() {
                 <td className="text-center"><span className={statusClass(project.status)}>{statusLabel(project.status)}</span></td>
                 <td className="text-center">{project.pm}</td>
                 <td className="text-center"><div className="proj-mgmt-progress-cell"><span>{project.progress}%</span><div className="bar"><i style={{ width: `${project.progress}%` }} /></div></div></td>
+          <section className="section-card">
+            <header className="side-card-header">
+              <h3>필터</h3>
+              <button type="button" className="ghost mini-btn" style={{ border: '1px solid #dfe6f3', borderRadius: '6px', height: '30px', padding: '0 8px', display: 'flex', alignItems: 'center', gap: '4px' }}><RefreshCcw size={14} /> 초기화</button>
+            </header>
+            <div className="filter-grid-2col">
+              <div className="filter-group full">
+                <label>기간</label>
+                <div className="date-range-iconic">
+                  <div className="date-input-wrap">
+                    <input type="text" value="2026.04.14" readOnly />
+                    <Calendar size={14} className="input-icon" />
+                  </div>
+                  <span>~</span>
+                  <div className="date-input-wrap">
+                    <input type="text" value="2026.05.14" readOnly />
+                    <Calendar size={14} className="input-icon" />
+                  </div>
+                </div>
+              </div>
+              <div className="filter-group">
+                <label>사용자</label>
+                <select className="form-select sm"><option>전체 사용자</option></select>
+              </div>
+              <div className="filter-group">
+                <label>관련 메뉴</label>
+                <select className="form-select sm"><option>전체 메뉴</option></select>
+              </div>
+              <div className="filter-group">
+                <label>활동유형</label>
+                <select className="form-select sm"><option>전체 활동유형</option></select>
+              </div>
+              <div className="filter-group">
+                <label>결과</label>
+                <select className="form-select sm"><option>전체 결과</option></select>
+              </div>
+              <div className="filter-actions-row">
+                <button type="button" className="primary-btn-sm full"><Search size={14} /> 필터 적용</button>
+                <button type="button" className="outline-btn-sm full">필터 해제</button>
+              </div>
+            </div>
+          </section>
+
+          <section className="section-card guide-card">
+            <header className="side-card-header">
+              <h3>감사 메모 <Info size={16} /></h3>
+            </header>
+            <ul className="audit-guide-list">
+              <li>모든 변경 및 승인 이력은 자동으로 기록되며, 삭제할 수 없습니다.</li>
+              <li>로그 보관 기간: 5년 (2026.01.01 ~ 2031.12.31)</li>
+              <li>개인정보가 포함된 로그는 보안 정책에 따라 암호화되어 보관됩니다.</li>
+              <li>로그 내보내기는 엑셀(.xlsx) 형식으로 제공됩니다.</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function ProjectManagementPage() {
+  const [subMenu, setSubMenu] = useState<SubMenu>("basic");
+  const [selectedProjectId, setSelectedProjectId] = useState(PROJECTS[0].id);
+  const [isDetailView, setIsDetailView] = useState(false);
+  const selectedProject = PROJECTS.find((project) => project.id === selectedProjectId) ?? PROJECTS[0];
+  const detailTabOrder: SubMenu[] = ["basic", "participants_org", "rules", "progress", "performance", "settlement", "evidence", "activity", "board"];
+
+  const openDetail = (project: ProjectItem) => {
+    setSelectedProjectId(project.id);
+    setIsDetailView(true);
+  };
+
+  if (isDetailView) {
+    return (
+      <div className="proj-mgmt-page proj-mgmt-detail-compact">
+        <div className="proj-breadcrumb">
+          <span className="breadcrumb-link" onClick={() => setIsDetailView(false)}>프로젝트관리</span>
+          <ChevronRight className="mini-icon" />
+          <span className="breadcrumb-link" onClick={() => setSubMenu("basic")}>{selectedProject.name}</span>
+          <ChevronRight className="mini-icon" />
+          <span>{PROJECT_TABS.find(t => t.key === subMenu)?.label}</span>
+        </div>
+
+        <section className="section-card proj-mgmt-selected" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 20px', gap: '20px' }}>
+          <div className="perf-tabs proj-mgmt-tabs" style={{ display: 'flex', flex: 1, gap: '4px', borderBottom: 0, marginBottom: 0, overflowX: 'auto' }}>
+            {detailTabOrder.map((tabKey) => {
+              const tab = PROJECT_TABS.find((item) => item.key === tabKey);
+              if (!tab) return null;
+              return (
+                <button
+                  key={tab.key}
+                  type="button"
+                  className={subMenu === tab.key ? "perf-tab active" : "perf-tab"}
+                  onClick={() => setSubMenu(tab.key)}
+                  style={{ whiteSpace: 'nowrap' }}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+          <button 
+            type="button" 
+            className="ghost proj-mgmt-back-btn" 
+            onClick={() => setIsDetailView(false)}
+            style={{ flexShrink: 0, whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '6px', padding: '6px 12px', border: '1px solid #dfe6f3', borderRadius: '6px', background: '#fff', fontSize: '13px', cursor: 'pointer' }}
+          >
+            <ArrowLeft className="mini-icon" />
+            목록으로
+          </button>
+        </section>
+
+        <ProjectTabContent tab={subMenu} project={selectedProject} />
+      </div>
+    );
+  }
+
+  return (
+    <div className="proj-mgmt-page">
+      <style>{`
+        .proj-mgmt-table th {
+          text-align: center !important;
+        }
+        .proj-mgmt-table td {
+          text-align: left !important;
+        }
+      `}</style>
+      <div className="proj-breadcrumb">
+        <span>프로젝트관리</span>
+        <ChevronRight className="mini-icon" />
+        <span>프로젝트 목록</span>
+      </div>
+
+      <div className="page-head">
+        <h1>프로젝트관리</h1>
+        <p>프로젝트 목록에서 선택한 프로젝트의 상세 정보를 확인합니다.</p>
+      </div>
+
+      <div className="proj-mgmt-stats">
+        <div className="section-card proj-mgmt-stat"><div className="proj-mgmt-stat-icon blue"><FolderOpen className="mini-icon" /></div><div><span>전체 프로젝트</span><strong>12개</strong></div></div>
+        <div className="section-card proj-mgmt-stat"><div className="proj-mgmt-stat-icon green"><CheckCircle2 className="mini-icon" /></div><div><span>운영중</span><strong>7개</strong></div></div>
+        <div className="section-card proj-mgmt-stat"><div className="proj-mgmt-stat-icon purple"><Clock3 className="mini-icon" /></div><div><span>준비중</span><strong>2개</strong></div></div>
+        <div className="section-card proj-mgmt-stat"><div className="proj-mgmt-stat-icon orange"><Clock4 className="mini-icon" /></div><div><span>종료</span><strong>3개</strong></div></div>
+      </div>
+
+      <section className="section-card proj-mgmt-filter">
+        <div className="proj-mgmt-filter-grid">
+          <label>
+            프로젝트명
+            <div className="search-box proj-mgmt-search">
+              <input placeholder="프로젝트 검색..." />
+              <Search className="mini-icon" />
+            </div>
+          </label>
+          <label>상태<select><option>전체</option></select></label>
+          <label>PM<select><option>전체</option></select></label>
+          <label>기간<input type="text" value="시작일 ~ 종료일" readOnly /></label>
+          <div className="proj-mgmt-filter-actions">
+            <button type="button" className="primary-btn-premium">검색</button>
+            <button type="button" className="ghost">초기화</button>
+            <button type="button" className="primary-btn-premium"><Plus className="mini-icon" /> 프로젝트 등록</button>
+          </div>
+        </div>
+      </section>
+
+      <div className="proj-mgmt-guide">
+        <Info className="mini-icon blue" />
+        <strong>프로젝트를 선택하면 상세 탭으로 이동합니다.</strong>
+        <span>목록 행을 클릭하면 해당 프로젝트 상세 화면이 표시됩니다.</span>
+      </div>
+
+      <section className="section-card">
+        <table className="project-table proj-mgmt-table">
+          <thead>
+            <tr>
+              <th className="text-center">프로젝트명</th>
+              <th className="text-center">유형</th>
+              <th className="text-center">기간</th>
+              <th className="text-center">상태</th>
+              <th className="text-center">PM</th>
+              <th className="text-center">진척율</th>
+              <th className="text-center">참여자</th>
+              <th className="text-center">수정일</th>
+              <th className="text-center">액션</th>
+            </tr>
+          </thead>
+          <tbody>
+            {PROJECTS.map((project) => (
+              <tr key={project.id} className={project.id === selectedProjectId ? "selected" : undefined} onClick={() => openDetail(project)}>
+                <td className="text-center"><strong>{project.name}</strong></td>
+                <td className="text-center">{project.type}</td>
+                <td className="text-center">{project.period}</td>
+                <td className="text-center"><span className={statusClass(project.status)}>{statusLabel(project.status)}</span></td>
+                <td className="text-center">{project.pm}</td>
+                <td className="text-center"><div className="proj-mgmt-progress-cell"><span>{project.progress}%</span><div className="bar"><i style={{ width: `${project.progress}%` }} /></div></div></td>
                 <td className="text-center">{project.participants}</td>
                 <td className="text-center">{project.updatedAt}</td>
                 <td className="text-center">
@@ -1439,6 +1634,144 @@ export function ProjectManagementPage() {
           </tbody>
         </table>
       </section>
+    </div>
+  );
+}
+
+function ProjectBasicInfoTab({ project }: { project: ProjectItem }) {
+  const formatShortDate = (dateStr: string) => dateStr.replace(/20(\d{2})/g, "$1");
+
+  return (
+    <div className="basic-info-page">
+      <section className="section-card basic-hero-card">
+        <div className="basic-title-row">
+          <h2>{project.name}</h2>
+          <div className="basic-owner">
+            <span className={statusClass(project.status)}>{statusLabel(project.status)}</span>
+            <strong>PM {project.pm}</strong>
+          </div>
+        </div>
+
+        <div className="basic-top-cards">
+          <div className="basic-top-card">
+            <div className="basic-icon blue"><CalendarDays className="mini-icon" /></div>
+            <div className="card-info">
+              <span>프로젝트 기간</span>
+              <strong title={project.period}>{formatShortDate(project.period)}</strong>
+              <small>(366일)</small>
+            </div>
+          </div>
+          <div className="basic-top-card">
+            <div className="basic-icon purple"><Tag className="mini-icon" /></div>
+            <div className="card-info">
+              <span>프로젝트 유형</span>
+              <strong title={project.type}>{project.type}</strong>
+              <small>(인센티브형)</small>
+            </div>
+          </div>
+          <div className="basic-top-card">
+            <div className="basic-icon green"><BookOpen className="mini-icon" /></div>
+            <div className="card-info">
+              <span>대상 상품</span>
+              <strong title="유아도서 전 품목">유아도서 전 품목</strong>
+              <small>(1,256개)</small>
+            </div>
+          </div>
+          <div className="basic-top-card">
+            <div className="basic-icon orange"><Clock3 className="mini-icon" /></div>
+            <div className="card-info">
+              <span>운영 상태</span>
+              <strong>{statusLabel(project.status)}</strong>
+              <small>({formatShortDate("2026.01.01")} 시작)</small>
+            </div>
+          </div>
+          <div className="basic-top-card">
+            <div className="basic-icon blue"><Target className="mini-icon" /></div>
+            <div className="card-info">
+              <span>진척율</span>
+              <strong>{project.progress}%</strong>
+              <small>(진행률 기준)</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="basic-mid-grid">
+        <section className="section-card">
+          <h3 className="panel-title">프로젝트 기본 정보</h3>
+          <table className="project-table basic-info-table">
+            <tbody>
+              <tr><td>프로젝트명</td><td>{project.name}</td></tr>
+              <tr><td>프로젝트목적</td><td>유아도서 판매 확대 및 고객 충성도 향상</td></tr>
+              <tr><td>시작일</td><td>{formatShortDate("2026.01.01")}</td></tr>
+              <tr><td>종료일</td><td>{formatShortDate("2026.12.31")}</td></tr>
+              <tr><td>운영부서</td><td>마케팅본부 영업기획팀</td></tr>
+              <tr><td>대상회원</td><td>전국 서점 및 온라인 판매처 (일반 회원 포함)</td></tr>
+              <tr><td>프로젝트코드</td><td>{project.id}</td></tr>
+              <tr><td>프로젝트 설명</td><td>2026년 한 해 동안 유아도서 판매 활성화를 위해 진행되는 인센티브 기반 프로모션입니다.</td></tr>
+              <tr><td>프로젝트 코드</td><td>{project.id}</td></tr>
+              <tr><td>프로그램명</td><td>{project.name}</td></tr>
+              <tr><td>시작일</td><td>{formatShortDate("2026.01.01")}</td></tr>
+              <tr><td>종료일</td><td>{formatShortDate("2026.12.31")}</td></tr>
+              <tr><td>운영 조직</td><td>마케팅기획팀</td></tr>
+            </tbody>
+          </table>
+        </section>
+        <section className="section-card">
+          <h3 className="panel-title">운영 요약</h3>
+          <div className="basic-summary-grid">
+            <div className="basic-summary-item"><Users className="mini-icon" /><div><span>참여자 수</span><strong>356명</strong></div></div>
+            <div className="basic-summary-item"><Flag className="mini-icon" /><div><span>진행 단계</span><strong>1단계</strong></div></div>
+            <div className="basic-summary-item"><Target className="mini-icon" /><div><span>모집 목표</span><strong>500명</strong></div></div>
+            <div className="basic-summary-item"><Target className="mini-icon" /><div><span>판매 목표</span><strong>1,200,000,000원</strong></div></div>
+            <div className="basic-summary-item"><BookOpen className="mini-icon" /><div><span>게시글</span><strong>12건</strong></div></div>
+            <div className="basic-summary-item"><FolderOpen className="mini-icon" /><div><span>증빙자료</span><strong>87건</strong></div></div>
+          </div>
+        </section>
+      </div>
+
+      <div className="basic-bottom-grid">
+        <section className="section-card">
+          <h3 className="panel-title">프로젝트 일정</h3>
+          <ul className="basic-timeline">
+            <li className="done">
+              <span className="tl-dot">✓</span>
+              <b>프로젝트 준비</b>
+              <span>{formatShortDate("2025.11.01")} ~ {formatShortDate("2025.12.31")}</span>
+              <em className="status running">완료</em>
+              <small>프로모션 기획 및 시스템 세팅 완료</small>
+            </li>
+            <li className="active">
+              <span className="tl-dot">1</span>
+              <b>1단계 프로모션</b>
+              <span>{formatShortDate("2026.01.01")} ~ {formatShortDate("2026.03.31")}</span>
+              <em className="status running">진행중</em>
+              <small>초기 판매 활성화 및 참여자 확대</small>
+            </li>
+            <li>
+              <span className="tl-dot">2</span>
+              <b>2단계 프로모션</b>
+              <span>{formatShortDate("2026.04.01")} ~ {formatShortDate("2026.06.30")}</span>
+              <em className="status planning">예정</em>
+              <small>판매 확대 및 중간 성과 점검</small>
+            </li>
+            <li>
+              <span className="tl-dot">3</span>
+              <b>3단계 프로모션</b>
+              <span>{formatShortDate("2026.07.01")} ~ {formatShortDate("2026.09.30")}</span>
+              <em className="status planning">예정</em>
+              <small>하반기 집중 프로모션</small>
+            </li>
+            <li>
+              <span className="tl-dot">4</span>
+              <b>최종 정산 및 평가</b>
+              <span>{formatShortDate("2026.10.01")} ~ {formatShortDate("2026.12.31")}</span>
+              <em className="status planning">예정</em>
+              <small>최종 성과 확인 및 보상 정산</small>
+            </li>
+          </ul>
+        </section>
+      </div>
     </div>
   );
 }
