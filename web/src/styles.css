@@ -8881,7 +8881,43 @@ input:focus, select:focus {
 }
 
 .custom-modal-content .modal-actions { display: flex !important; justify-content: flex-end !important; gap: 8px !important; margin-top: 24px !important; }
-.custom-modal-content .modal-actions button { padding: 8px 16px !important; border-radius: 6px !important; font-weight: 600 !important; font-size: 13px !important; }
+.basic-timeline li {
+  position: relative !important;
+}
+
+.timeline-item-actions {
+  display: flex !important;
+  gap: 4px !important;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.basic-timeline li:hover .timeline-item-actions {
+  opacity: 1 !important;
+}
+
+.mini-action-btn {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 4px !important;
+  padding: 4px !important;
+  cursor: pointer !important;
+  color: #64748b !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mini-action-btn:hover {
+  background: #f1f5f9 !important;
+  color: #1e293b !important;
+}
+
+.mini-action-btn.danger:hover {
+  background: #fee2e2 !important;
+  color: #ef4444 !important;
+  border-color: #fecaca !important;
+}
 
 /* Settlement Table Compact View */
 .settlement-tab-container.compact-mode .settlement-table {
@@ -9016,4 +9052,164 @@ input:focus, select:focus {
 }
 
 
+
+
+/* Force Schedule Description Single Line */
+.basic-timeline small {
+  display: block !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 450px !important;
+  margin-top: 2px !important;
+}
+
+/* Compact Schedule List Padding */
+.basic-timeline li {
+  padding: 2px 0 !important;
+  gap: 6px !important;
+}
+
+/* Ultra Compact Schedule and Memo List */
+.basic-timeline li {
+  padding: 0 !important;
+  gap: 2px !important;
+  min-height: auto !important;
+}
+.basic-timeline b, .basic-timeline span, .basic-timeline small {
+  line-height: 1.1 !important;
+}
+.memo-item, .simple-list li {
+  padding: 1px 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Premium Bottom Guide Banner */
+.proj-mgmt-bottom-guide {
+  display: flex !important;
+  padding: 24px !important;
+  gap: 40px !important;
+  background: #f8fbff !important;
+  border: 1px solid #e1e9f5 !important;
+  margin-top: 24px !important;
+  align-items: center !important;
+}
+.guide-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 20px !important;
+  min-width: 320px !important;
+}
+.guide-illus {
+  position: relative !important;
+  width: 80px !important;
+  height: 80px !important;
+  background: #fff !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+  border: 1px solid #edf2f9 !important;
+}
+.illus-icon { color: #3b82f6 !important; opacity: 0.8 !important; }
+.illus-sub-icon {
+  position: absolute !important;
+  bottom: -5px !important;
+  right: -5px !important;
+  color: #2563eb !important;
+  background: #fff !important;
+  border-radius: 50% !important;
+}
+.guide-txt h3 { margin: 0 !important; font-size: 18px !important; color: #1e293b !important; font-weight: 700 !important; }
+.guide-txt p { margin: 4px 0 0 !important; font-size: 14px !important; color: #64748b !important; }
+.guide-right { flex: 1 !important; }
+.guide-tabs-preview {
+  display: flex !important;
+  gap: 2px !important;
+  background: #fff !important;
+  padding: 4px !important;
+  border-radius: 8px !important;
+  border: 1px solid #eef2f8 !important;
+  margin-bottom: 12px !important;
+  overflow-x: auto !important;
+}
+.preview-tab {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+  color: #64748b !important;
+  white-space: nowrap !important;
+  border-radius: 4px !important;
+}
+.preview-tab.active {
+  color: #2563eb !important;
+  font-weight: 700 !important;
+  background: #f0f7ff !important;
+  position: relative !important;
+}
+.preview-tab.active::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 20% !important;
+  right: 20% !important;
+  height: 2px !important;
+  background: #2563eb !important;
+}
+.guide-detail-box {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 10px 16px !important;
+  background: #eff6ff !important;
+  border-radius: 6px !important;
+  border: 1px solid #dbeafe !important;
+}
+.guide-detail-box span { font-size: 13px !important; color: #2563eb !important; }
+.info-icon { color: #3b82f6 !important; }
+
+
+/* Even More Compact Spacing */
+.proj-mgmt-bottom-guide {
+  margin-top: 8px !important;
+  padding: 16px 20px !important;
+}
+.proj-mgmt-guide {
+  margin-bottom: 8px !important;
+  padding: 8px 16px !important;
+}
+.page-head h1 { margin-bottom: 2px !important; }
+.page-head p { margin-top: 0 !important; }
+
+
+/* Filter Action Buttons Uniform Height & Icon Color */
+.proj-mgmt-filter-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+.proj-mgmt-filter-actions .primary-btn-premium, 
+.proj-mgmt-filter-actions .ghost {
+  height: 40px !important;
+  padding: 0 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  border-radius: 6px !important;
+  box-sizing: border-box !important;
+}
+.proj-mgmt-filter-actions .primary-btn-premium .mini-icon {
+  color: #ffffff !important;
+  margin-right: 4px !important;
+}
+.proj-mgmt-filter-actions .ghost {
+  border: 1px solid #cbd5e1 !important;
+  color: #64748b !important;
+  background: #ffffff !important;
+}
 
